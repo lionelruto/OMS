@@ -3,10 +3,10 @@ import React from 'react';
 import { Route, Redirect, withRouter } from 'react-router-dom';
 
 import { MAIN_VIEW_ROUTE } from '../../constants/app_utils';
-import { GET_TOKEN_URL } from '../../constants/endpoints';
-import { apiHttpPOST } from '../../utility/request_helper';
+// import { GET_TOKEN_URL } from '../../constants/endpoints';
+// import { apiHttpPOST } from '../../utility/request_helper';
 import { connect } from 'react-redux';
-import * as actions from '../../actions/auth/login_actions';
+// import * as actions from '../../actions/auth/login_actions';
 import { bindActionCreators } from 'redux';
 import { retrieveLocalStorageUser } from '../../utility/misc';
 
@@ -17,7 +17,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(actions, dispatch);
+  // return bindActionCreators(actions, dispatch);
 }
 
 class ProtectedRoute extends React.Component {
@@ -39,19 +39,19 @@ class ProtectedRoute extends React.Component {
     if (props.isUserAuthenticated) {
       this.setState({ authorized: false });
     } else if (userCred.username && userCred.password) {
-      this.setState({ loading: true });
-      apiHttpPOST(GET_TOKEN_URL, null, userCred)
-        .then((response) => {
-          if (response.status >= 200 && response.status <= 299) {
-            this.setState({ authorized: false, loading: false });
-          } else {
-            this.setState({ loading: false });
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          this.setState({ loading: false });
-        });
+      // this.setState({ loading: true });
+  //     apiHttpPOST(GET_TOKEN_URL, null, userCred)
+  //       .then((response) => {
+  //         if (response.status >= 200 && response.status <= 299) {
+  //           this.setState({ authorized: false, loading: false });
+  //         } else {
+  //           this.setState({ loading: false });
+  //         }
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //         this.setState({ loading: false });
+  //       });
     }
   };
   render() {

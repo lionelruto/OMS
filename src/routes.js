@@ -1,40 +1,39 @@
 // import external modules
-import React, { Component } from "react";
-import { BrowserRouter, Switch } from "react-router-dom";
-import Spinner from "./components/spinner/spinner";
-import MainInfirmiereView from "./components/pages/infirmieres/index";
-import NoauthRoute from "./layouts/routes/unProtectedRoute";
-import SimpleRoute from  "./layouts/routes/simpleRoute";
+import React, { Component } from 'react';
+import { BrowserRouter, Switch } from 'react-router-dom';
+import Spinner from './components/spinner/spinner';
+import MainInfirmiereView from './components/pages/infirmieres/index';
+import NoauthRoute from './layouts/routes/unProtectedRoute';
+import SimpleRoute from './layouts/routes/simpleRoute';
 
 // import internal(own) modules
 // import ProtectedRoute from "./layouts/routes/protectedRoute";
 
-import MainLayout from "./layouts/mainLayout";
+import MainLayout from './layouts/mainLayout';
 
 import {
- 
   MAIN_VIEW_ROUTE,
   LOGIN_VIEW_ROUTE,
-  MAIN_INFIRMIERE_ROUTE
-} from "./constants/app_utils";
+  MAIN_INFIRMIERE_ROUTE,
+} from './constants/app_utils';
 
 class ApplicationRouter extends Component {
   render() {
     return (
       // Set the directory path if you are deplying in sub-folder
-      <BrowserRouter basename='/'>
+      <BrowserRouter basename="/">
         <Switch>
-            <SimpleRoute
+          <SimpleRoute
             exact
             path={MAIN_INFIRMIERE_ROUTE}
-            render={matchprops => (
+            render={(matchprops) => (
               <MainLayout>
-                {" "}
-                <MainInfirmiereView {...matchprops} />{" "}
+                {' '}
+                <MainInfirmiereView {...matchprops} />{' '}
               </MainLayout>
             )}
-           /> 
-        
+          />
+
           {/* <NoAuthRoute
             exact
             path={LOGIN_VIEW_ROUTE}
@@ -45,7 +44,7 @@ class ApplicationRouter extends Component {
               </FullPageOverlayLayout>
             )}
           /> */}
-              {/* <NoAuthRoute
+          {/* <NoAuthRoute
             exact
             path={USER_FORGOT_PASSWORD}
             render={matchprops => (
@@ -55,7 +54,7 @@ class ApplicationRouter extends Component {
               </FullPageOverlayLayout>
             )}
           /> */}
-             {/* <NoAuthRoute
+          {/* <NoAuthRoute
             exact
             path={USER_RESET_MAIL_PASSWORD}
             render={matchprops => (
@@ -65,7 +64,7 @@ class ApplicationRouter extends Component {
               </FullPageOverlayLayout>
             )}
           /> */}
-             {/* <NoAuthRoute
+          {/* <NoAuthRoute
             exact
             path={USER_ADD_PASSWORD}
             render={matchprops => (

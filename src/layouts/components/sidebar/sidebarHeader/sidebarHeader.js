@@ -4,7 +4,8 @@ import { NavLink } from "react-router-dom";
 import { ToggleLeft, ToggleRight, X } from "react-feather";
 // import internal(own) modules
 import { FoldedContentConsumer } from "../../../../utility/context/toggleContentContext";
-import Logo from "../../../../assets/img/logo.png";
+import APexLogo from "../../../../assets/img/logo.png";
+import Logo from "../../../../assets/img/logos/logo-yamrond-5.png";
 import LogoDark from "../../../../assets/img/logo-dark.png";
 import templateConfig from "../../../../templateConfig";
 
@@ -25,15 +26,16 @@ class SidebarHeader extends Component {
                               this.props.sidebarBgColor === "" || this.props.sidebarBgColor === "white" ? (
                                  <img src={LogoDark} alt="logo" />
                               ) : (
-                                 <img src={Logo} alt="logo" />
+                                 // <img src={Logo} alt="logo" />''
+                                 ''
                               )
                            ) : this.props.sidebarBgColor === "white" ? (
                               <img src={LogoDark} alt="logo" />
                            ) : (
-                              <img src={Logo} alt="logo" />
+                             ''
                            )}                           
                         </div>
-                        <span className="text align-middle">APEX</span>
+                        <span className="text align-middle">YAMISEUH</span>
                      </NavLink>
 
                      <span className="nav-toggle d-none d-sm-none d-md-none d-lg-block">

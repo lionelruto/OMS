@@ -42,6 +42,10 @@ class Customizer extends Component {
       this.props.handleCollapsedSidebar(state);
    };
 
+   componentDidMount(){
+      this.props.sidebarBgColor("purple-bliss")
+   }
+
    render() {
       return (
          <FoldedContentConsumer>
@@ -55,9 +59,9 @@ class Customizer extends Component {
                   <Link to="/" className="customizer-close">
                      <i className="ft-x font-medium-3" />{" "}
                   </Link>{" "}
-                  <span className="customizer-toggle bg-danger" id="customizer-toggle-icon" onClick={this.toggleCustomizer}>
+                  {/* <span className="customizer-toggle bg-danger" id="customizer-toggle-icon" onClick={this.toggleCustomizer}>
                      <Settings size={18} className="white spinner" />
-                  </span>
+                  </span> */}
                   <PerfectScrollbar>
                      <div className="customizer-content p-3">
                         <h4 className="text-uppercase mb-0 text-bold-400">Theme Customizer</h4>
@@ -106,7 +110,7 @@ class Customizer extends Component {
                                  <span
                                     className="gradient-man-of-steel d-block rounded-circle"
                                     style={circleStyle}
-                                    onClick={() => this.props.sidebarBgColor("man-of-steel")}
+                                    onClick={() => this.props.sidebarBgColor("crystal-clear")}
                                  />
                               </div>
                               <div className="col">
