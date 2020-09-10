@@ -33,12 +33,12 @@ class Router extends Component {
    render() {
       return (
          // Set the directory path if you are deplying in sub-folder
-         <BrowserRouter basename="MAIN_INFIRMIERE_ROUTE">
+         <BrowserRouter basename={MAIN_INFIRMIERE_ROUTE}>
             <Switch>
                {/* Dashboard Views */}
                <MainLayoutRoutes
                   exact
-                  path="MAIN_INFIRMIERE_ROUTE"
+                  path={MAIN_INFIRMIERE_ROUTE}
                   render={matchprops => (
                      <Suspense fallback={<Spinner />}>
                         <LazyInfirmier {...matchprops} />

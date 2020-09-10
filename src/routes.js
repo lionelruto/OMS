@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Switch } from "react-router-dom";
 import Spinner from "./components/spinner/spinner";
 import MainInfirmiereView from "./components/pages/infirmieres/index";
-// import NoauthRoute from "./layouts/routes/unProtectedRoute";
+import NoauthRoute from "./layouts/routes/unProtectedRoute";
 import SimpleRoute from  "./layouts/routes/simpleRoute";
 
 // import internal(own) modules
@@ -22,15 +22,15 @@ class ApplicationRouter extends Component {
   render() {
     return (
       // Set the directory path if you are deplying in sub-folder
-      <BrowserRouter basename={MAIN_INFIRMIERE_ROUTE}>
+      <BrowserRouter basename='/'>
         <Switch>
-            {/* <SimpleRoute
-          
+            <SimpleRoute
+            exact
             path={MAIN_INFIRMIERE_ROUTE}
-            render={matchprops => ( */}
+            render={matchprops => (
               <MainLayout>
                 {" "}
-                <MainInfirmiereView  />{" "}
+                <MainInfirmiereView {...matchprops} />{" "}
               </MainLayout>
             )}
            /> 
