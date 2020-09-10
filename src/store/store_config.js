@@ -5,12 +5,12 @@ import rootReducer from "../reducers"
 const debugware=[]
 
 //Lets add a redux logger if we are in development mode.
-if(process.NODE_ENV !== "production"){
-    const createLogger = require("redux-logger");
-    debugware.push(createLogger({
-        collapse:true
-    }));
-}
+// if(process.NODE_ENV !== "production"){
+//     const createLogger = require("redux-logger");
+//     debugware.push(createLogger({
+//         collapse:true
+//     }));
+// }
 
 /**
  * Configures the store with middlewares and the root reducers and 

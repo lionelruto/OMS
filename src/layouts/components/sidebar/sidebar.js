@@ -11,7 +11,7 @@ import SidebarHeader from "./sidebarHeader/sidebarHeader";
 import { FoldedContentConsumer } from "../../../utility/context/toggleContentContext";
 import templateConfig from "../../../templateConfig";
 import Customizer from '../../../components/customizer/customizer';
-import { sidebarImage, sidebarImageUrl, sidebarBgColor, sidebarCollapsed, sidebarSize } from '../../../redux/actions/customizer/customizerActions'
+import { sidebarImage, sidebarImageUrl, sidebarBgColor, sidebarCollapsed, sidebarSize } from '../../../actions/customizer/customizerActions'
 
 class Sidebar extends Component {
    state = {
