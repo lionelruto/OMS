@@ -28,7 +28,16 @@ import { NavLink } from "react-router-dom";
 import "../../../../assets/scss/components/sidebar/sidemenu/sidemenu.scss";
 // import internal(own) modules
 import SideMenu from "../sidemenuHelper";
-
+import {
+   ADD_PATIENT_ROUTE,
+   LOGIN_VIEW_ROUTE,
+   MAIN_INFIRMIERE_ROUTE,
+   LIST_PATIENT_ROUTE,
+   ADD_CARTE_ROUTE,
+   MAIN_VIEW_ROUTE,
+   LIST_CARTE_ROUTE
+ } from '../../../../constants/app_utils';
+ 
 class SideMenuContent extends Component {
    render() {
       return (
@@ -41,24 +50,33 @@ class SideMenuContent extends Component {
             >
                <NavLink to="/0" exact className="item" activeclassname="active">
              
-                  <span className="menu-item-text">Mon Dossier Medical</span>
+                  <span className="menu-item-text">Dossier Medical</span>
                </NavLink>
                
             </SideMenu.MenuMultiItems>
             <SideMenu.MenuSingleItem>
-               <NavLink to="/1" >
+               <NavLink to={LIST_PATIENT_ROUTE} >
                   <i className="menu-icon">
                      <Users size={18} />
                   </i>
-                  <span className="menu-item-text">Enregistrer un patient</span>
+                  <span className="menu-item-text">Patients</span>
                </NavLink>
             </SideMenu.MenuSingleItem>
-            <SideMenu.MenuSingleItem>
+            {/* <SideMenu.MenuSingleItem>
                <NavLink to="/2" >
                   <i className="menu-icon">
                      <Users size={18} />
                   </i>
                   <span className="menu-item-text">Rechercher un patient</span>
+               </NavLink>
+            </SideMenu.MenuSingleItem> */}
+           
+            <SideMenu.MenuSingleItem>
+               <NavLink to={LIST_CARTE_ROUTE} >
+                  <i className="menu-icon">
+                     <Users size={18} />
+                  </i>
+                  <span className="menu-item-text">Cartes</span>
                </NavLink>
             </SideMenu.MenuSingleItem>
             <SideMenu.MenuSingleItem >
@@ -67,14 +85,6 @@ class SideMenuContent extends Component {
                      <Users size={18} />
                   </i>
                   <span className="menu-item-text">Fille D'attente</span>
-               </NavLink>
-            </SideMenu.MenuSingleItem>
-            <SideMenu.MenuSingleItem>
-               <NavLink to="/2" >
-                  <i className="menu-icon">
-                     <Users size={18} />
-                  </i>
-                  <span className="menu-item-text">Paramettres </span>
                </NavLink>
             </SideMenu.MenuSingleItem>
          

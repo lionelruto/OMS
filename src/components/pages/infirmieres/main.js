@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Main extends Component {
     render() {
-        console.log('bon')
+        console.log(this.props.test)
         return (
             <div>
                 Hello World

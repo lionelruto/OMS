@@ -3,6 +3,7 @@ import { routerReducer } from "react-router-redux";
 import { reducer as toastrReducer } from "react-redux-toastr";
 import customizer from "./customizer";
 import auth from "./auth";
+import infirmiere from './infirmiere'
 
 
 const rootReducer = combineReducers({
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
     /* place your reducers here */
     customizer,
     auth, 
+    infirmiere
     
   });
   

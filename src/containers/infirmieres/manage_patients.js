@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import InfirmiereMainView from '../../components/pages/infirmieres/index'
+import InfirmiereMainView from '../../components/pages/infirmieres'
 import { components } from 'react-select'
 
 
-export class InfirmiereMain extends Component {
+export class InfirmiereManagePatient extends Component {
     constructor(props) {
         super(props)
     
@@ -21,22 +21,18 @@ export class InfirmiereMain extends Component {
     render() {
         return (
             <div>
-                <InfirmiereMainView test ={this.props.test}/>
+                <InfirmiereMainView />
             </div>
         )
     }
 }
 
-const mapStateToProps = (state) => {
-    console.log('state:',state)
-    return {
-        test:'feterete'
-    }
-    
-}
+const mapStateToProps = (state) => ({
+    test:'jeteste mon truck'
+})
 
 const mapDispatchToProps = {
     
 }
 
-export default connect(mapStateToProps)(InfirmiereMain)
+export default connect(mapStateToProps)(InfirmiereManagePatient)

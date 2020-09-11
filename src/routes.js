@@ -2,7 +2,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import Spinner from './components/spinner/spinner';
-import MainInfirmiereView from './components/pages/infirmieres/index';
+import MainInfirmiereView from './containers/infirmieres/main';
+import PatientsListPatientsView from './containers/patients/manage_patient';
+import PatientsListCartesView from './containers/cartes/manage_cartes';
+
 import NoauthRoute from './layouts/routes/unProtectedRoute';
 import SimpleRoute from './layouts/routes/simpleRoute';
 
@@ -12,10 +15,16 @@ import SimpleRoute from './layouts/routes/simpleRoute';
 import MainLayout from './layouts/mainLayout';
 
 import {
-  MAIN_VIEW_ROUTE,
+  ADD_PATIENT_ROUTE,
   LOGIN_VIEW_ROUTE,
   MAIN_INFIRMIERE_ROUTE,
+  LIST_PATIENT_ROUTE,
+  ADD_CARTE_ROUTE,
+  MAIN_VIEW_ROUTE,
+  LIST_CARTE_ROUTE
 } from './constants/app_utils';
+
+
 
 class ApplicationRouter extends Component {
   render() {
@@ -23,6 +32,16 @@ class ApplicationRouter extends Component {
       // Set the directory path if you are deplying in sub-folder
       <BrowserRouter basename="/">
         <Switch>
+        <SimpleRoute
+            exact
+            path={LOGIN_VIEW_ROUTE}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <MainInfirmiereView {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
           <SimpleRoute
             exact
             path={MAIN_INFIRMIERE_ROUTE}
@@ -33,6 +52,59 @@ class ApplicationRouter extends Component {
               </MainLayout>
             )}
           />
+           <SimpleRoute
+            exact
+            path={ADD_PATIENT_ROUTE}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <MainInfirmiereView {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
+           <SimpleRoute
+            exact
+            path={ADD_CARTE_ROUTE}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <MainInfirmiereView {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
+         
+        <SimpleRoute
+            exact
+            path={MAIN_VIEW_ROUTE}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <MainInfirmiereView {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
+           <SimpleRoute
+            exact
+            path={LIST_PATIENT_ROUTE}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <PatientsListPatientsView {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
+                     <SimpleRoute
+            exact
+            path={LIST_CARTE_ROUTE}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <PatientsListCartesView {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
+
+          
 
           {/* <NoAuthRoute
             exact
