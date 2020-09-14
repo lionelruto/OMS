@@ -4,6 +4,9 @@ import { reducer as toastrReducer } from "react-redux-toastr";
 import customizer from "./customizer";
 import auth from "./auth";
 import infirmiere from './infirmiere'
+import patients from './patients'
+import user from './user'
+
 
 
 const rootReducer = combineReducers({
@@ -13,8 +16,9 @@ const rootReducer = combineReducers({
     /* place your reducers here */
     customizer,
     auth, 
-    infirmiere
-    
+    infirmiere,
+    patients,
+    user
   });
   
   export default rootReducer;
