@@ -5,6 +5,8 @@ import ContentHeader from '../../contentHead/contentHeader';
 import { Edit, Trash2, Trash, PlusCircle, Loader, Plus } from 'react-feather';
 import NavbarSearch from '../../../components/search/Search';
 import { Search } from 'react-feather';
+import { withRouter } from 'react-router-dom';
+import { RefreshCcw } from 'react-feather';
 
 import {
   ADD_PATIENT_ROUTE,
@@ -21,6 +23,7 @@ class Patients extends Component {
     this.props.history.push(ADD_PATIENT_ROUTE);
   };
   render() {
+    console.log('props:', this.props);
     return (
       <div>
         {/* <div className="d-flex justify-content-between">
@@ -29,13 +32,7 @@ class Patients extends Component {
                         <Button size="sm" outline onClick={this.handleCreateNewPatient}>Add New User</Button>
                     }
                 </div> */}
-        <h1 style={{ textAlign: 'center' }}>LISTE DES PATIENTS</h1>
-        <hr
-          className="gradient-purple-bliss"
-          style={{
-            height: '2px',
-          }}
-        />
+        {/* <h1 style={{ textAlign: 'center' }}>LISTE DES PATIENTS</h1> */}
 
         <Row>
           <Col
@@ -45,24 +42,48 @@ class Patients extends Component {
             }}
             md={12}
           >
-            <Button
+            <div className="d-flex justify-content-between">
+              <ContentHeader>Patient</ContentHeader>
+              {this.props.location.pathname !== ADD_PATIENT_ROUTE && (
+                <Button
+                  className="gradient-purple-bliss"
+                  style={{
+                    borderRadius: '50%',
+                    backgroundColor: 'green',
+                    float: 'right',
+                    display: 'block',
+                    // border :'3px solid #fff'
+                  }}
+                  onClick={this.handleCreateNewPatient}
+                >
+                  <Plus size={24} color="#fff"></Plus>
+                </Button>
+              )}
+            </div>
+            <hr
               className="gradient-purple-bliss"
               style={{
-                borderRadius: '50%',
-                backgroundColor: 'green',
-                float: 'right',
-                display: 'block',
-                // border :'3px solid #fff'
+                height: '2px',
               }}
-            >
-              <Plus size={24} color="#fff">
-                Add
-              </Plus>
-            </Button>
+            />
           </Col>
 
           <Col md={12}>
             <Card>
+              <div className="ml-1">
+                <a
+                // onClick={() => this.handleRefreshTable()}
+                // disabled={this.props.isFetchingUsers}
+                >
+                  <RefreshCcw
+                    size={16}
+                    color="#E64A19"
+                    className={`${
+                      this.props.isFetchingUsers ? 'animate-spin' : ''
+                    }`}
+                  />
+                </a>
+              </div>
               <div>
                 <Col
                   md={4}
@@ -111,4 +132,4 @@ class Patients extends Component {
   }
 }
 
-export default Patients;
+export default withRouter(Patients);
