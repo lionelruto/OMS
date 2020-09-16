@@ -8,10 +8,10 @@ export const MAIN_VIEW_ROUTE = "/";
 export const LOGIN_VIEW_ROUTE = "/login";
 export const MAIN_INFIRMIERE_ROUTE = "/manager/infirmiere";
 
-export const ADD_PATIENT_ROUTE = "/manager/patient/add";
-export const DELETE_PATIENT_ROUTE = "/manager/patient/delete";
-export const LIST_PATIENT_ROUTE = "/patients";
-export const EDIT_PATIENT_ROUTE = "/patients/edit";
+export const ADD_PATIENT_ROUTE = "/patient/add";
+export const DELETE_PATIENT_ROUTE = "/patient/delete";
+export const LIST_PATIENT_ROUTE = "/patient";
+export const EDIT_PATIENT_ROUTE = "/patient/edit";
 
 
 

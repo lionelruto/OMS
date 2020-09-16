@@ -42,7 +42,7 @@ class ApplicationRouter extends Component {
               </MainLayout>
             )}
           />
-          <SimpleRoute
+          {/* <SimpleRoute
             exact
             path={MAIN_INFIRMIERE_ROUTE}
             render={(matchprops) => (
@@ -51,14 +51,14 @@ class ApplicationRouter extends Component {
                 <MainInfirmiereView {...matchprops} />{' '}
               </MainLayout>
             )}
-          />
+          /> */}
            <SimpleRoute
             exact
             path={ADD_PATIENT_ROUTE}
             render={(matchprops) => (
               <MainLayout>
                 {' '}
-                <MainInfirmiereView {...matchprops} />{' '}
+                <PatientsListPatientsView {...matchprops} />{' '}
               </MainLayout>
             )}
           />

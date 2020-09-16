@@ -57,11 +57,12 @@ export class ManageCartes extends Component {
     }
 
     render() {
-        console.log('test',this.props)
+        // console.log('testrr',this.props)
         return (
             <div>
               <PatientsView 
               datas={this.props.datas}
+              prop1={this.props}
                 columns={[
                     {
                       Header: "Photo",
