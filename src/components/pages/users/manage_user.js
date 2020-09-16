@@ -19,6 +19,7 @@ import {
   LIST_USER_ROUTE,
   EDIT_USER_ROUTE,
   ADD_USER_ROUTE,
+  APP_COLOR
 } from '../../../constants/app_utils';
 import { cleanObject, validateEmail } from '../../../utility/misc';
 import { toastr } from 'react-redux-toastr';
@@ -192,7 +193,7 @@ export default class UserManagementView extends React.Component {
           </ContentHeader>
         </div>
         <hr
-          className="gradient-purple-bliss"
+          className={APP_COLOR}
           style={{
             height: '2px',
           }}
@@ -407,7 +408,7 @@ export default class UserManagementView extends React.Component {
                   </Button>
 
                   <Button
-                    className="gradient-purple-bliss"
+                    className="gradient-green-tea-wil"
                     onClick={this.submitInputData}
                     // disabled={
                     //   this.props.isCreatingUSER || this.props.isUpdatingUSER

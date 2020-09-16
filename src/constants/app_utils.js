@@ -1,8 +1,9 @@
 export const LOCAL_STORAGE_TOKEN_KEY = "yamiseuhusertoken";
 export const LOCAL_STORAGE_USERNAME_KEY = "yamiseuhuser";
 export const LOCAL_STORAGE_PASSWORD_KEY = "yamiseuhpass";
-export const LOCAL_STORAGE_ROLE_KEY = "yamiseuhirole";
+export const LOCAL_STORAGE_ROLE_KEY = "yamiseuhrole";
 export const LOCAL_STORAGE_SECRET = "S0&@5ecure&C00l!";
+export const APP_COLOR = "gradient-green-tea-wil";
 
 export const MAIN_VIEW_ROUTE = "/";
 export const LOGIN_VIEW_ROUTE = "/login";
@@ -23,6 +24,7 @@ export const ADD_USER_ROUTE = "/manager/user/add";
 export const DELETE_USER_ROUTE = "/manager/user/delete";
 export const LIST_USER_ROUTE = "/users";
 export const EDIT_USER_ROUTE = "/manager/users/edit";
+
 
 
 

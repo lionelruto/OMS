@@ -6,9 +6,11 @@ import MainInfirmiereView from './containers/infirmieres/main';
 import PatientsListPatientsView from './containers/patients/manage_patient';
 import PatientsListCartesView from './containers/cartes/manage_cartes';
 import UsersListCartesView from './containers/users/manage_user';
+import LoginRouteView from './containers/auth/login_view'
 
-
-import NoauthRoute from './layouts/routes/unProtectedRoute';
+import FullPageLayout from "./layouts/fullpageLayout";
+import { FullPageOverlayLayout } from "./layouts/fullpageLayout";
+import NoAuthRoute from './layouts/routes/unProtectedRoute';
 import SimpleRoute from './layouts/routes/simpleRoute';
 
 // import internal(own) modules
@@ -36,16 +38,16 @@ class ApplicationRouter extends Component {
       // Set the directory path if you are deplying in sub-folder
       <BrowserRouter basename="/">
         <Switch>
-        <SimpleRoute
+        {/* <SimpleRoute
             exact
             path={LOGIN_VIEW_ROUTE}
             render={(matchprops) => (
               <MainLayout>
                 {' '}
-                <MainInfirmiereView {...matchprops} />{' '}
+                <LoginRouteView {...matchprops} />{' '}
               </MainLayout>
             )}
-          />
+          /> */}
           {/* <SimpleRoute
             exact
             path={MAIN_INFIRMIERE_ROUTE}
@@ -130,16 +132,16 @@ class ApplicationRouter extends Component {
 
           
 
-          {/* <NoAuthRoute
+          <NoAuthRoute
             exact
             path={LOGIN_VIEW_ROUTE}
             render={matchprops => (
               <FullPageOverlayLayout>
                 {" "}
-                <LoginView {...matchprops} />{" "}
+                <LoginRouteView {...matchprops} />{" "}
               </FullPageOverlayLayout>
             )}
-          /> */}
+          />
           {/* <NoAuthRoute
             exact
             path={USER_FORGOT_PASSWORD}

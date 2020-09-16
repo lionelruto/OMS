@@ -43,7 +43,7 @@ class Customizer extends Component {
    };
 
    componentDidMount(){
-      this.props.sidebarBgColor("purple-bliss")
+      this.props.sidebarBgColor("green-tea-wil")
    }
 
    render() {

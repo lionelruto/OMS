@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 // import customizer from '../../components/customizer/customizer'
-import { sidebarImage, sidebarImageUrl, sidebarBgColor, sidebarCollapsed, sidebarSize } from '../../redux/actions/customizer/customizerActions'
+import { sidebarImage, sidebarImageUrl, sidebarBgColor, sidebarCollapsed, sidebarSize } from '../../actions/customizer/customizerActions'
 
 let Components = {
     'Component1': require('../../components/customizer/customizer').default,
