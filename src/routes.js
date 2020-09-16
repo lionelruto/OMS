@@ -5,6 +5,8 @@ import Spinner from './components/spinner/spinner';
 import MainInfirmiereView from './containers/infirmieres/main';
 import PatientsListPatientsView from './containers/patients/manage_patient';
 import PatientsListCartesView from './containers/cartes/manage_cartes';
+import UsersListCartesView from './containers/users/manage_user';
+
 
 import NoauthRoute from './layouts/routes/unProtectedRoute';
 import SimpleRoute from './layouts/routes/simpleRoute';
@@ -21,7 +23,9 @@ import {
   LIST_PATIENT_ROUTE,
   ADD_CARTE_ROUTE,
   MAIN_VIEW_ROUTE,
-  LIST_CARTE_ROUTE
+  LIST_CARTE_ROUTE,
+  LIST_USER_ROUTE,
+  ADD_USER_ROUTE
 } from './constants/app_utils';
 
 
@@ -59,6 +63,26 @@ class ApplicationRouter extends Component {
               <MainLayout>
                 {' '}
                 <PatientsListPatientsView {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
+               <SimpleRoute
+            exact
+            path={ADD_USER_ROUTE}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <UsersListCartesView {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
+             <SimpleRoute
+            exact
+            path={LIST_USER_ROUTE}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <UsersListCartesView {...matchprops} />{' '}
               </MainLayout>
             )}
           />

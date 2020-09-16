@@ -19,6 +19,14 @@ export const ADD_CARTE_ROUTE = "/manager/carte/add";
 export const DELETE_CARTE_ROUTE = "/manager/carte/delete";
 export const LIST_CARTE_ROUTE = "/cartes";
 
+export const ADD_USER_ROUTE = "/manager/user/add";
+export const DELETE_USER_ROUTE = "/manager/user/delete";
+export const LIST_USER_ROUTE = "/users";
+export const EDIT_USER_ROUTE = "/manager/users/edit";
+
+
+
+
 
 
 

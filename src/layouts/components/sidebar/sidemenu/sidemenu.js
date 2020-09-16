@@ -35,7 +35,8 @@ import {
    LIST_PATIENT_ROUTE,
    ADD_CARTE_ROUTE,
    MAIN_VIEW_ROUTE,
-   LIST_CARTE_ROUTE
+   LIST_CARTE_ROUTE,
+   LIST_USER_ROUTE
  } from '../../../../constants/app_utils';
  
 class SideMenuContent extends Component {
@@ -53,7 +54,16 @@ class SideMenuContent extends Component {
                   <span className="menu-item-text">Dossier Medical</span>
                </NavLink>
                
+               
             </SideMenu.MenuMultiItems>
+            <SideMenu.MenuSingleItem>
+               <NavLink to={LIST_USER_ROUTE} >
+                  <i className="menu-icon">
+                     <Users size={18} />
+                  </i>
+                  <span className="menu-item-text">Users</span>
+               </NavLink>
+            </SideMenu.MenuSingleItem>
             <SideMenu.MenuSingleItem>
                <NavLink to={LIST_PATIENT_ROUTE} >
                   <i className="menu-icon">

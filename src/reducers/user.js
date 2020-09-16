@@ -1,40 +1,40 @@
 import { createReducer } from '../utility/misc';
 
 import{
-   FETCH_PATIENT_REQUEST,
-   FETCH_PATIENT_SUCCESS,
-   FETCH_PATIENT_FAILURE
+   FETCH_USER_REQUEST,
+   FETCH_USER_SUCCESS,
+   FETCH_USER_FAILURE
 } 
 from "../constants/action_types";
 
 const initialState = {
-    patients: [  {
+    users: [  {
         img: "https://randomuser.me/api/portraits/med/women/10.jpg",
-        fullName: "Jessica Rice",
+        fullName: "Mbarga atangana Clement",
         position: "UX Designer",
         flag: 1
      },
      {
         img: "https://randomuser.me/api/portraits/med/men/0.jpg",
-        fullName: "Jacob Rios",
+        fullName: "Afessoh Rios de janero",
         position: "HTML Developer",
         flag: 0
      },
      {
         img: "https://randomuser.me/api/portraits/med/men/1.jpg",
-        fullName: "Russell Delgado",
+        fullName: "Epalley jr",
         position: "Database Designer",
         flag: 0
      },
      {
         img: "https://randomuser.me/api/portraits/med/women/3.jpg",
-        fullName: "Sara McDonald",
+        fullName: "Ndabo jean de Dieu",
         position: "Team Leader",
         flag: 1
      },
      {
         img: "https://randomuser.me/api/portraits/med/men/3.jpg",
-        fullName: "Peter Parker",
+        fullName: "Lionel Mambingo",
         position: "UI/UX Designer",
         flag: 1
      }],
@@ -42,9 +42,9 @@ const initialState = {
 
     ],
 
-    isFetchingPatients: false,
-    isLoadedPatients: false,
-    fetchPatientError: null,
+    isFetchingusers: false,
+    isLoadedusers: false,
+    fetchuserError: null,
     // isFetchingAllRoles: false,
     // isLoadedAllRoles: false,
     
@@ -53,23 +53,23 @@ const initialState = {
 }
 
 export default createReducer(initialState, {
-    [FETCH_PATIENT_REQUEST]: (state)=>({
+    [FETCH_USER_REQUEST]: (state)=>({
         ...state,
-        isFetchingPatients: true,
-        isLoadedPatients: false,
-        fetchPatientError: null,
+        isFetchingusers: true,
+        isLoadedusers: false,
+        fetchuserError: null,
     }),
-    [FETCH_PATIENT_SUCCESS]: (state, payload)=>({
+    [FETCH_USER_SUCCESS]: (state, payload)=>({
         ...state,
-        isFetchingPatients: false,
-        isLoadedPatients: true,
-        fetchPatientError: payload,
+        isFetchingusers: false,
+        isLoadedusers: true,
+        // users: payload,
     }),
-    [FETCH_PATIENT_FAILURE]: (state, error)=>({
+    [FETCH_USER_FAILURE]: (state, error)=>({
         ...state,
-        isFetchingPatients: false,
-    isLoadedPatients: false,
-    fetchPatientError: error,
+        isFetchingusers: false,
+    isLoadedusers: false,
+    fetchuserError: error,
     })
    
 })
