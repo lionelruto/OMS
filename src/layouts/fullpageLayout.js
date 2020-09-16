@@ -29,16 +29,16 @@ const FullPageLayout = ({ children,  ...rest }) => {
 
 export const FullPageOverlayLayout = ({ children, imgUrl, ...rest }) => {
    return (
-      <Row md={12}>
+      <Row md={12} style={{overflow:'hidden'}}>
 
       
       <Col md={8}>
          <div >
-         <img src={bgImage} style={{overflow:"hidden ",height:'100vh'}}/>
+         <img src={bgImage} style={{overflow:"hidden ",height:'100vh',width:'100%'}}/>
          </div>
       </Col>
 
-      <Col md={4}>
+      <Col md={4} >
  <div
          className={classnames("login-layout wrapper background-container radient-purple-bliss", {
             "layout-dark": templateConfig.layoutDark

@@ -45,14 +45,17 @@ class Login extends Component {
 
    render() {
       return (
-         <div className="container ">
+         <div className="container  ">
             {/* gradient-purple-bliss */}
-            <Row className="full-height-vh">
-               <Col xs="12" className="d-flex align-items-center justify-content-center">
-                  <Card className="text-center width-350 login-container">
+            <Row className="full-height-vh ">
+               <Col xs="12" className="d-flex align-items-center justify-content-center" style={{overflow:'hidden'}}>
+                  {/* <Card className="text-center width-350 login-container" style={{border:'none'}}> */}
                   {/* gradient-harmonic-energy */}
+                  <div className="text-center width-350 login-container">
+
+                  
                      <CardBody>
-                        <h2 className="black py-4">Login</h2>
+                        <h2 className="black py-4 ">Login</h2>
                         {this.props.authError&&
                            <UncontrolledAlert color="danger">
                               <b>Error</b>: {this.props.authError}
@@ -106,7 +109,7 @@ class Login extends Component {
                            </FormGroup>
                            <FormGroup>
                               <Col md="12">
-                                 <Button type="submit" disabled={this.props.isAuthenticatingUser}   style={{color:'white'}} block className=" btn-raised gradient-purple-bliss" onClick={this.handleLogin}>
+                                 <Button type="submit" disabled={this.props.isAuthenticatingUser}   style={{color:'white'}} block className="gradient-green-tea-wil" onClick={this.handleLogin}>
                                     <div style={{display:'flex', justifyContent:"center", alignItems:"center"}}>
                                        <span style={{marginRight:5,color:'white'}}>Submit</span> 
                                        {this.props.isAuthenticatingUser&&
@@ -118,14 +121,15 @@ class Login extends Component {
                            </FormGroup>
                         </Form>
                      </CardBody>
-                     <CardFooter>
-                        <div className="float-left">
+                     {/* <CardFooter> */}
+                        <div className="">
                            <NavLink to="/pages/forgot-password" className="black">
                               Forgot Password?
                            </NavLink>
                         </div>
-                     </CardFooter>
-                  </Card>
+                     {/* </CardFooter> */}
+                  {/* </Card> */}
+                  </div>
                </Col>
             </Row>
          </div>

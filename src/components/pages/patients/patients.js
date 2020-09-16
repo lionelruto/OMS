@@ -16,6 +16,7 @@ import {
   ADD_CARTE_ROUTE,
   MAIN_VIEW_ROUTE,
   LIST_CARTE_ROUTE,
+  APP_COLOR
 } from '../../../constants/app_utils';
 
 class Patients extends Component {
@@ -46,7 +47,7 @@ class Patients extends Component {
               <ContentHeader>Patient</ContentHeader>
               {this.props.location.pathname !== ADD_PATIENT_ROUTE && (
                 <Button
-                  className="gradient-purple-bliss"
+                  className={APP_COLOR}
                   style={{
                     borderRadius: '50%',
                     backgroundColor: 'green',
@@ -61,7 +62,7 @@ class Patients extends Component {
               )}
             </div>
             <hr
-              className="gradient-purple-bliss"
+              className={APP_COLOR}
               style={{
                 height: '2px',
               }}

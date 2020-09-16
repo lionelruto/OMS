@@ -391,6 +391,9 @@
    &[data-background-color="navy-blue"] {
       @include set-background-color(#0e5cad);
    }
+   &[data-background-color="green"] {
+      @include set-background-color(green);
+   }
 
    // Gradient Background Colors
    &[data-background-color="pomegranate"] {
@@ -414,6 +417,10 @@
    &[data-background-color="purple-love"] {
       @include set-gradient-background-color(#cc2b5e, #753a88);
    }
+   &[data-background-color="green-tea-wil"] {
+      @include set-gradient-background-color( #004b91,#0CC27E);
+   }
+  
 
    // Menu anchor colors
    &[data-background-color="white"] {
