@@ -71,7 +71,7 @@ export class index extends Component {
                 statistics={
                   40
                 }
-                text="Consultations"
+                text="Total Consultations"
                 iconSide="right"
               >
                 <FaStethoscope size={36} strokeWidth="1.3" color="#fff" />
