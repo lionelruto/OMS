@@ -1,6 +1,7 @@
 // import external modules
 import React, { Component } from "react";
-
+import EqualizerIcon from '@material-ui/icons/Equalizer';
+import CreditCardIcon from '@material-ui/icons/CreditCard';
 import {
    Home,
    Mail,
@@ -36,7 +37,8 @@ import {
    ADD_CARTE_ROUTE,
    MAIN_VIEW_ROUTE,
    LIST_CARTE_ROUTE,
-   LIST_USER_ROUTE
+   LIST_USER_ROUTE,
+   DASHBOARD
  } from '../../../../constants/app_utils';
  
 class SideMenuContent extends Component {
@@ -45,13 +47,13 @@ class SideMenuContent extends Component {
          <SideMenu className="sidebar-content" toggleSidebarMenu={this.props.toggleSidebarMenu}>
             <SideMenu.MenuMultiItems
                name="Dashboard"
-               Icon={<Home size={18} />}
+               Icon={<EqualizerIcon style={{fontSize:18}} />}
                ArrowRight={<ChevronRight size={16} />}
                collapsedSidebar={this.props.collapsedSidebar}
             >
-               <NavLink to="/0" exact className="item" activeclassname="active">
+               <NavLink to={DASHBOARD} exact className="item" activeclassname="active">
              
-                  <span className="menu-item-text">Dossier Medical</span>
+                  <span className="menu-item-text">Statistiques</span>
                </NavLink>
                
                
@@ -84,7 +86,7 @@ class SideMenuContent extends Component {
             <SideMenu.MenuSingleItem>
                <NavLink to={LIST_CARTE_ROUTE} >
                   <i className="menu-icon">
-                     <Users size={18} />
+                     <CreditCardIcon style={{fontSize:18}} />
                   </i>
                   <span className="menu-item-text">Cartes</span>
                </NavLink>

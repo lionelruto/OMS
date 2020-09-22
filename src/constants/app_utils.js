@@ -25,6 +25,7 @@ export const DELETE_USER_ROUTE = "/manager/user/delete";
 export const LIST_USER_ROUTE = "/users";
 export const EDIT_USER_ROUTE = "/manager/users/edit";
 
+export const DASHBOARD = "/manager/dashboard"
 
 
 
