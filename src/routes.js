@@ -7,6 +7,9 @@ import PatientsListPatientsView from './containers/patients/manage_patient';
 import PatientsListCartesView from './containers/cartes/manage_cartes';
 import UsersListCartesView from './containers/users/manage_user';
 import LoginRouteView from './containers/auth/login_view'
+import DashboardView from './containers/dashboards/index'
+
+
 
 import FullPageLayout from "./layouts/fullpageLayout";
 import { FullPageOverlayLayout } from "./layouts/fullpageLayout";
@@ -27,7 +30,8 @@ import {
   MAIN_VIEW_ROUTE,
   LIST_CARTE_ROUTE,
   LIST_USER_ROUTE,
-  ADD_USER_ROUTE
+  ADD_USER_ROUTE,
+  DASHBOARD
 } from './constants/app_utils';
 
 
@@ -58,6 +62,16 @@ class ApplicationRouter extends Component {
               </MainLayout>
             )}
           /> */}
+           <SimpleRoute
+            exact
+            path={DASHBOARD}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <DashboardView {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
            <SimpleRoute
             exact
             path={ADD_PATIENT_ROUTE}
