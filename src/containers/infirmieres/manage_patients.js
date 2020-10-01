@@ -21,7 +21,10 @@ export class InfirmiereManagePatient extends Component {
     render() {
         return (
             <div>
-                <InfirmiereMainView />
+                <InfirmiereMainView 
+            
+                
+                />
             </div>
         )
     }

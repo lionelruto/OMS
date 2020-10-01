@@ -63,6 +63,8 @@ export class ManageUser extends Component {
               <UsersView 
               datas={this.props.datas}
               prop1={this.props}
+              sexe={[{id:1,label:'Homme',name:'sexe'},{id:2,label:'Femme',name:'sexe'}]}
+              role={[{id:1,label:'Admin',name:'role'},{id:2,label:'Medecin',name:'role'},{id:3,label:'Infimiere',name:'role'},{id:4,label:'AdminHosto',name:'role'}]}
                 columns={[
                     {
                       Header: "Photo",
@@ -102,7 +104,19 @@ export class ManageUser extends Component {
                           item={props.value}
                         />
                       )
-                    },                  
+                    },{
+                      Header: "Phone",
+                      accessor: "phone",
+                      Cell: props => (
+                        <CellItem
+                          // deleted={
+                          //   this.props.isDeletedPickupArea &&
+                          //   this.props.deletingPickupAreaId == props.original.id
+                          // }
+                          item={props.value}
+                        />
+                      )
+                    },                                   
                     {
                       Header: "Actions",
                       Cell: props => (

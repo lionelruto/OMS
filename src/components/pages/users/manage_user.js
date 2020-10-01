@@ -25,6 +25,7 @@ import { cleanObject, validateEmail } from '../../../utility/misc';
 import { toastr } from 'react-redux-toastr';
 import { checkData } from './helper';
 import { displayMessage } from './helper';
+import CreateableSelect from 'react-select';
 
 export default class UserManagementView extends React.Component {
   constructor(props) {
@@ -46,6 +47,8 @@ export default class UserManagementView extends React.Component {
       id: data.id ? data.id : null,
       type: 'password',
       ctype: 'password',
+      role:data.role? data.role : '',
+      sexe:data.sexe ? data.sexe : ''
     };
   };
   inputChanged = (e) => {
@@ -182,7 +185,16 @@ export default class UserManagementView extends React.Component {
   clearInput = () => {
     this.setData({});
   };
+  NotificationInputChanged = elt =>{
+    console.log('elt:',elt)
+   
+    this.setState({
+     [elt.name]:elt
+    })
+  }
 
+  
+ 
   render() {
     //   console.log('prop',this.props)
     return (
@@ -281,6 +293,46 @@ export default class UserManagementView extends React.Component {
                     </FormGroup>
                   </Col>
                 </Row>
+                <Row md='12'>
+                  <Col md="6">
+                    <FormGroup row>
+                      <Label for="userinput3" sm={4}>
+                        Sexe:
+                      </Label>
+                      <Col sm={8}>
+                    
+                           <CreateableSelect
+                       
+                       options={this.props.sexe}
+                       name="rhesus"
+                       getOptionLabel={elt => elt.label}
+                       getOptionValue={elt => elt}
+                       value={this.state.sexe}
+                       onChange={elt => this.NotificationInputChanged(elt)}
+                     />
+                      </Col>
+                    </FormGroup>
+                  </Col>
+
+                  <Col md="6">
+                    <FormGroup row>
+                      <Label for="userinput3" sm={4}>
+                      Role:
+                      </Label>
+                      <Col sm={8}>
+                        <CreateableSelect
+                       
+                          options={this.props.role}
+                          name="role"
+                          getOptionLabel={elt => elt.label}
+                          getOptionValue={elt => elt}
+                          value={this.state.role}
+                          onChange={elt => this.NotificationInputChanged(elt)}
+                        />
+                      </Col>
+                    </FormGroup>
+                  </Col>
+                  </Row>
                 {!this.state.id && (
                   <Row>
                     <Col md="6">
@@ -356,7 +408,7 @@ export default class UserManagementView extends React.Component {
                         </Col>
                       </FormGroup>
 
-                      <FormGroup row>
+                      {/* <FormGroup row>
                         <Label for="USERinput6" sm={4}>
                           Assign Role:
                         </Label>
@@ -376,9 +428,10 @@ export default class UserManagementView extends React.Component {
                               ))}
                           </Input>
                         </Col>
-                      </FormGroup>
+                      </FormGroup> */}
                     </Col>
                   </Row>
+                  
                 )}
               </div>
 
