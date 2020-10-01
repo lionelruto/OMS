@@ -6,6 +6,7 @@ import auth from "./auth";
 import infirmiere from './infirmiere'
 import patients from './patients'
 import user from './user'
+import carte from './cartes'
 
 
 
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
     auth, 
     infirmiere,
     patients,
-    user
+    user,
+    carte
   });
   
   export default rootReducer;

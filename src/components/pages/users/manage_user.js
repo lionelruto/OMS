@@ -220,7 +220,7 @@ export default class UserManagementView extends React.Component {
                   {this.state.error ? this.state.error : this.state.message}
                 </UncontrolledAlert>
               )}
-              <div className="form-body">
+              <div className="form-body" style={{alignContent:'center',alignItems:'center'}}>
                 <Row>
                   <Col md="6">
                     <FormGroup row>
