@@ -20,7 +20,7 @@ class DriverStatistics extends PureComponent {
     }
     return (
       <Card className={classnames(this.props.cardBgColor)}>
-        <CardBody className="pt-2 pb-0">
+        <CardBody className="pt-2 pb-0" style={{marginBottom:'0.8rem'}}>
           <Media>
             {iconLeft}
             <Media body className={textDirection}>
@@ -45,7 +45,7 @@ class DriverStatistics extends PureComponent {
             {iconRight}
           </Media>
         </CardBody>
-        <ChartistGraph
+        {/* <ChartistGraph
                className="WidgetlineChart WidgetlineChartshadow mb-2"
                
                type="Line"
@@ -53,11 +53,11 @@ class DriverStatistics extends PureComponent {
                   height: "75px",
                   axisX: {
                      showGrid: true,
-                     showLabel: false,
+                     showLabel: true,
                      offset: 0
                   },
                   axisY: {
-                     showGrid: false,
+                     showGrid: true,
                      low: 40,
                      showLabel: false,
                      offset: 0
@@ -67,7 +67,7 @@ class DriverStatistics extends PureComponent {
                   }),
                   fullWidth: true
                }}
-            />
+            /> */}
          </Card>
       
     );

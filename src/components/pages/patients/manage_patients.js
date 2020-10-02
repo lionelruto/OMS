@@ -15,6 +15,8 @@ import ContentHeader from '../../contentHead/contentHeader';
 import 'react-table/react-table.css';
 import { X, CheckSquare, RefreshCw, Eye, EyeOff } from 'react-feather';
 import { ClipLoader } from 'react-spinners';
+import CreateableSelect from 'react-select';
+
 import {
   LIST_PATIENT_ROUTE,
   EDIT_PATIENT_ROUTE,
@@ -37,15 +39,19 @@ export default class PatientManagementView extends React.Component {
     return {
       firstname: data.firstname ? data.firstname : '',
       lastname: data.lastname ? data.lastname : '',
-      Patientname: data.Patientname ? data.Patientname : '',
       password: data.password ? data.password : '',
       // password: window.location.href.includes(ADD_PATIENT_ROUTE) ? '' : this.props.data ? this.props.data:'',
       cpassword: '',
-      role_id: data.roleid ? data.roleid : null,
-      email: data.email ? data.email : '',
       id: data.id ? data.id : null,
       type: 'password',
       ctype: 'password',
+      gsanguin:data.gsanguin? data.gsanguin :'',
+      sexe:data.sexe  ? data.sexe :'',
+      rhesus :data.rhesus ? data.rhesus :'',
+      proffession:data.profession? data.proffession :'',
+      quartier : data.quartier ? data.quartier : '',
+     
+
     };
   };
   inputChanged = (e) => {
@@ -145,8 +151,10 @@ export default class PatientManagementView extends React.Component {
         lastname,
         Patientname,
         password,
-        email,
-        role_id,
+       gsanguin,
+       sexe,
+       rhesus,
+       quartier
       } = this.state;
 
       this.props.submitPatientData(
@@ -155,8 +163,10 @@ export default class PatientManagementView extends React.Component {
           lastname,
           Patientname,
           password,
-          email,
-          role_id,
+          gsanguin,
+          sexe,
+          rhesus,
+          quartier
         }),
 
         this.state.id,
@@ -182,7 +192,13 @@ export default class PatientManagementView extends React.Component {
   clearInput = () => {
     this.setData({});
   };
-
+  NotificationInputChanged = elt =>{
+    console.log('elt:',elt)
+   
+    this.setState({
+     [elt.name]:elt
+    })
+  }
   render() {
     //   console.log('prop',this.props)
     return (
@@ -249,7 +265,7 @@ export default class PatientManagementView extends React.Component {
                   <Col md="6">
                     <FormGroup row>
                       <Label for="Patientinput3" sm={4}>
-                        Patientname:
+                        other contact:
                       </Label>
                       <Col sm={8}>
                         <Input
@@ -266,21 +282,101 @@ export default class PatientManagementView extends React.Component {
                   <Col md="6">
                     <FormGroup row>
                       <Label for="Patientinput4" sm={4}>
-                        Email:
+                        Quartier:
                       </Label>
                       <Col sm={8}>
                         <Input
-                          type="email"
-                          id="Patientinput4"
+                          type="text"
+                          id="Patientiquat4"
                           className="border-primary"
-                          name="email"
-                          value={this.state.email}
+                          name="quartier"
+                          value={this.state.quartier}
                           onChange={this.inputChanged}
                         />
                       </Col>
                     </FormGroup>
                   </Col>
                 </Row>
+                <Row md='12'>
+                  <Col md="6">
+                    <FormGroup row>
+                      <Label for="userinput3" sm={4}>
+                        status:
+                      </Label>
+                      <Col sm={8}>
+                    
+                           <CreateableSelect
+                       
+                       options={this.props.status}
+                       name="status"
+                       getOptionLabel={elt => elt.label}
+                       getOptionValue={elt => elt}
+                       value={this.state.status}
+                       onChange={elt => this.NotificationInputChanged(elt)}
+                     />
+                      </Col>
+                    </FormGroup>
+                  </Col>
+
+                  <Col md="6">
+                    <FormGroup row>
+                      <Label for="userinput3" sm={4}>
+                      Sexe :
+                      </Label>
+                      <Col sm={8}>
+                        <CreateableSelect
+                       
+                          options={this.props.sexe}
+                          name="sexe"
+                          getOptionLabel={elt => elt.label}
+                          getOptionValue={elt => elt}
+                          value={this.state.sexe}
+                          onChange={elt => this.NotificationInputChanged(elt)}
+                        />
+                      </Col>
+                    </FormGroup>
+                  </Col>
+                  </Row>
+                  <Row md='12'>
+                  <Col md="6">
+                    <FormGroup row>
+                      <Label for="userinput3" sm={4}>
+                        Rhesus:
+                      </Label>
+                      <Col sm={8}>
+                    
+                           <CreateableSelect
+                       
+                       options={this.props.rhesus}
+                       name="rhesus"
+                       getOptionLabel={elt => elt.label}
+                       getOptionValue={elt => elt}
+                       value={this.state.rhesus}
+                       onChange={elt => this.NotificationInputChanged(elt)}
+                     />
+                      </Col>
+                    </FormGroup>
+                  </Col>
+
+                  <Col md="6">
+                    <FormGroup row>
+                      <Label for="userinput3" sm={4}>
+                      Groupe Sanguin :
+                      </Label>
+                      <Col sm={8}>
+                        <CreateableSelect
+                       
+                          options={this.props.gsanguin}
+                          name="gsanguin"
+                          getOptionLabel={elt => elt.label}
+                          getOptionValue={elt => elt}
+                          value={this.state.gsanguin}
+                          onChange={elt => this.NotificationInputChanged(elt)}
+                        />
+                      </Col>
+                    </FormGroup>
+                  </Col>
+                  </Row>
                 {!this.state.id && (
                   <Row>
                     <Col md="6">
@@ -356,7 +452,7 @@ export default class PatientManagementView extends React.Component {
                         </Col>
                       </FormGroup>
 
-                      <FormGroup row>
+                      {/* <FormGroup row>
                         <Label for="Patientinput6" sm={4}>
                           Assign Role:
                         </Label>
@@ -376,7 +472,7 @@ export default class PatientManagementView extends React.Component {
                               ))}
                           </Input>
                         </Col>
-                      </FormGroup>
+                      </FormGroup> */}
                     </Col>
                   </Row>
                 )}

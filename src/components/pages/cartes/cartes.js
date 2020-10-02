@@ -1,14 +1,138 @@
+
+
+
 import React, { Component } from 'react';
+import ReactTable from 'react-table';
+import { Card, Col, CardBody, Input, Button, Row, Form } from 'reactstrap';
+import ContentHeader from '../../contentHead/contentHeader';
+import { Edit, Trash2, Trash, PlusCircle, Loader, Plus } from 'react-feather';
+import NavbarSearch from '../../../components/search/Search';
+import { Search } from 'react-feather';
+import { withRouter } from 'react-router-dom';
+import { RefreshCcw } from 'react-feather';
+
+import {
+//   ADD_CARTE_ROUTE,
+  LOGIN_VIEW_ROUTE,
+  MAIN_INFIRMIERE_ROUTE,
+  ADD_CARTE_ROUTE,
+  MAIN_VIEW_ROUTE,
+  LIST_CARTE_ROUTE,
+  APP_COLOR
+} from '../../../constants/app_utils';
 
 class Cartes extends Component {
-    render() {
-      
-        return (
-            <div>
-              {this.props.test}
+  handleCreateNewCarte = () => {
+    this.props.history.push(ADD_CARTE_ROUTE);
+  };
+  render() {
+    console.log('props:', this.props);
+    return (
+      <div>
+        {/* <div className="d-flex justify-content-between">
+                    <ContentHeader>Carte</ContentHeader>
+                    {this.props.location.pathname !== ADD_CARTE_ROUTE &&
+                        <Button size="sm" outline onClick={this.handleCreateNewCarte}>Add New User</Button>
+                    }
+                </div> */}
+        {/* <h1 style={{ textAlign: 'center' }}>LISTE DES CarteS</h1> */}
+
+        <Row>
+          <Col
+            style={{
+              float: 'right',
+              display: 'block',
+            }}
+            md={12}
+          >
+            <div className="d-flex justify-content-between">
+              <ContentHeader>Carte</ContentHeader>
+              {this.props.location.pathname !== ADD_CARTE_ROUTE && (
+                <Button
+                  className={APP_COLOR}
+                  style={{
+                    borderRadius: '50%',
+                    backgroundColor: 'green',
+                    float: 'right',
+                    display: 'block',
+                    // border :'3px solid #fff'
+                  }}
+                  onClick={this.handleCreateNewCarte}
+                >
+                  <Plus size={24} color="#fff"></Plus>
+                </Button>
+              )}
             </div>
-        );
-    }
+            <hr
+              className={APP_COLOR}
+              style={{
+                height: '2px',
+              }}
+            />
+          </Col>
+
+          <Col md={12}>
+            <Card>
+              <div className="ml-1">
+                <a
+                // onClick={() => this.handleRefreshTable()}
+                // disabled={this.props.isFetchingCarte}
+                >
+                  <RefreshCcw
+                    size={16}
+                    color="#E64A19"
+                    className={`${
+                      this.props.isFetchingCarte ? 'animate-spin' : ''
+                    }`}
+                  />
+                </a>
+              </div>
+              <div>
+                <Col
+                  md={4}
+                  style={{
+                    marginTop: '1rem',
+                    float: 'right',
+                  }}
+                >
+                  {/* <Form className="navbar-form mt-1 float-left" role="search"> */}
+                  <div
+                    className="position-relative has-icon-right"
+                    style={{ marginTop: '1rem', marginBottom: '1rem' }}
+                  >
+                    <Input
+                      id="search-term"
+                      type="text"
+                      className="form-control round"
+                      placeholder="Try quick search"
+                      //    onChange={this.handleChange}
+                      //    value={searchTerm}
+                    />
+                    {/* <div className="form-control-position">
+               <Search size={16} className="mb-0" />
+            </div> */}
+                  </div>
+
+                  {/* </Form> */}
+                </Col>
+              </div>
+
+              <CardBody>
+                <ReactTable
+                  data={this.props.datas}
+                  columns={this.props.columns}
+                  defaultPageSize={
+                    this.props.defaultPageSize ? this.props.defaultPageSize : 5
+                  }
+                  className="-striped -highlight"
+                />
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
+      </div>
+    );
+  }
 }
 
-export default Cartes;
+export default withRouter(Cartes);

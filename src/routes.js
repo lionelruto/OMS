@@ -8,6 +8,7 @@ import PatientsListCartesView from './containers/cartes/manage_cartes';
 import UsersListCartesView from './containers/users/manage_user';
 import LoginRouteView from './containers/auth/login_view'
 import DashboardView from './containers/dashboards/index'
+import CartesListView from './containers/cartes/manage_cartes'
 
 
 
@@ -108,7 +109,7 @@ class ApplicationRouter extends Component {
             render={(matchprops) => (
               <MainLayout>
                 {' '}
-                <MainInfirmiereView {...matchprops} />{' '}
+                <CartesListView {...matchprops} />{' '}
               </MainLayout>
             )}
           />
@@ -139,7 +140,7 @@ class ApplicationRouter extends Component {
             render={(matchprops) => (
               <MainLayout>
                 {' '}
-                <PatientsListCartesView {...matchprops} />{' '}
+                <CartesListView {...matchprops} />{' '}
               </MainLayout>
             )}
           />

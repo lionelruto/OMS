@@ -20,9 +20,38 @@ import {
 } from '../../../constants/app_utils';
 
 class Users extends Component {
+
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+      SelectedUser:this.props.datas
+    }
+  }
+  componentWillReceiveProps(nextProps){
+this.setState({
+  SelectedUser :
+  this.state.SelectedUser.length > 0 
+  ? this.state.SelectedUser 
+  :nextProps.datas
+})
+  }
+  
   handleCreateNewUser = () => {
     this.props.history.push(ADD_USER_ROUTE);
   };
+  filterBy = e => {
+       
+    const updatedList = this.props.datas.filter( user => user.phone.toString().includes( e.target.value) || user.fullName.toUpperCase().trim().includes( e.target.value.trim().toUpperCase())  );
+      console.log(this.props.datas)
+      if(e.target.value !== '') {
+        this.setState({ SelectedUser: updatedList});
+      } else {
+
+        this.setState({ SelectedUser: this.props.datas});
+      }
+    };
+    
   render() {
     console.log('props:', this.props);
     return (
@@ -103,8 +132,8 @@ class Users extends Component {
                       type="text"
                       className="form-control round"
                       placeholder="Try quick search"
-                      //    onChange={this.handleChange}
-                      //    value={searchTerm}
+                         onChange={this.filterBy}
+                        //  value={searchTerm}
                     />
                     {/* <div className="form-control-position">
                <Search size={16} className="mb-0" />
@@ -117,7 +146,7 @@ class Users extends Component {
 
               <CardBody>
                 <ReactTable
-                  data={this.props.datas}
+                  data={this.state.SelectedUser}
                   columns={this.props.columns}
                   defaultPageSize={
                     this.props.defaultPageSize ? this.props.defaultPageSize : 5

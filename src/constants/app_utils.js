@@ -19,6 +19,7 @@ export const EDIT_PATIENT_ROUTE = "/patient/edit";
 export const ADD_CARTE_ROUTE = "/manager/carte/add";
 export const DELETE_CARTE_ROUTE = "/manager/carte/delete";
 export const LIST_CARTE_ROUTE = "/cartes";
+export const EDIT_CARTE_ROUTE = "manager/cartes/edit";
 
 export const ADD_USER_ROUTE = "/manager/user/add";
 export const DELETE_USER_ROUTE = "/manager/user/delete";
