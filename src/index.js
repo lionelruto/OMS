@@ -9,7 +9,7 @@ import  createApplicationStore from "./store/store_config";
 import ReduxToastr from 'react-redux-toastr'
 
 import "./index.scss";
-
+// dasdasdas
 import "react-perfect-scrollbar/dist/css/styles.css";
 // import internal(own) modules
 import ApplicationRoutesContainer from "./routes";
