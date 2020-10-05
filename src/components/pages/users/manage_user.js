@@ -19,7 +19,8 @@ import {
   LIST_USER_ROUTE,
   EDIT_USER_ROUTE,
   ADD_USER_ROUTE,
-  APP_COLOR
+  APP_COLOR,
+  APP_COLOR2
 } from '../../../constants/app_utils';
 import { cleanObject, validateEmail } from '../../../utility/misc';
 import { toastr } from 'react-redux-toastr';
@@ -443,7 +444,7 @@ export default class UserManagementView extends React.Component {
                   {!this.state.id && (
                     <Button
                       color="warning"
-                      className="mr-1"
+                      className={APP_COLOR2}
                       onClick={this.clearInput}
                     >
                       <RefreshCw size={15} /> Clear
@@ -453,7 +454,7 @@ export default class UserManagementView extends React.Component {
                 <div>
                   <Button
                     color="warning"
-                    className="mr-1"
+                    className={APP_COLOR2}
                     USER
                     onClick={() => this.props.history.push(LIST_USER_ROUTE)}
                   >
@@ -461,7 +462,7 @@ export default class UserManagementView extends React.Component {
                   </Button>
 
                   <Button
-                    className="gradient-green-tea-wil"
+                    className={APP_COLOR}
                     onClick={this.submitInputData}
                     // disabled={
                     //   this.props.isCreatingUSER || this.props.isUpdatingUSER

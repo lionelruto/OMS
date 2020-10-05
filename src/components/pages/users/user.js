@@ -18,40 +18,53 @@ import {
   LIST_CARTE_ROUTE,
   APP_COLOR,
 } from '../../../constants/app_utils';
+import Modal from '../modal/modal';
 
 class Users extends Component {
-
   constructor(props) {
-    super(props)
-  
+    super(props);
+
     this.state = {
-      SelectedUser:this.props.datas
-    }
+      SelectedUser: this.props.datas,
+      showQr: 'none',
+      onShow: false,
+    };
   }
-  componentWillReceiveProps(nextProps){
-this.setState({
-  SelectedUser :
-  this.state.SelectedUser.length > 0 
-  ? this.state.SelectedUser 
-  :nextProps.datas
-})
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      SelectedUser:
+        this.state.SelectedUser.length > 0
+          ? this.state.SelectedUser
+          : nextProps.datas,
+    });
   }
-  
+
   handleCreateNewUser = () => {
     this.props.history.push(ADD_USER_ROUTE);
   };
-  filterBy = e => {
-       
-    const updatedList = this.props.datas.filter( user => user.phone.toString().includes( e.target.value) || user.fullName.toUpperCase().trim().includes( e.target.value.trim().toUpperCase())  );
-      console.log(this.props.datas)
-      if(e.target.value !== '') {
-        this.setState({ SelectedUser: updatedList});
-      } else {
+  filterBy = (e) => {
+    const updatedList = this.props.datas.filter(
+      (user) =>
+        user.phone.toString().includes(e.target.value) ||
+        user.fullName
+          .toUpperCase()
+          .trim()
+          .includes(e.target.value.trim().toUpperCase())
+    );
+    console.log(this.props.datas);
+    if (e.target.value !== '') {
+      this.setState({ SelectedUser: updatedList });
+    } else {
+      this.setState({ SelectedUser: this.props.datas });
+    }
+  };
 
-        this.setState({ SelectedUser: this.props.datas});
-      }
-    };
-    
+  handleModal = () => {
+    this.setState({
+      onShow: !this.state.onShow,
+    });
+  };
   render() {
     console.log('props:', this.props);
     return (
@@ -100,20 +113,26 @@ this.setState({
 
           <Col md={12}>
             <Card>
-              <div className="ml-1">
-                <a
-                // onClick={() => this.handleRefreshTable()}
-                // disabled={this.props.isFetchingUsers}
-                >
-                  <RefreshCcw
-                    size={16}
-                    color="#E64A19"
-                    className={`${
-                      this.props.isFetchingUsers ? 'animate-spin' : ''
-                    }`}
-                  />
-                </a>
+              <div>
+                {/* <Button className={APP_COLOR} onClick={this.handleModal}>
+                  Qr Search
+                </Button> */}
+                <div className="ml-1">
+                  <a
+                  // onClick={() => this.handleRefreshTable()}
+                  // disabled={this.props.isFetchingUsers}
+                  >
+                    <RefreshCcw
+                      size={16}
+                      color="#E64A19"
+                      className={`${
+                        this.props.isFetchingUsers ? 'animate-spin' : ''
+                      }`}
+                    />
+                  </a>
+                </div>
               </div>
+
               <div>
                 <Col
                   md={4}
@@ -132,8 +151,8 @@ this.setState({
                       type="text"
                       className="form-control round"
                       placeholder="Try quick search"
-                         onChange={this.filterBy}
-                        //  value={searchTerm}
+                      onChange={this.filterBy}
+                      //  value={searchTerm}
                     />
                     {/* <div className="form-control-position">
                <Search size={16} className="mb-0" />
@@ -157,6 +176,11 @@ this.setState({
             </Card>
           </Col>
         </Row>
+        {/* <Modal
+          title="Scaner Une Carte"
+          onShow={this.handleModal}
+          show={this.state.onShow}
+        /> */}
       </div>
     );
   }
