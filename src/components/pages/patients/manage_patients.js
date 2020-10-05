@@ -21,13 +21,14 @@ import {
   LIST_PATIENT_ROUTE,
   EDIT_PATIENT_ROUTE,
   ADD_PATIENT_ROUTE,
-  APP_COLOR
+  APP_COLOR,
+  APP_COLOR2
 } from '../../../constants/app_utils';
 import { cleanObject, validateEmail } from '../../../utility/misc';
 import { toastr } from 'react-redux-toastr';
 import { checkData } from './patient_helpers';
 import { displayMessage } from './patient_helpers';
-
+import  QrReader from '../qr_reader/qrReader'
 export default class PatientManagementView extends React.Component {
   constructor(props) {
     super(props);
@@ -476,6 +477,8 @@ export default class PatientManagementView extends React.Component {
                     </Col>
                   </Row>
                 )}
+                
+             
               </div>
 
               <div
@@ -486,7 +489,7 @@ export default class PatientManagementView extends React.Component {
                   {!this.state.id && (
                     <Button
                       color="warning"
-                      className="mr-1"
+                      className={APP_COLOR2}
                       onClick={this.clearInput}
                     >
                       <RefreshCw size={15} /> Clear
@@ -496,7 +499,7 @@ export default class PatientManagementView extends React.Component {
                 <div>
                   <Button
                     color="warning"
-                    className="mr-1"
+                    className={APP_COLOR2}
                     PATIENT
                     onClick={() => this.props.history.push(LIST_PATIENT_ROUTE)}
                   >

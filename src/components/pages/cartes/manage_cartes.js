@@ -16,6 +16,7 @@ import 'react-table/react-table.css';
 import { X, CheckSquare, RefreshCw, Eye, EyeOff } from 'react-feather';
 import { ClipLoader } from 'react-spinners';
 import CreateableSelect from 'react-select';
+import GenerTionQr from './generation_qr';
 
 import {
   LIST_CARTE_ROUTE,
@@ -25,7 +26,8 @@ import {
 } from '../../../constants/app_utils';
 import { cleanObject, validateEmail } from '../../../utility/misc';
 import { toastr } from 'react-redux-toastr';
-
+var ReactDOM = require('react-dom');
+var QRCode = require('qrcode-react');
 export default class CarteManagement extends React.Component {
   constructor(props) {
     super(props);
@@ -156,7 +158,7 @@ export default class CarteManagement extends React.Component {
                   {this.state.error ? this.state.error : this.state.message}
                 </UncontrolledAlert>
               )}
-              <div className="form-body"style={{alignContent:'center',alignItems:'center'}}>
+              {/* <div className="form-body"style={{alignContent:'center',alignItems:'center'}}>
                 <Row md="12">
                   <Col md="6">
                     <FormGroup row>
@@ -176,7 +178,15 @@ export default class CarteManagement extends React.Component {
                     </FormGroup>
                   </Col>
 
-                  <Col md="6">
+                 
+                      </Col>
+                    </FormGroup>
+                  </Col>
+                </Row>
+                <QRCode value="http://facebook.github.io/react/" />
+              </div> */}
+              <GenerTionQr/>
+                  {/* <Col md="6">
                     <FormGroup row>
                       <Label for="userinput3" sm={4}>
                         Type :
@@ -190,12 +200,9 @@ export default class CarteManagement extends React.Component {
                           value={this.state.type}
                           onChange={(elt) => this.NotificationInputChanged(elt)}
                         />
-                      </Col>
-                    </FormGroup>
-                  </Col>
-                </Row>
-              </div>
-
+                        </Col>
+                        </FormGroup>
+                      </Col> */}
               <div
                 className="form-actions"
                 style={{ display: 'flex', justifyContent: 'space-between' }}
