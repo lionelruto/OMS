@@ -36,7 +36,7 @@ class QrRead extends Component {
      
         <Row md='12' style={{marginBottom:'5px'}}>
           <QrReader
-            style={{ height: '300px', width: '300px'}}
+            style={{ height: '250px', width: '250px'}}
             onError={this.handleError}
             onScan={this.handleScan}
    
@@ -50,7 +50,7 @@ class QrRead extends Component {
               <Col sm={8}>
                 <Input
                 style={{width:'100%'}}
-                value={this.state}
+                value={this.state.result}
           
                 />
               </Col>
