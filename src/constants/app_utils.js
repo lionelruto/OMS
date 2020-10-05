@@ -5,6 +5,10 @@ export const LOCAL_STORAGE_ROLE_KEY = "yamiseuhrole";
 export const LOCAL_STORAGE_SECRET = "S0&@5ecure&C00l!";
 export const APP_COLOR = "gradient-green-tea-wil";
 
+export const APP_COLOR2 = "gradient-indigo-dark-blue";
+
+
+
 export const MAIN_VIEW_ROUTE = "/";
 export const LOGIN_VIEW_ROUTE = "/login";
 export const MAIN_INFIRMIERE_ROUTE = "/manager/infirmiere";

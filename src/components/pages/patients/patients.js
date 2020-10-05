@@ -16,12 +16,30 @@ import {
   ADD_CARTE_ROUTE,
   MAIN_VIEW_ROUTE,
   LIST_CARTE_ROUTE,
-  APP_COLOR
+  APP_COLOR,
+  APP_COLOR2
 } from '../../../constants/app_utils';
 
+import Modal from '../modal/modal';
+import QrReader from '../qr_reader/qrReader';
 class Patients extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showQr: 'none',
+      onShow: false,
+    };
+  }
+
   handleCreateNewPatient = () => {
     this.props.history.push(ADD_PATIENT_ROUTE);
+  };
+
+  handleModal = () => {
+    this.setState({
+      onShow: !this.state.onShow,
+    });
   };
   render() {
     console.log('props:', this.props);
@@ -85,7 +103,12 @@ class Patients extends Component {
                   />
                 </a>
               </div>
+
               <div>
+                <Button className={APP_COLOR} onClick={this.handleModal}>
+                  Qr Search
+                </Button>
+
                 <Col
                   md={4}
                   style={{
@@ -128,6 +151,12 @@ class Patients extends Component {
             </Card>
           </Col>
         </Row>
+
+        <Modal
+          title='Scaner Une Carte'
+          onShow={this.handleModal}
+          show={this.state.onShow}
+        />
       </div>
     );
   }
