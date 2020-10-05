@@ -1,6 +1,9 @@
 import React, { useState,useEffect } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, Form, FormGroup,Row } from 'reactstrap';
-import QrReader from '../qr_reader/qrReader'
+import QrReader from '../qr_reader/qrReader';
+import {
+    APP_COLOR, APP_COLOR2,
+  } from '../../../constants/app_utils';
 const ModalExample = (props) => {
   const {
     buttonLabel,
@@ -26,10 +29,6 @@ const ModalExample = (props) => {
 
   return (
     <div>
-      <Form inline onSubmit={(e) => e.preventDefault()}>
-    
-        <Button color="danger" onClick={toggle}>{buttonLabel}</Button>
-      </Form>
       <Modal isOpen={show1} toggle={handleTogle} >
   <ModalHeader toggle={handleTogle}>{title}</ModalHeader>
         <ModalBody style={{alignItems:'center',alignContent:'center'}}>
@@ -38,7 +37,7 @@ const ModalExample = (props) => {
      
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={handleTogle}>Do Something</Button>{' '}
+          <Button className={APP_COLOR2} onClick={handleTogle}>Verifier</Button>{' '}
         </ModalFooter>
       </Modal>
     </div>

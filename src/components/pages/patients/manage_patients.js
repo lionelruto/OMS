@@ -492,7 +492,7 @@ export default class PatientManagementView extends React.Component {
                       className={APP_COLOR2}
                       onClick={this.clearInput}
                     >
-                      <RefreshCw size={15} /> Clear
+                      <RefreshCw size={16} color='#FFF' /> Clear
                     </Button>
                   )}
                 </div>
@@ -509,6 +509,7 @@ export default class PatientManagementView extends React.Component {
                   <Button
                     className={APP_COLOR}
                     onClick={this.submitInputData}
+                    color="#FFF"
                     // disabled={
                     //   this.props.isCreatingPatient || this.props.isUpdatingPatient
                     // }

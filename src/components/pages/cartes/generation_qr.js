@@ -13,6 +13,12 @@ import {
   FormGroup,
 } from 'reactstrap';
 
+import {
+   
+    APP_COLOR,
+    APP_COLOR2
+  } from '../../../constants/app_utils';
+
 export default function GenerateQR() {
   var valQR = 20;
 
@@ -73,19 +79,15 @@ export default function GenerateQR() {
                     <Input
                       labelText="nombre de codes à generer"
                       id="postal-code"
-                    //   formControlProps={{
-                    //     fullWidth: true,
-                    //   }}
-                    //   multilines={true}
-                    //   Require={true}
+                   
                     />
                   </Col>
                 </FormGroup>
               </Col>
             </Row>
 
-            <Button onClick={downloadQR} variant="contained" color="info">
-              Démarer
+            <Button onClick={downloadQR}  className={APP_COLOR}>
+              Generer
             </Button>
 
             <canvas id="canvas"></canvas>

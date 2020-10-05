@@ -23,6 +23,7 @@ import {
   EDIT_CARTE_ROUTE,
   ADD_CARTE_ROUTE,
   APP_COLOR,
+  APP_COLOR2
 } from '../../../constants/app_utils';
 import { cleanObject, validateEmail } from '../../../utility/misc';
 import { toastr } from 'react-redux-toastr';
@@ -158,8 +159,10 @@ export default class CarteManagement extends React.Component {
                   {this.state.error ? this.state.error : this.state.message}
                 </UncontrolledAlert>
               )}
-              {/* <div className="form-body"style={{alignContent:'center',alignItems:'center'}}>
-                <Row md="12">
+              {/* <Row>
+
+
+          
                   <Col md="6">
                     <FormGroup row>
                       <Label for="Patientinput3" sm={4}>
@@ -179,14 +182,9 @@ export default class CarteManagement extends React.Component {
                   </Col>
 
                  
-                      </Col>
-                    </FormGroup>
-                  </Col>
-                </Row>
-                <QRCode value="http://facebook.github.io/react/" />
-              </div> */}
-              <GenerTionQr/>
-                  {/* <Col md="6">
+                 
+              
+                  <Col md="6">
                     <FormGroup row>
                       <Label for="userinput3" sm={4}>
                         Type :
@@ -202,8 +200,11 @@ export default class CarteManagement extends React.Component {
                         />
                         </Col>
                         </FormGroup>
-                      </Col> */}
-              <div
+                      </Col>
+
+                    </Row> */}
+                    <GenerTionQr/>
+              {/* <div
                 className="form-actions"
                 style={{ display: 'flex', justifyContent: 'space-between' }}
               >
@@ -211,7 +212,7 @@ export default class CarteManagement extends React.Component {
                   {!this.state.id && (
                     <Button
                       color="warning"
-                      className="mr-1"
+                      className={APP_COLOR2}
                       onClick={this.clearInput}
                     >
                       <RefreshCw size={15} /> Clear
@@ -221,7 +222,7 @@ export default class CarteManagement extends React.Component {
                 <div>
                   <Button
                     color="warning"
-                    className="mr-1"
+                    className={APP_COLOR2}
                     onClick={() => this.props.history.push(LIST_CARTE_ROUTE)}
                   >
                     <X size={16} color="#FFF" /> Cancel
@@ -255,7 +256,7 @@ export default class CarteManagement extends React.Component {
                     </div>
                   </Button>
                 </div>
-              </div>
+              </div> */}
             </Form>
           </CardBody>
         </Card>
