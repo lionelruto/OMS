@@ -16,7 +16,7 @@ import 'react-table/react-table.css';
 import { X, CheckSquare, RefreshCw, Eye, EyeOff } from 'react-feather';
 import { ClipLoader } from 'react-spinners';
 import CreateableSelect from 'react-select';
-import GenerTionQr from './generation_qr';
+import GenerTionQr from '../qr/generation_qr';
 
 import {
   LIST_CARTE_ROUTE,

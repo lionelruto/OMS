@@ -1,5 +1,6 @@
-import React from 'react';
+import React ,{useState ,useEffect}from 'react';
 import QRCode from 'qrcode';
+import { connect } from 'react-redux'
 import {
   Card,
   Col,
@@ -19,11 +20,50 @@ import {
     APP_COLOR2
   } from '../../../constants/app_utils';
 
-export default function GenerateQR() {
-  var valQR = 20;
 
+  const mapStateToProps = (state) => {
+    console.log('etat',state)
+    return{
+        datas:state.carte.Carte
+    }
+  
+  }
+
+ function GenerateQR(props) {
+ 
+  
+const [nbQr, setnbQr] = useState(1)
+const [qrscode, setqrscode] = useState()
+var valQR =  GetQrnumber()
+
+useEffect(() => {
+  setqrscode(props.datas)
+   GetQrnumber()
+
+}, [props.datas])
+
+
+// GetQrnumber(qrscode)
+
+ function GetQrnumber(){
+  
+ try {
+let test =  props.datas  &&   props.datas.map(e=>e.SerialNumber.toString().substring([e.SerialNumber.toString().split('').length-2],[e.SerialNumber.toString().split('').length]))
+console.log('test', test[test.length-1])
+return +test[test.length-1]
+}
+ catch(err){
+console.log(err)
+ }
+
+}
+
+function handleNbQrChange(e){
+  setnbQr(e.target.value)
+   }
   const downloadQR = () => {
-    for (let i = 0; i < 5; i++) {
+    console.log('Qr ',valQR)
+    for (let i = 0; i < nbQr ; i++) {
       valQR += 1;
       var canvas = document.getElementById('canvas');
 
@@ -36,13 +76,13 @@ export default function GenerateQR() {
         .replace('image/png', 'image/octet-stream');
       let downloadLink = document.createElement('a');
       downloadLink.href = pngUrl;
-      downloadLink.download = '123456.png';
+      downloadLink.download = `123456${valQR}.png`;
       document.body.appendChild(downloadLink);
       downloadLink.click();
       document.body.removeChild(downloadLink);
     }
   };
-
+  
   return (
     <div>
       <Card>
@@ -79,7 +119,8 @@ export default function GenerateQR() {
                     <Input
                       labelText="nombre de codes à generer"
                       id="postal-code"
-                   
+                      value = {nbQr}
+                     onChange={handleNbQrChange}
                     />
                   </Col>
                 </FormGroup>
@@ -97,3 +138,7 @@ export default function GenerateQR() {
     </div>
   );
 }
+
+export default connect(mapStateToProps)(GenerateQR)
+
+
