@@ -62,10 +62,11 @@ export class ManageCartes extends Component {
             <div>
               <PatientsView 
               datas={this.props.datas}
-              prop1={this.props}
+              // prop1={this.props}
               gsanguin = {[{id:1,name:'gsanguin',label:'A-'},{id:2,name:'gsanguin',label:'B-'},{id:3,name:'gsanguin',label:'o-'},{id:4,name:'gsanguin',label:'AB-'},{id:5,name:'gsanguin',label:'o+'},{id:6,name:'gsanguin',label:'A+'},{id:7,name:'gsanguin',label:'B+'},{id:8,name:'gsanguin',label:'AB+'}]}
               rhesus ={[{id:1,name:'rhesus',label:"rhesus +"}, {id:2,name:'rhesus',label:'rhesus-'}]}
               sexe={[{id:1,label:'Homme',name:'sexe'},{id:2,label:'Femme',name:'sexe'}]}
+              cartes={this.props.cartes}
                 columns={[
                     {
                       Header: "Photo",
@@ -148,7 +149,8 @@ export class ManageCartes extends Component {
 const mapStateToProps = (state) => {
     console.log('etat',state)
     return{
-        datas:state.infirmiere.patients
+        datas:state.infirmiere.patients,
+        cartes:state.carte.Carte
     }
 
 }

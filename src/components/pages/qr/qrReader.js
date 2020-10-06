@@ -17,7 +17,7 @@ import {
 
 class QrRead extends Component {
   state = {
-    result: 'No result',
+    result: this.props.qrvalue ? this.props.qrvalue : 'Nothing'
   };
 
   handleScan = (data) => {
@@ -31,6 +31,7 @@ class QrRead extends Component {
     console.error(err);
   };
   render() {
+    console.log('test',this.state.result)
     return (
       <div style={{display:'flex',flexDirection:'column',alignContent:'center',alignItems:'center'}}>
      
@@ -53,6 +54,7 @@ class QrRead extends Component {
                 value={this.state.result}
           
                 />
+              
               </Col>
             </FormGroup>
           </Row>
