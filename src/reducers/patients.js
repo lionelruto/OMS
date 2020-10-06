@@ -12,31 +12,51 @@ const initialState = {
         img: "https://randomuser.me/api/portraits/med/women/10.jpg",
         fullName: "Jessica Rice",
         position: "UX Designer",
-        flag: 1
+        flag: 1,
+        carte:{
+            SerialNumber:12345620
+        }
+
      },
      {
         img: "https://randomuser.me/api/portraits/med/men/0.jpg",
         fullName: "Jacob Rios",
         position: "HTML Developer",
-        flag: 0
+        flag: 0,
+        carte:{
+            SerialNumber:12345620
+        }
+
      },
      {
         img: "https://randomuser.me/api/portraits/med/men/1.jpg",
         fullName: "Russell Delgado",
         position: "Database Designer",
-        flag: 0
+        flag: 0,
+        carte:{
+            SerialNumber:12345620
+        }
+
      },
      {
         img: "https://randomuser.me/api/portraits/med/women/3.jpg",
         fullName: "Sara McDonald",
         position: "Team Leader",
-        flag: 1
+        flag: 1,
+        carte:{
+            SerialNumber:12345620
+        }
+
      },
      {
         img: "https://randomuser.me/api/portraits/med/men/3.jpg",
         fullName: "Peter Parker",
         position: "UI/UX Designer",
-        flag: 1
+        flag: 1,
+        carte:{
+            SerialNumber:12345620
+        }
+
      }],
     cartes:[
 

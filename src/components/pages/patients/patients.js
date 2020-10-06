@@ -17,18 +17,19 @@ import {
   MAIN_VIEW_ROUTE,
   LIST_CARTE_ROUTE,
   APP_COLOR,
-  APP_COLOR2
+  APP_COLOR2,
 } from '../../../constants/app_utils';
 
 import Modal from '../modal/modal';
 import QrReader from '../qr/qrReader';
-class Patients extends Component {
+class PatientsListe extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       showQr: 'none',
       onShow: false,
+      datas: null,
     };
   }
 
@@ -41,8 +42,25 @@ class Patients extends Component {
       onShow: !this.state.onShow,
     });
   };
+  handleSubmitModal = (value)=>{
+   let  carte =  this.props.cartes && this.props.cartes.find(e=>e.SerialNumber === value)
+   let patient = this.props.datas && this.props.datas.find(e=>e.carte.SerialNumber=== value)
+   let val = [patient]
+   
+   if(carte.SerialNumber >0){
+    this.setState({
+      onShow: !this.state.onShow,
+      datas:val
+    });
+    this.props.history.push(LIST_PATIENT_ROUTE) 
+
+   }
+   else{
+     console.log('Not Found')
+   }
+  }
   render() {
-    console.log('props:', this.props);
+    console.log('props:', this.state.datas);
     return (
       <div>
         {/* <div className="d-flex justify-content-between">
@@ -51,7 +69,7 @@ class Patients extends Component {
                         <Button size="sm" outline onClick={this.handleCreateNewPatient}>Add New User</Button>
                     }
                 </div> */}
-        {/* <h1 style={{ textAlign: 'center' }}>LISTE DES PATIENTS</h1> */}
+        {/* <h1 style={{ textAlign: 'center' }}>LISTE DES PATIENTSList</h1> */}
 
         <Row>
           <Col
@@ -138,7 +156,7 @@ class Patients extends Component {
                 </Col>
               </div>
 
-              <CardBody>
+              {/* <CardBody>
                 <ReactTable
                   data={this.props.datas}
                   columns={this.props.columns}
@@ -147,19 +165,38 @@ class Patients extends Component {
                   }
                   className="-striped -highlight"
                 />
+              </CardBody> */}
+
+              <CardBody>
+                {
+                  this.state.datas &&  (
+                      <ReactTable
+                  data={this.state.datas}
+                  columns={this.props.columns}
+                  defaultPageSize={
+                    this.props.defaultPageSize ? this.props.defaultPageSize : 5
+                  }
+                  className="-striped -highlight"
+                />
+                )
+                }
+              
               </CardBody>
             </Card>
           </Col>
         </Row>
 
         <Modal
-          title='Scaner Une Carte'
+          title="Scaner Une Carte"
           onShow={this.handleModal}
           show={this.state.onShow}
+          submit ={this.handleSubmitModal}
+          datas={this.state.datas}
+
         />
       </div>
     );
   }
 }
 
-export default withRouter(Patients);
+export default withRouter(PatientsListe);
