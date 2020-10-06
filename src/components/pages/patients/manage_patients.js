@@ -28,7 +28,7 @@ import { cleanObject, validateEmail } from '../../../utility/misc';
 import { toastr } from 'react-redux-toastr';
 import { checkData } from './patient_helpers';
 import { displayMessage } from './patient_helpers';
-import  QrReader from '../qr_reader/qrReader'
+import  QrReader from '../qr/qrReader'
 export default class PatientManagementView extends React.Component {
   constructor(props) {
     super(props);

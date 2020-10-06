@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, Form, FormGroup,Row } from 'reactstrap';
-import QrReader from '../qr_reader/qrReader';
+import QrReader from '../qr/qrReader';
 import {
     APP_COLOR, APP_COLOR2,
   } from '../../../constants/app_utils';
