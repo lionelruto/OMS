@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useState}from 'react';
 import QRCode from 'qrcode';
 import {
   Card,
@@ -21,9 +21,13 @@ import {
 
 export default function GenerateQR() {
   var valQR = 20;
+const [nbQr, setnbQr] = useState(1)
 
+function handleNbQrChange(e){
+  setnbQr(e.target.value)
+}
   const downloadQR = () => {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < nbQr ; i++) {
       valQR += 1;
       var canvas = document.getElementById('canvas');
 
@@ -36,7 +40,7 @@ export default function GenerateQR() {
         .replace('image/png', 'image/octet-stream');
       let downloadLink = document.createElement('a');
       downloadLink.href = pngUrl;
-      downloadLink.download = '123456.png';
+      downloadLink.download = `123456${valQR}.png`;
       document.body.appendChild(downloadLink);
       downloadLink.click();
       document.body.removeChild(downloadLink);
@@ -79,7 +83,8 @@ export default function GenerateQR() {
                     <Input
                       labelText="nombre de codes à generer"
                       id="postal-code"
-                   
+                      value = {nbQr}
+                     onChange={handleNbQrChange}
                     />
                   </Col>
                 </FormGroup>
