@@ -46,8 +46,8 @@ class PatientsListe extends Component {
    let  carte =  this.props.cartes && this.props.cartes.find(e=>e.SerialNumber === value)
    let patient = this.props.datas && this.props.datas.find(e=>e.carte.SerialNumber=== value)
    let val = [patient]
-   
-   if(carte.SerialNumber >0){
+
+   if(carte !== undefined && carte.SerialNumber >0){
     this.setState({
       onShow: !this.state.onShow,
       datas:val

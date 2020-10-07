@@ -36,6 +36,15 @@ class QrRead extends Component {
   handleError = (err) => {
     console.error(err);
   };
+  handleChange = e =>{
+    this.props.submitQr(e.target.value)
+  }
+componentWillReceiveProps(nextProps){
+  // if(this.state.result !==nextProps.qrvalue )
+  this.setState({
+    resultat: this.state.result !==nextProps.qrvalue ? nextProps.qrvalue :this.state.result
+  })
+}
   render() {
     console.log('test', this.state.result);
     return (
