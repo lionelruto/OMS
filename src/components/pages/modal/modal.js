@@ -18,7 +18,7 @@ const ModalExample = (props) => {
   } = props;
   const [modal, setModal] = useState(false);
   const [show1, setShow] = useState(false);
-const [qrValue, setqrValue] = useState(12345620)
+const [qrValue, setqrValue] = useState(1)
  
   useEffect(() => {
   setShow(show)
@@ -33,7 +33,9 @@ const [qrValue, setqrValue] = useState(12345620)
   props.submit(qrValue)
 }
 
-
+const onQrChange = (e)=>{
+setqrValue(e)
+}
 
 
   return (
@@ -42,7 +44,9 @@ const [qrValue, setqrValue] = useState(12345620)
   <ModalHeader toggle={handleTogle}>{title}</ModalHeader>
         <ModalBody style={{alignItems:'center',alignContent:'center'}}>
         
-             <QrReader qrvalue = {qrValue}/>
+             <QrReader qrvalue = {qrValue}
+              submitQr={onQrChange}
+             />
      
         </ModalBody>
         <ModalFooter>
