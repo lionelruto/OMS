@@ -7,6 +7,7 @@ import infirmiere from './infirmiere'
 import patients from './patients'
 import user from './user'
 import carte from './cartes'
+import file from './file_attente'
 
 
 
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
     infirmiere,
     patients,
     user,
-    carte
+    carte,
+    file
   });
   
   export default rootReducer;
