@@ -10,6 +10,7 @@ import {
   Form,
   FormGroup,
   Input,
+  CardHeader,
 } from 'reactstrap';
 import ContentHeader from '../../contentHead/contentHeader';
 import 'react-table/react-table.css';
@@ -21,15 +22,14 @@ import {
   LIST_FILE_ROUTE,
   EDIT_FILE_ROUTE,
   ADD_FILE_ROUTE,
-
   APP_COLOR,
-  APP_COLOR2
+  APP_COLOR2,
 } from '../../../constants/app_utils';
 import { cleanObject, validateEmail } from '../../../utility/misc';
 import { toastr } from 'react-redux-toastr';
 // import { checkData } from './patient_helpers';
 // import { displayMessage } from './patient_helpers';
-import  QrReader from '../qr/qrReader'
+import QrReader from '../qr/qrReader';
 export default class PatientManagementView extends React.Component {
   constructor(props) {
     super(props);
@@ -47,16 +47,15 @@ export default class PatientManagementView extends React.Component {
       id: data.id ? data.id : null,
       type: 'password',
       ctype: 'password',
-      gsanguin:data.gsanguin? data.gsanguin :'',
-      sexe:data.sexe  ? data.sexe :'',
-      rhesus :data.rhesus ? data.rhesus :'',
-      proffession:data.profession? data.proffession :'',
-      quartier : data.quartier ? data.quartier : '',
-      poids:data.poids? data.poids :'',
-      temperature:data.temperature ? data.temperature : '',
-      tension :data.tension ? data.tension : ''
-     
-
+      gsanguin: data.gsanguin ? data.gsanguin : '',
+      sexe: data.sexe ? data.sexe : '',
+      rhesus: data.rhesus ? data.rhesus : '',
+      proffession: data.profession ? data.proffession : '',
+      quartier: data.quartier ? data.quartier : '',
+      poids: data.poids ? data.poids : '',
+      temperature: data.temperature ? data.temperature : '',
+      tension: data.tension ? data.tension : '',
+      img: data.img ? data.img : '',
     };
   };
   inputChanged = (e) => {
@@ -89,65 +88,63 @@ export default class PatientManagementView extends React.Component {
     window.scrollTo(0, 0);
   }
 
-  
-
   submitInputData = (e) => {
     e.preventDefault();
     // const errors = checkData();
     // if (!errors) {
-      let {
+    let {
+      firstname,
+      lastname,
+      Patientname,
+      password,
+      gsanguin,
+      sexe,
+      rhesus,
+      quartier,
+    } = this.state;
+
+    this.props.submitPatientData(
+      cleanObject({
         firstname,
         lastname,
         Patientname,
         password,
-       gsanguin,
-       sexe,
-       rhesus,
-       quartier
-      } = this.state;
+        gsanguin,
+        sexe,
+        rhesus,
+        quartier,
+      }),
 
-      this.props.submitPatientData(
-        cleanObject({
-          firstname,
-          lastname,
-          Patientname,
-          password,
-          gsanguin,
-          sexe,
-          rhesus,
-          quartier
-        }),
-
-        this.state.id,
-        (success, errors) => {
-          if (!success) {
-            let _this;
-            // displayMessage(errors ? errors : '', 'error');
-          } else {
-            const message = this.state.id
-              ? 'Consultation was successfully Updated'
-              : 'Consultation was successfully created';
-            toastr.success(message);
-            this.props.history.push(LIST_FILE_ROUTE);
-            console.log('This error occured: ');
-          }
+      this.state.id,
+      (success, errors) => {
+        if (!success) {
+          let _this;
+          // displayMessage(errors ? errors : '', 'error');
+        } else {
+          const message = this.state.id
+            ? 'Consultation was successfully Updated'
+            : 'Consultation was successfully created';
+          toastr.success(message);
+          this.props.history.push(LIST_FILE_ROUTE);
+          console.log('This error occured: ');
         }
-      );
+      }
+    );
     // } else {
-      // displayMessage(errors, 'error');
+    // displayMessage(errors, 'error');
     // }
   };
 
   clearInput = () => {
     this.setData({});
   };
-  NotificationInputChanged = elt =>{
-    console.log('elt:',elt)
-   
+  NotificationInputChanged = (elt) => {
+    console.log('elt:', elt);
+
     this.setState({
-     [elt.name]:elt
-    })
-  }
+      [elt.name]: elt,
+    });
+  };
   render() {
     //   console.log('prop',this.props)
     return (
@@ -164,15 +161,32 @@ export default class PatientManagementView extends React.Component {
           }}
         />
         <Card>
+          <CardHeader
+            // className="d-flex justify-content-center"
+            style={{ display:'flex', alignItems: 'center', justifyContent: 'center' }}
+          >
+            {(this.state.error || this.state.message) && (
+              <UncontrolledAlert
+                color={this.state.error ? 'danger' : 'success'}
+              >
+                {this.state.error ? this.state.error : this.state.message}
+              </UncontrolledAlert>
+            )}
+            <div style={{ margin: '10', display: 'flex' }}>
+              {this.state.img && (
+                <img
+                  style={{
+                    height: '100px',
+                    width: '100px',
+                    borderRadius: '50%',
+                  }}
+                  src={this.state.img}
+                />
+              )}
+            </div>
+          </CardHeader>
           <CardBody>
             <Form className="form-horizontal">
-              {(this.state.error || this.state.message) && (
-                <UncontrolledAlert
-                  color={this.state.error ? 'danger' : 'success'}
-                >
-                  {this.state.error ? this.state.error : this.state.message}
-                </UncontrolledAlert>
-              )}
               <div className="form-body">
                 <Row>
                   <Col md="6">
@@ -282,8 +296,8 @@ export default class PatientManagementView extends React.Component {
                     </FormGroup>
                   </Col>
                 </Row>
-                <Row md='12'>
-                <Col md="6">
+                <Row md="12">
+                  <Col md="6">
                     <FormGroup row>
                       <Label for="Patientinput4" sm={4}>
                         tension:
@@ -304,39 +318,36 @@ export default class PatientManagementView extends React.Component {
                   <Col md="6">
                     <FormGroup row>
                       <Label for="userinput3" sm={4}>
-                      Sexe :
+                        Sexe :
                       </Label>
                       <Col sm={8}>
                         <CreateableSelect
-                       
                           options={this.props.sexe}
                           name="sexe"
-                          getOptionLabel={elt => elt.label}
-                          getOptionValue={elt => elt}
+                          getOptionLabel={(elt) => elt.label}
+                          getOptionValue={(elt) => elt}
                           value={this.state.sexe}
-                          onChange={elt => this.NotificationInputChanged(elt)}
+                          onChange={(elt) => this.NotificationInputChanged(elt)}
                         />
                       </Col>
                     </FormGroup>
                   </Col>
-                  </Row>
-                  <Row md='12'>
+                </Row>
+                <Row md="12">
                   <Col md="6">
                     <FormGroup row>
                       <Label for="userinput3" sm={4}>
                         Rhesus:
                       </Label>
                       <Col sm={8}>
-                    
-                           <CreateableSelect
-                       
-                       options={this.props.rhesus}
-                       name="rhesus"
-                       getOptionLabel={elt => elt.label}
-                       getOptionValue={elt => elt}
-                       value={this.state.rhesus}
-                       onChange={elt => this.NotificationInputChanged(elt)}
-                     />
+                        <CreateableSelect
+                          options={this.props.rhesus}
+                          name="rhesus"
+                          getOptionLabel={(elt) => elt.label}
+                          getOptionValue={(elt) => elt}
+                          value={this.state.rhesus}
+                          onChange={(elt) => this.NotificationInputChanged(elt)}
+                        />
                       </Col>
                     </FormGroup>
                   </Col>
@@ -344,23 +355,21 @@ export default class PatientManagementView extends React.Component {
                   <Col md="6">
                     <FormGroup row>
                       <Label for="userinput3" sm={4}>
-                      Groupe Sanguin :
+                        Groupe Sanguin :
                       </Label>
                       <Col sm={8}>
                         <CreateableSelect
-                       
                           options={this.props.gsanguin}
                           name="gsanguin"
-                          getOptionLabel={elt => elt.label}
-                          getOptionValue={elt => elt}
+                          getOptionLabel={(elt) => elt.label}
+                          getOptionValue={(elt) => elt}
                           value={this.state.gsanguin}
-                          onChange={elt => this.NotificationInputChanged(elt)}
+                          onChange={(elt) => this.NotificationInputChanged(elt)}
                         />
                       </Col>
                     </FormGroup>
                   </Col>
-                  </Row>
-
+                </Row>
               </div>
 
               <div
@@ -374,7 +383,7 @@ export default class PatientManagementView extends React.Component {
                       className={APP_COLOR2}
                       onClick={this.clearInput}
                     >
-                      <RefreshCw size={16} color='#FFF' /> Clear
+                      <RefreshCw size={16} color="#FFF" /> Clear
                     </Button>
                   )}
                 </div>
