@@ -14,7 +14,7 @@ import {
 } from 'reactstrap';
 import ContentHeader from '../../contentHead/contentHeader';
 import 'react-table/react-table.css';
-import { X, CheckSquare, RefreshCw, Eye, EyeOff } from 'react-feather';
+import { X, CheckSquare, RefreshCw, Eye, EyeOff, Search } from 'react-feather';
 import { ClipLoader } from 'react-spinners';
 import CreateableSelect from 'react-select';
 
@@ -30,6 +30,8 @@ import { toastr } from 'react-redux-toastr';
 // import { checkData } from './patient_helpers';
 // import { displayMessage } from './patient_helpers';
 import QrReader from '../qr/qrReader';
+import Modal from '../modal/modal';
+
 export default class PatientManagementView extends React.Component {
   constructor(props) {
     super(props);
@@ -56,6 +58,8 @@ export default class PatientManagementView extends React.Component {
       temperature: data.temperature ? data.temperature : '',
       tension: data.tension ? data.tension : '',
       img: data.img ? data.img : '',
+      showQr: 'none',
+      onShow: false,
     };
   };
   inputChanged = (e) => {
@@ -134,6 +138,24 @@ export default class PatientManagementView extends React.Component {
     // displayMessage(errors, 'error');
     // }
   };
+  findPatientByQr = (e) => {
+    //  console.log('res',e)
+    this.setState({
+      onShow: !this.state.onShow,
+      firstname: 'wilfried',
+      lastname: 'mambou',
+      Patientname: 'nothing',
+      gsanguin: 'O+',
+      sexe: 'M',
+      rhesus: 'Positif',
+      quartier: 'Etoudi',
+      temperature: '35',
+      tension: '12',
+      img: 'https://randomuser.me/api/portraits/med/men/1.jpg',
+    });
+
+    // this.props.history.push(ADD_FILE_ROUTE)
+  };
 
   clearInput = () => {
     this.setData({});
@@ -145,6 +167,12 @@ export default class PatientManagementView extends React.Component {
       [elt.name]: elt,
     });
   };
+  handleModal = () => {
+    this.setState({
+      onShow: !this.state.onShow,
+    });
+  };
+
   render() {
     //   console.log('prop',this.props)
     return (
@@ -163,7 +191,11 @@ export default class PatientManagementView extends React.Component {
         <Card>
           <CardHeader
             // className="d-flex justify-content-center"
-            style={{ display:'flex', alignItems: 'center', justifyContent: 'center' }}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
           >
             {(this.state.error || this.state.message) && (
               <UncontrolledAlert
@@ -188,6 +220,24 @@ export default class PatientManagementView extends React.Component {
           <CardBody>
             <Form className="form-horizontal">
               <div className="form-body">
+                {/* <div  style={{ display:'flex', alignItems: 'center', justifyContent: 'center' }}> */}
+                {/* <Row  md='12'>
+                    <Col md='12'> */}
+                {/* <QrReader qrvalue = {12345678} /> */}
+                {/* </Col> */}
+                {/* <Col md='12'> */}
+                <Modal
+                  title="Scaner Une Carte"
+                  onShow={this.handleModal}
+                  show={this.state.onShow}
+                  submit={this.findPatientByQr}
+                  datas={this.state.datas}
+                />
+               
+
+                {/* </Col>
+                  </Row> */}
+                {/* </div> */}
                 <Row>
                   <Col md="6">
                     <FormGroup row>
@@ -370,6 +420,19 @@ export default class PatientManagementView extends React.Component {
                     </FormGroup>
                   </Col>
                 </Row>
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                   
+                  }}
+                >
+                  <Button style={{ width:'25vw'}} onClick={this.handleModal} className={APP_COLOR}>
+                    {' '}
+                    <Search size={16} color="#FFF" />Qr Search
+                  </Button>
+                </div>
               </div>
 
               <div
