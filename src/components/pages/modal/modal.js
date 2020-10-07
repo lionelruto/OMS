@@ -30,7 +30,7 @@ const [qrValue, setqrValue] = useState(1)
      props.onShow(e)
  }
  const handleSubmit = ( ) =>{
-  props.submit(qrValue)
+  props.submit()
 }
 
 const onQrChange = (e)=>{

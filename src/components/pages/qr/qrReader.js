@@ -15,9 +15,15 @@ import {
   Modal,
 } from 'reactstrap';
 
+import {
+
+  APP_COLOR2,
+
+} from '../../../constants/app_utils';
+
 class QrRead extends Component {
   state = {
-    result: this.props.qrvalue ? this.props.qrvalue : 'Nothing'
+    result: this.props.qrvalue ? this.props.qrvalue : 'Nothing',
   };
 
   handleScan = (data) => {
@@ -40,40 +46,33 @@ componentWillReceiveProps(nextProps){
   })
 }
   render() {
-    console.log('test',this.state.result)
+    console.log('test', this.state.result);
     return (
-      <div style={{display:'flex',flexDirection:'column',alignContent:'center',alignItems:'center'}}>
-     
-        <Row md='12' style={{marginBottom:'5px'}}>
+      <div>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
           <QrReader
-            style={{ height: '250px', width: '250px'}}
+            style={{ height: '250px', width: '250px' }}
             onError={this.handleError}
             onScan={this.handleScan}
-   
-          />
-          </Row>
-          <Row md="12"      style={{width:'100%'}}>
-            <FormGroup row>
-              <Label for="Patientinput3" sm={4}>
-                valeur du QR:
-              </Label>
-              <Col sm={8}>
-                <Input
-                type='text'
-                style={{width:'100%'}}
-                value={this.state.result}
-                onChange={this.handleChange}
-          
-                />
-              
-              </Col>
-            </FormGroup>
-          </Row>
-
-  
-    
-
-     
+          /> 
+          <Label for="Patientinput3" sm={4}>
+            valeur du QR:
+          </Label>
+          <FormGroup row style={{ width: '100%',display:'flex' ,alignItems:'center',justifyContent:'center'}}>
+          <Col sm={8}>
+            <p style={{textAlign:'center'}}>{this.state.result}</p>
+            <hr className={APP_COLOR2} style={{width:'100%',height:'5px'}}/>
+          </Col>
+        </FormGroup>
+        </div>
+       
       </div>
     );
   }

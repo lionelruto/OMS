@@ -122,11 +122,13 @@ class PatientsListe extends Component {
                 </a>
               </div>
 
-              <div>
+              <div    style={{ display:'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Button className={APP_COLOR} onClick={this.handleModal}>
                   Qr Search
                 </Button>
+                </div>
 
+                  <div>
                 <Col
                   md={4}
                   style={{
