@@ -18,6 +18,14 @@ export const DELETE_PATIENT_ROUTE = "/patient/delete";
 export const LIST_PATIENT_ROUTE = "/patient";
 export const EDIT_PATIENT_ROUTE = "/patient/edit";
 
+export const ADD_FILE_ROUTE = "/patient/file/add";
+export const DELETE_FILE_ROUTE = "/patient/file/delete";
+export const EDIT_FILE_ROUTE = "/patient/file/edit";
+export const LIST_FILE_ROUTE = "/patient/file";
+
+
+
+
 
 
 export const ADD_CARTE_ROUTE = "/manager/carte/add";

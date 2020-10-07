@@ -38,7 +38,8 @@ import {
    MAIN_VIEW_ROUTE,
    LIST_CARTE_ROUTE,
    LIST_USER_ROUTE,
-   DASHBOARD
+   DASHBOARD,
+   LIST_FILE_ROUTE
  } from '../../../../constants/app_utils';
  
 class SideMenuContent extends Component {
@@ -92,11 +93,11 @@ class SideMenuContent extends Component {
                </NavLink>
             </SideMenu.MenuSingleItem>
             <SideMenu.MenuSingleItem >
-               <NavLink to="/asd" >
+               <NavLink to={LIST_FILE_ROUTE} >
                   <i className="menu-icon">
                      <Users size={18} />
                   </i>
-                  <span className="menu-item-text">Fille D'attente</span>
+                  <span className="menu-item-text">Consultaion</span>
                </NavLink>
             </SideMenu.MenuSingleItem>
          

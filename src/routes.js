@@ -9,6 +9,7 @@ import UsersListCartesView from './containers/users/manage_user';
 import LoginRouteView from './containers/auth/login_view'
 import DashboardView from './containers/dashboards/index'
 import CartesListView from './containers/cartes/manage_cartes'
+import FilesListView from './containers/file_attente/manager_file'
 
 
 
@@ -23,6 +24,9 @@ import SimpleRoute from './layouts/routes/simpleRoute';
 import MainLayout from './layouts/mainLayout';
 
 import {
+  EDIT_FILE_ROUTE,
+  ADD_FILE_ROUTE,
+  LIST_FILE_ROUTE,
   ADD_PATIENT_ROUTE,
   LOGIN_VIEW_ROUTE,
   MAIN_INFIRMIERE_ROUTE,
@@ -134,6 +138,7 @@ class ApplicationRouter extends Component {
               </MainLayout>
             )}
           />
+          
                      <SimpleRoute
             exact
             path={LIST_CARTE_ROUTE}
@@ -144,6 +149,38 @@ class ApplicationRouter extends Component {
               </MainLayout>
             )}
           />
+                  <SimpleRoute
+            exact
+            path={LIST_FILE_ROUTE}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <FilesListView {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
+                <SimpleRoute
+            exact
+            path={EDIT_FILE_ROUTE}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <FilesListView {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
+
+<SimpleRoute
+            exact
+            path={ADD_FILE_ROUTE}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <FilesListView {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
+          
 
           
 
