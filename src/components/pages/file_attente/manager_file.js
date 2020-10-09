@@ -60,6 +60,7 @@ export default class PatientManagementView extends React.Component {
       img: data.img ? data.img : '',
       showQr: 'none',
       onShow: false,
+      frequence:data.frequence? data.frequence :''
     };
   };
   inputChanged = (e) => {
@@ -152,6 +153,8 @@ export default class PatientManagementView extends React.Component {
       temperature: '35',
       tension: '12',
       img: 'https://randomuser.me/api/portraits/med/men/1.jpg',
+      frequence:85,
+      poids:'90kg'
     });
 
     // this.props.history.push(ADD_FILE_ROUTE)
@@ -174,7 +177,7 @@ export default class PatientManagementView extends React.Component {
   };
 
   render() {
-    //   console.log('prop',this.props)
+      console.log('prop',this.props.location.pathname)
     return (
       <Fragment>
         <div className="d-flex justify-content-between">
@@ -205,7 +208,8 @@ export default class PatientManagementView extends React.Component {
               </UncontrolledAlert>
             )}
             <div style={{ margin: '10', display: 'flex' }}>
-              {this.state.img && (
+              <Row md='12'>
+                {this.state.img && (
                 <img
                   style={{
                     height: '100px',
@@ -213,11 +217,22 @@ export default class PatientManagementView extends React.Component {
                     borderRadius: '50%',
                   }}
                   src={this.state.img}
-                />
-              )}
+                />  )}
+              </Row>
+          
             </div>
+          
+
           </CardHeader>
           <CardBody>
+            <div    
+             style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+  <p style={{textAlign:'center',display:'block'}}>{this.state.firstname}{''} {this.state.lastname}</p>
+            </div>
             <Form className="form-horizontal">
               <div className="form-body">
                 {/* <div  style={{ display:'flex', alignItems: 'center', justifyContent: 'center' }}> */}
@@ -238,6 +253,8 @@ export default class PatientManagementView extends React.Component {
                 {/* </Col>
                   </Row> */}
                 {/* </div> */}
+
+                {/* {this.props.location.pathname !== ADD_FILE_ROUTE &&( 
                 <Row>
                   <Col md="6">
                     <FormGroup row>
@@ -274,6 +291,8 @@ export default class PatientManagementView extends React.Component {
                     </FormGroup>
                   </Col>
                 </Row>
+               )} */}
+                    {/* {this.props.location.pathname !== ADD_FILE_ROUTE &&( 
                 <Row>
                   <Col md="6">
                     <FormGroup row>
@@ -310,6 +329,9 @@ export default class PatientManagementView extends React.Component {
                     </FormGroup>
                   </Col>
                 </Row>
+            
+  )} */}
+                
                 <Row>
                   <Col md="6">
                     <FormGroup row>
@@ -364,26 +386,27 @@ export default class PatientManagementView extends React.Component {
                       </Col>
                     </FormGroup>
                   </Col>
-
                   <Col md="6">
                     <FormGroup row>
-                      <Label for="userinput3" sm={4}>
-                        Sexe :
+                      <Label for="Patientinput4" sm={4}>
+                        Frequence Cardiaque :
                       </Label>
                       <Col sm={8}>
-                        <CreateableSelect
-                          options={this.props.sexe}
-                          name="sexe"
-                          getOptionLabel={(elt) => elt.label}
-                          getOptionValue={(elt) => elt}
-                          value={this.state.sexe}
-                          onChange={(elt) => this.NotificationInputChanged(elt)}
+                        <Input
+                          type="text"
+                          id="Patientiquat4"
+                          className="border-primary"
+                          name="frequence"
+                          value={this.state.frequence}
+                          onChange={this.inputChanged}
                         />
                       </Col>
                     </FormGroup>
                   </Col>
                 </Row>
+                
                 <Row md="12">
+                {/* {this.props.location.pathname !== ADD_FILE_ROUTE &&( 
                   <Col md="6">
                     <FormGroup row>
                       <Label for="userinput3" sm={4}>
@@ -401,7 +424,7 @@ export default class PatientManagementView extends React.Component {
                       </Col>
                     </FormGroup>
                   </Col>
-
+   )} */}
                   <Col md="6">
                     <FormGroup row>
                       <Label for="userinput3" sm={4}>
@@ -419,6 +442,28 @@ export default class PatientManagementView extends React.Component {
                       </Col>
                     </FormGroup>
                   </Col>
+                </Row>
+                <Row>
+                {/* {this.props.location.pathname !== ADD_FILE_ROUTE &&( 
+                  <Col md="6">
+                    <FormGroup row>
+                      <Label for="userinput3" sm={4}>
+                        Sexe :
+                      </Label>
+                      <Col sm={8}>
+                        <CreateableSelect
+                          options={this.props.sexe}
+                          name="sexe"
+                          getOptionLabel={(elt) => elt.label}
+                          getOptionValue={(elt) => elt}
+                          value={this.state.sexe}
+                          onChange={(elt) => this.NotificationInputChanged(elt)}
+                        />
+                      </Col>
+                    </FormGroup>
+                  </Col>
+                  ) } */}
+              
                 </Row>
                 <div
                   style={{

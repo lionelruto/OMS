@@ -44,7 +44,7 @@ class FilesListe extends Component {
   };
 
   render() {
-    console.log('props:', this.state.datas);
+    console.log('props:', this.props);
     return (
       <div>
             {/* <ContentHeader>File D'Attente</ContentHeader> */}

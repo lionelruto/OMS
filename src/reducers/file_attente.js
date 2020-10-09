@@ -27,7 +27,8 @@ const initialState = {
         firstname:'Jessica Rice',
         poids: '60kg',
         tension :'12',
-        temperature:'28'
+        temperature:'28',
+        frequence:'76'
 
 
 
@@ -51,7 +52,8 @@ const initialState = {
         firstname:'JohnDoh',
         poids: '70kg',
         tension :'13',
-        temperature:'29'
+        temperature:'29',
+        frequence:'85'
 
      },
      {
@@ -72,7 +74,8 @@ const initialState = {
         firstname:'Biloa Rice',
         poids: '80kg',
         tension :'12',
-        temperature:'28'
+        temperature:'28',
+        frequence:'90'
 
      },
      {
@@ -93,7 +96,8 @@ const initialState = {
         firstname:'Rugal iori',
         poids: '90kg',
         tension :'12',
-        temperature:'28'
+        temperature:'28',
+        frequence:'100'
 
      },
      {
@@ -114,7 +118,8 @@ const initialState = {
         firstname:'Iori Rice',
         poids: '60kg',
         tension :'12',
-        temperature:'28'
+        temperature:'28',
+        frequence:'80'
 
      }],
     cartes:[
