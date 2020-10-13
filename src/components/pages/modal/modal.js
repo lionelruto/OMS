@@ -14,27 +14,33 @@ const ModalExample = (props) => {
     body,
     show,
     submit,
-    datas
+    datas,
+    type
   } = props;
   const [modal, setModal] = useState(false);
   const [show1, setShow] = useState(false);
-const [qrValue, setqrValue] = useState(1)
+const [qrValueC, setqrValueC] = useState(1)
+const [qrValueP, setqrValueP] = useState(12345620)
  
   useEffect(() => {
   setShow(show)
-  // setqrValue(12345620)
+  // setqrValueC(12345620)
 }, [show])
   const toggle = () => setModal(!modal);
 
- const handleTogle = (e) =>{
-     props.onShow(e)
+ const handleTogle = () =>{
+     props.onShow()
  }
- const handleSubmit = ( ) =>{
+ const handleSubmitP = ( ) =>{
+  props.submit(qrValueP)
+}
+const handleSubmit = ( ) =>{
   props.submit()
 }
 
+
 const onQrChange = (e)=>{
-setqrValue(e)
+setqrValueC(e)
 }
 
 
@@ -44,7 +50,7 @@ setqrValue(e)
   <ModalHeader toggle={handleTogle}>{title}</ModalHeader>
         <ModalBody style={{alignItems:'center',alignContent:'center'}}>
         
-             <QrReader qrvalue = {qrValue}
+             <QrReader qrvalue = {qrValueC}
               submitQr={onQrChange}
              />
      
@@ -52,7 +58,7 @@ setqrValue(e)
         <ModalFooter>
           <Row>
             <Col md='6'> {datas !== null ? <Check size={25} color="green" /> :  <X size={25} color="red"/> } </Col>
-            <Col md='6'> <Button className={APP_COLOR2} onClick={handleSubmit}>Verifier</Button>{' '}</Col>
+            <Col md='6'> <Button className={APP_COLOR2} onClick={type ==='patient' ?handleSubmitP :handleSubmit}>Verifier</Button>{' '}</Col>
           </Row>
          
         </ModalFooter>

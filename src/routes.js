@@ -10,6 +10,7 @@ import LoginRouteView from './containers/auth/login_view'
 import DashboardView from './containers/dashboards/index'
 import CartesListView from './containers/cartes/manage_cartes'
 import FilesListView from './containers/file_attente/manager_file'
+import ConsultationView from './containers/consultation/manage_consultation'
 
 
 
@@ -36,7 +37,11 @@ import {
   LIST_CARTE_ROUTE,
   LIST_USER_ROUTE,
   ADD_USER_ROUTE,
-  DASHBOARD
+  DASHBOARD,
+  LIST_CONSULTATION_ROUTE,
+  ADD_CONSULTATION_ROUTE,
+  DELETE_CONSULTATION_ROUTE,
+  EDIT_CONSULTATION_ROUTE
 } from './constants/app_utils';
 
 
@@ -169,6 +174,7 @@ class ApplicationRouter extends Component {
               </MainLayout>
             )}
           />
+          
 
 <SimpleRoute
             exact
@@ -177,6 +183,36 @@ class ApplicationRouter extends Component {
               <MainLayout>
                 {' '}
                 <FilesListView {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
+          <SimpleRoute
+            exact
+            path={ADD_CONSULTATION_ROUTE}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <ConsultationView {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
+           <SimpleRoute
+            exact
+            path={LIST_CONSULTATION_ROUTE}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <ConsultationView {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
+           <SimpleRoute
+            exact
+            path={EDIT_CONSULTATION_ROUTE}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <ConsultationView {...matchprops} />{' '}
               </MainLayout>
             )}
           />

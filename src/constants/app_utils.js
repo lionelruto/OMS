@@ -23,6 +23,10 @@ export const DELETE_FILE_ROUTE = "/patient/file/delete";
 export const EDIT_FILE_ROUTE = "/patient/file/edit";
 export const LIST_FILE_ROUTE = "/patient/file";
 
+export const ADD_CONSULTATION_ROUTE = "/patient/consultation/add";
+export const DELETE_CONSULTATION_ROUTE = "/patient/consultation/delete";
+export const EDIT_CONSULTATION_ROUTE = "/patient/consultation/edit";
+export const LIST_CONSULTATION_ROUTE = "/patient/consultation";
 
 
 

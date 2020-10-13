@@ -9,10 +9,10 @@ import { withRouter } from 'react-router-dom';
 import { RefreshCcw } from 'react-feather';
 
 import {
-  ADD_PATIENT_ROUTE,
+  ADD_CONSULTATION_ROUTE,
   LOGIN_VIEW_ROUTE,
   MAIN_INFIRMIERE_ROUTE,
-  LIST_PATIENT_ROUTE,
+  LIST_FILE_ROUTE,
   ADD_CARTE_ROUTE,
   MAIN_VIEW_ROUTE,
   LIST_CARTE_ROUTE,
@@ -22,19 +22,19 @@ import {
 
 import Modal from '../modal/modal';
 import QrReader from '../qr/qrReader';
-class PatientsListe extends Component {
+class FilesListe extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       showQr: 'none',
       onShow: false,
-      datas: null,
+      datas: this.props.datas?this.props.datas :[],
     };
   }
 
-  handleCreateNewPatient = () => {
-    this.props.history.push(ADD_PATIENT_ROUTE);
+  handleCreateNewPatientTofile = () => {
+    this.props.history.push(ADD_CONSULTATION_ROUTE);
   };
 
   handleModal = () => {
@@ -42,30 +42,14 @@ class PatientsListe extends Component {
       onShow: !this.state.onShow,
     });
   };
-  handleSubmitModal = (value)=>{
-    console.log('valeur:',value)
-   let  carte =  this.props.cartes && this.props.cartes.find(e=>e.SerialNumber === value)
-   let patient = this.props.datas && this.props.datas.find(e=>e.carte.SerialNumber=== value)
-   let val = [patient]
 
-   if(carte !== undefined && carte.SerialNumber >0){
-    this.setState({
-      onShow: !this.state.onShow,
-      datas:val
-    });
-    this.props.history.push(LIST_PATIENT_ROUTE) 
-
-   }
-   else{
-     console.log('Not Found')
-   }
-  }
   render() {
-    console.log('props:', this.state.datas);
+    console.log('props:', this.props);
     return (
       <div>
+            {/* <ContentHeader>File D'Attente</ContentHeader> */}
         {/* <div className="d-flex justify-content-between">
-                    <ContentHeader>Users</ContentHeader>
+                
                     {this.props.location.pathname !== ADD_PATIENT_ROUTE &&
                         <Button size="sm" outline onClick={this.handleCreateNewPatient}>Add New User</Button>
                     }
@@ -81,8 +65,8 @@ class PatientsListe extends Component {
             md={12}
           >
             <div className="d-flex justify-content-between">
-              <ContentHeader>Patient</ContentHeader>
-              {this.props.location.pathname !== ADD_PATIENT_ROUTE && (
+              <ContentHeader>Consultations List</ContentHeader>
+              {this.props.location.pathname !== ADD_CONSULTATION_ROUTE && (
                 <Button
                   className={APP_COLOR}
                   style={{
@@ -92,7 +76,7 @@ class PatientsListe extends Component {
                     display: 'block',
                     // border :'3px solid #fff'
                   }}
-                  onClick={this.handleCreateNewPatient}
+                  onClick={this.handleCreateNewPatientTofile}
                 >
                   <Plus size={24} color="#fff"></Plus>
                 </Button>
@@ -123,13 +107,9 @@ class PatientsListe extends Component {
                 </a>
               </div>
 
-              <div    style={{ display:'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Button className={APP_COLOR} onClick={this.handleModal}>
-                  Qr Search
-                </Button>
-                </div>
+              <div>
 
-                  <div>
+
                 <Col
                   md={4}
                   style={{
@@ -189,18 +169,10 @@ class PatientsListe extends Component {
           </Col>
         </Row>
 
-        <Modal
-          title="Scaner Une Carte"
-          onShow={this.handleModal}
-          show={this.state.onShow}
-          submit ={this.handleSubmitModal}
-          datas={this.state.datas}
-          type = 'patient'
-
-        />
+   
       </div>
     );
   }
 }
 
-export default withRouter(PatientsListe);
+export default withRouter(FilesListe);

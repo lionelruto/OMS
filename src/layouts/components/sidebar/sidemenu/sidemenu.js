@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import CreditCardIcon from '@material-ui/icons/CreditCard';
+import {FaStethoscope} from 'react-icons/fa'
 import {
    Home,
    Mail,
@@ -39,7 +40,8 @@ import {
    LIST_CARTE_ROUTE,
    LIST_USER_ROUTE,
    DASHBOARD,
-   LIST_FILE_ROUTE
+   LIST_FILE_ROUTE,
+   LIST_CONSULTATION_ROUTE
  } from '../../../../constants/app_utils';
  
 class SideMenuContent extends Component {
@@ -55,6 +57,7 @@ class SideMenuContent extends Component {
                <NavLink to={DASHBOARD} exact className="item" activeclassname="active">
              
                   <span className="menu-item-text">Statistiques</span>
+                  {/* <span className="menu-item-text">Mes-Statistiques</span> */}
                </NavLink>
                
                
@@ -95,7 +98,16 @@ class SideMenuContent extends Component {
             <SideMenu.MenuSingleItem >
                <NavLink to={LIST_FILE_ROUTE} >
                   <i className="menu-icon">
-                     <Users size={18} />
+                     <FaStethoscope size={18} color="#fff" />
+                  </i>
+                  <span className="menu-item-text">Pre-Consultaion</span>
+               </NavLink>
+            </SideMenu.MenuSingleItem>
+            <SideMenu.MenuSingleItem >
+               <NavLink   to={LIST_CONSULTATION_ROUTE}>
+               {/* to={LIST_CONSULTATION_ROUTE} */}
+                  <i className="menu-icon">
+                     <FaStethoscope size={18} color="#fff" />
                   </i>
                   <span className="menu-item-text">Consultaion</span>
                </NavLink>
