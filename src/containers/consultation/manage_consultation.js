@@ -40,7 +40,7 @@ export class ManageFiles extends Component {
            
                 userIdEdit:null,
                 fileDataEdit:null,
-                fileDataAdd:null,
+                consultaionDataAdd:null,
                 consultationIdEdit:null
           
         
@@ -60,7 +60,7 @@ export class ManageFiles extends Component {
     }
     setAddConsultation  = (consultationId,consultationDatas) =>{
       this.setState({
-        fileDataAdd: consultationDatas,
+        consultaionDataAdd: consultationDatas,
         consultationIdEdit: consultationId
     }, ()=>{
         this.props.history.push(ADD_CONSULTATION_ROUTE)
@@ -72,12 +72,12 @@ export class ManageFiles extends Component {
     }
 
     render() {
-        // console.log('testrr',this.props)
+        console.log('testrr',this.state.consultaionDataAdd)
         return (
             <div>
               <ListsView 
                 editData ={this.state.fileDataEdit}
-                addData={this.state.consultationIdEdit}
+                addData={this.state.consultaionDataAdd}
               datas={this.props.datas}
               // prop1={this.props}
               gsanguin = {[{id:1,name:'gsanguin',label:'A-'},{id:2,name:'gsanguin',label:'B-'},{id:3,name:'gsanguin',label:'o-'},{id:4,name:'gsanguin',label:'AB-'},{id:5,name:'gsanguin',label:'o+'},{id:6,name:'gsanguin',label:'A+'},{id:7,name:'gsanguin',label:'B+'},{id:8,name:'gsanguin',label:'AB+'}]}

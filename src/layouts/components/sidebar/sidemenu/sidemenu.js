@@ -57,6 +57,7 @@ class SideMenuContent extends Component {
                <NavLink to={DASHBOARD} exact className="item" activeclassname="active">
              
                   <span className="menu-item-text">Statistiques</span>
+                  {/* <span className="menu-item-text">Mes-Statistiques</span> */}
                </NavLink>
                
                

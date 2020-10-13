@@ -36,7 +36,7 @@ export default class PatientManagementView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-    let data = props.editData ? props.editData : {};
+    let data = props.addData ? props.addData : {};
     this.state = this.getFormData(data);
   }
   getFormData = (data) => {
@@ -74,10 +74,10 @@ export default class PatientManagementView extends React.Component {
   };
   componentWillReceiveProps = (nextProps) => {
     this.setData(
-      nextProps.editData && nextProps.editData.id === this.state.id
+      nextProps.addData && nextProps.addData.id === this.state.id
         ? this.state
-        : nextProps.editData
-        ? nextProps.editData
+        : nextProps.addData
+        ? nextProps.addData
         : this.state.Patientname
         ? this.state
         : {}
