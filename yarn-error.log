@@ -1,30 +1,21 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add react-select 3.0.4
+  /home/donald/.nvm/versions/node/v14.10.1/bin/node /usr/share/yarn/bin/yarn.js install
 
 PATH: 
-  C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin\;C:\WINDOWS\System32\OpenSSH\;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files\MongoDB\Server\4.4\bin;C:\Users\wilfried Mambou\AppData\Local\Programs\Python\Python38\Scripts\;C:\Users\wilfried Mambou\AppData\Local\Programs\Python\Python38\;C:\Users\wilfried Mambou\AppData\Roaming\npm;C:\Program Files\heroku\bin;C:\Users\wilfried Mambou\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\wilfried Mambou\AppData\Local\Yarn\bin;C:\Users\wilfried Mambou\AppData\Local\Microsoft\WindowsApps;C:\Users\wilfried Mambou\AppData\Roaming\Composer\vendor\bin
+  /home/donald/.nvm/versions/node/v14.10.1/bin:/usr/local/bin/youtube-dl:/home/donald/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 
 Yarn version: 
-  1.22.4
+  1.22.5
 
 Node version: 
-  12.18.3
+  14.10.1
 
 Platform: 
-  win32 x64
+  linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/3.0.4: Not found
-      at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:66096:18)
-      at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:140748:22)
-      at Request.emit (events.js:315:20)
-      at Request.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141720:10)
-      at Request.emit (events.js:315:20)
-      at IncomingMessage.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141642:12)
-      at Object.onceWrapper (events.js:421:28)
-      at IncomingMessage.emit (events.js:327:22)
-      at endReadableNT (_stream_readable.js:1220:12)
-      at processTicksAndRejections (internal/process/task_queues.js:84:21)
+  Error: getaddrinfo EAI_AGAIN registry.yarnpkg.com
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:67:26)
 
 npm manifest: 
   {
@@ -51,6 +42,8 @@ npm manifest:
         "moment-timezone": "^0.5.31",
         "namor": "^1.0.1",
         "prismjs": "^1.15.0",
+        "qrcode": "^1.4.4",
+        "qrcode-react": "^0.1.16",
         "rc-slider": "^8.6.1",
         "react": "^16.6.0",
         "react-beautiful-dnd": "^9.0.2",
@@ -68,12 +61,13 @@ npm manifest:
         "react-icons": "^3.11.0",
         "react-perfect-scrollbar": "^1.1.1",
         "react-prism": "^4.3.2",
+        "react-qr-reader": "^2.2.1",
         "react-redux": "^5.0.7",
         "react-redux-toastr": "^7.4.1",
         "react-router-dom": "^4.3.1",
         "react-router-redux": "^4.0.8",
         "react-scripts": "2.1.1",
-        "react-select": "^2.0.0",
+        "react-select": "^2.4.4",
         "react-spinners": "^0.4.7",
         "react-stepzilla": "^4.7.2",
         "react-swipeable-views": "^0.12.16",
