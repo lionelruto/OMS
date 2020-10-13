@@ -14,7 +14,15 @@ import {
 } from 'reactstrap';
 import ContentHeader from '../../contentHead/contentHeader';
 import 'react-table/react-table.css';
-import { X, CheckSquare, RefreshCw, Eye, EyeOff, Search,PlusCircle } from 'react-feather';
+import {
+  X,
+  CheckSquare,
+  RefreshCw,
+  Eye,
+  EyeOff,
+  Search,
+  PlusCircle,
+} from 'react-feather';
 import { ClipLoader } from 'react-spinners';
 import CreateableSelect from 'react-select';
 
@@ -60,7 +68,7 @@ export default class PatientManagementView extends React.Component {
       img: data.img ? data.img : '',
       showQr: 'none',
       onShow: false,
-      frequence:data.frequence? data.frequence :''
+      frequence: data.frequence ? data.frequence : '',
     };
   };
   inputChanged = (e) => {
@@ -153,8 +161,8 @@ export default class PatientManagementView extends React.Component {
       temperature: '35',
       tension: '12',
       img: 'https://randomuser.me/api/portraits/med/men/1.jpg',
-      frequence:85,
-      poids:'90kg'
+      frequence: 85,
+      poids: '90kg',
     });
 
     // this.props.history.push(ADD_CONSULTATION_ROUTE)
@@ -177,7 +185,7 @@ export default class PatientManagementView extends React.Component {
   };
 
   render() {
-      console.log('prop',this.props.location.pathname)
+    console.log('prop', this.props.location.pathname);
     return (
       <Fragment>
         <div className="d-flex justify-content-between">
@@ -208,39 +216,35 @@ export default class PatientManagementView extends React.Component {
               </UncontrolledAlert>
             )}
             <div style={{ margin: '10', display: 'flex' }}>
-              <Row md='12'>
+              <Row md="12">
                 {this.state.img && (
-                <img
-                  style={{
-                    height: '100px',
-                    width: '100px',
-                    borderRadius: '50%',
-                  }}
-                  src={this.state.img}
-                />  )}
+                  <img
+                    style={{
+                      height: '100px',
+                      width: '100px',
+                      borderRadius: '50%',
+                    }}
+                    src={this.state.img}
+                  />
+                )}
               </Row>
-          
             </div>
-          
-
           </CardHeader>
           <CardBody>
-            <div    
-             style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-  <p style={{textAlign:'center',display:'block'}}>{this.state.firstname}{''} {this.state.lastname}</p>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <p style={{ textAlign: 'center', display: 'block' }}>
+                {this.state.firstname}
+                {''} {this.state.lastname}
+              </p>
             </div>
             <Form className="form-horizontal">
               <div className="form-body">
-                {/* <div  style={{ display:'flex', alignItems: 'center', justifyContent: 'center' }}> */}
-                {/* <Row  md='12'>
-                    <Col md='12'> */}
-                {/* <QrReader qrvalue = {12345678} /> */}
-                {/* </Col> */}
-                {/* <Col md='12'> */}
                 <Modal
                   title="Scaner Une Carte"
                   onShow={this.handleModal}
@@ -248,7 +252,24 @@ export default class PatientManagementView extends React.Component {
                   submit={this.findPatientByQr}
                   datas={this.state.datas}
                 />
-               
+    <Row>
+                  <Col md="6">
+<p>   tension:{''}{this.state.tension}</p>
+                  </Col>
+                  <Col md="6">
+                      <p>    Frequence Cardiaque : {''}{this.state.frequence}</p>
+                  </Col>
+                  <Col md="6">
+                      <p>  Poids: {this.state.poids}</p>
+                  </Col>
+                  <Col md="6">
+                      
+                      <p>  temperature: {''}{this.state.temperature}</p>
+                  </Col>
+                  <Col md="6">
+                      <p>   Groupe Sanguin : {''}{this.state.gsanguin}</p>
+                  </Col>
+                </Row>
 
                 {/* </Col>
                   </Row> */}
@@ -292,7 +313,7 @@ export default class PatientManagementView extends React.Component {
                   </Col>
                 </Row>
                )} */}
-                    {/* {this.props.location.pathname !== ADD_CONSULTATION_ROUTE &&( 
+                {/* {this.props.location.pathname !== ADD_CONSULTATION_ROUTE &&( 
                 <Row>
                   <Col md="6">
                     <FormGroup row>
@@ -331,82 +352,10 @@ export default class PatientManagementView extends React.Component {
                 </Row>
             
   )} */}
-                
-                <Row>
-                  <Col md="6">
-                    <FormGroup row>
-                      <Label for="Patientinput3" sm={4}>
-                        Poids:
-                      </Label>
-                      <Col sm={8}>
-                        <Input
-                          type="text"
-                          id="poids"
-                          className="border-primary"
-                          name="poids"
-                          value={this.state.poids}
-                          onChange={this.inputChanged}
-                        />
-                      </Col>
-                    </FormGroup>
-                  </Col>
-                  <Col md="6">
-                    <FormGroup row>
-                      <Label for="Patientinput4" sm={4}>
-                        temperature:
-                      </Label>
-                      <Col sm={8}>
-                        <Input
-                          type="text"
-                          id="Patientiquat4"
-                          className="border-primary"
-                          name="temperature"
-                          value={this.state.temperature}
-                          onChange={this.inputChanged}
-                        />
-                      </Col>
-                    </FormGroup>
-                  </Col>
-                </Row>
+
+            
                 <Row md="12">
-                  <Col md="6">
-                    <FormGroup row>
-                      <Label for="Patientinput4" sm={4}>
-                        tension:
-                      </Label>
-                      <Col sm={8}>
-                        <Input
-                          type="text"
-                          id="Patientiquat4"
-                          className="border-primary"
-                          name="tension"
-                          value={this.state.tension}
-                          onChange={this.inputChanged}
-                        />
-                      </Col>
-                    </FormGroup>
-                  </Col>
-                  <Col md="6">
-                    <FormGroup row>
-                      <Label for="Patientinput4" sm={4}>
-                        Frequence Cardiaque :
-                      </Label>
-                      <Col sm={8}>
-                        <Input
-                          type="text"
-                          id="Patientiquat4"
-                          className="border-primary"
-                          name="frequence"
-                          value={this.state.frequence}
-                          onChange={this.inputChanged}
-                        />
-                      </Col>
-                    </FormGroup>
-                  </Col>
-                </Row>
-                
-                <Row md="12">
-                {/* {this.props.location.pathname !== ADD_CONSULTATION_ROUTE &&( 
+                  {/* {this.props.location.pathname !== ADD_CONSULTATION_ROUTE &&( 
                   <Col md="6">
                     <FormGroup row>
                       <Label for="userinput3" sm={4}>
@@ -425,26 +374,10 @@ export default class PatientManagementView extends React.Component {
                     </FormGroup>
                   </Col>
    )} */}
-                  <Col md="6">
-                    <FormGroup row>
-                      <Label for="userinput3" sm={4}>
-                        Groupe Sanguin :
-                      </Label>
-                      <Col sm={8}>
-                        <CreateableSelect
-                          options={this.props.gsanguin}
-                          name="gsanguin"
-                          getOptionLabel={(elt) => elt.label}
-                          getOptionValue={(elt) => elt}
-                          value={this.state.gsanguin}
-                          onChange={(elt) => this.NotificationInputChanged(elt)}
-                        />
-                      </Col>
-                    </FormGroup>
-                  </Col>
+                
                 </Row>
                 <Row>
-                {/* {this.props.location.pathname !== ADD_CONSULTATION_ROUTE &&( 
+                  {/* {this.props.location.pathname !== ADD_CONSULTATION_ROUTE &&( 
                   <Col md="6">
                     <FormGroup row>
                       <Label for="userinput3" sm={4}>
@@ -463,21 +396,24 @@ export default class PatientManagementView extends React.Component {
                     </FormGroup>
                   </Col>
                   ) } */}
-              
                 </Row>
-                <div
+                {/* <div
                   style={{
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                   
                   }}
                 >
-                  <Button style={{ width:'25vw'}} onClick={this.handleModal} className={APP_COLOR}>
+                  <Button
+                    style={{ width: '25vw' }}
+                    onClick={this.handleModal}
+                    className={APP_COLOR}
+                  >
                     {' '}
-                    <Search size={16} color="#FFF" />Qr Search
+                    <Search size={16} color="#FFF" />
+                    Qr Search
                   </Button>
-                </div>
+                </div> */}
               </div>
 
               <div
@@ -500,7 +436,9 @@ export default class PatientManagementView extends React.Component {
                     color="warning"
                     className={APP_COLOR2}
                     PATIENT
-                    onClick={() => this.props.history.push(LIST_CONSULTATION_ROUTE)}
+                    onClick={() =>
+                      this.props.history.push(LIST_CONSULTATION_ROUTE)
+                    }
                   >
                     <X size={16} color="#FFF" /> Cancel
                   </Button>
