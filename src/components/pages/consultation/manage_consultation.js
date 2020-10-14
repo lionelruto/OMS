@@ -39,7 +39,9 @@ import { toastr } from 'react-redux-toastr';
 // import { displayMessage } from './patient_helpers';
 import QrReader from '../qr/qrReader';
 import Modal from '../modal/modal';
-import Firstape from './steps/analyse'
+// import Firstape from './steps/analyse';
+import Firstape from './steps/Enquete_systeme';
+
 
 export default class PatientManagementView extends React.Component {
   constructor(props) {
@@ -201,7 +203,6 @@ export default class PatientManagementView extends React.Component {
           }}
         />
         <Card>
-     
           <CardHeader
             // className="d-flex justify-content-center"
             style={{
@@ -232,7 +233,7 @@ export default class PatientManagementView extends React.Component {
               </Row>
             </div>
           </CardHeader>
-          
+
           <CardBody>
             <div
               style={{
@@ -255,25 +256,40 @@ export default class PatientManagementView extends React.Component {
                   submit={this.findPatientByQr}
                   datas={this.state.datas}
                 />
-    <Row>
+                <Row>
                   <Col md="12">
-<p>   tension:{''}{this.state.tension}</p>
+                    <p>
+                      {' '}
+                      tension:{''}
+                      {this.state.tension}
+                    </p>
                   </Col>
                   <Col md="12">
-                      <p>    Frequence Cardiaque : {''}{this.state.frequence}</p>
+                    <p>
+                      {' '}
+                      Frequence Cardiaque : {''}
+                      {this.state.frequence}
+                    </p>
                   </Col>
                   <Col md="12">
-                      <p>  Poids: {this.state.poids}</p>
+                    <p> Poids: {this.state.poids}</p>
                   </Col>
                   <Col md="12">
-                      
-                      <p>  temperature: {''}{this.state.temperature}</p>
+                    <p>
+                      {' '}
+                      temperature: {''}
+                      {this.state.temperature}
+                    </p>
                   </Col>
                   <Col md="12">
-                      <p>   Groupe Sanguin : {''}{this.state.gsanguin}</p>
+                    <p>
+                      {' '}
+                      Groupe Sanguin : {''}
+                      {this.state.gsanguin}
+                    </p>
                   </Col>
                 </Row>
-                <Firstape/>
+                <Firstape />
                 {/* </Col>
                   </Row> */}
                 {/* </div> */}
@@ -356,7 +372,6 @@ export default class PatientManagementView extends React.Component {
             
   )} */}
 
-            
                 <Row md="12">
                   {/* {this.props.location.pathname !== ADD_CONSULTATION_ROUTE &&( 
                   <Col md="6">
@@ -377,7 +392,6 @@ export default class PatientManagementView extends React.Component {
                     </FormGroup>
                   </Col>
    )} */}
-                
                 </Row>
                 <Row>
                   {/* {this.props.location.pathname !== ADD_CONSULTATION_ROUTE &&( 
