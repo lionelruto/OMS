@@ -40,7 +40,10 @@ import { toastr } from 'react-redux-toastr';
 import QrReader from '../qr/qrReader';
 import Modal from '../modal/modal';
 // import Firstape from './steps/analyse';
-import Firstape from './steps/Enquete_systeme';
+// import Firstape from './steps/Enquete_systeme';
+// import Firstape from './steps/examens_physique';
+import Firstape from './steps/Hypothese_diagnostique';
+
 
 
 export default class PatientManagementView extends React.Component {

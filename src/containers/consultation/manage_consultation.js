@@ -13,7 +13,8 @@ import {
     MAIN_VIEW_ROUTE,
     LIST_CARTE_ROUTE,
     EDIT_CONSULTATION_ROUTE,
-    ADD_CONSULTATION_ROUTE
+    ADD_CONSULTATION_ROUTE,
+    ADD_INDEX_CONSULTATION_ROUTE
   } from '../../constants/app_utils';
   
 
@@ -63,7 +64,7 @@ export class ManageFiles extends Component {
         consultaionDataAdd: consultationDatas,
         consultationIdEdit: consultationId
     }, ()=>{
-        this.props.history.push(ADD_CONSULTATION_ROUTE)
+        this.props.history.push(ADD_INDEX_CONSULTATION_ROUTE)
         setTimeout(() => {
             window.scrollTo(0,0);
         }, 25);

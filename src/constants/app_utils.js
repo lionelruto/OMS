@@ -28,6 +28,13 @@ export const DELETE_CONSULTATION_ROUTE = "/patient/consultation/delete";
 export const EDIT_CONSULTATION_ROUTE = "/patient/consultation/edit";
 export const LIST_CONSULTATION_ROUTE = "/patient/consultation";
 
+export const ANALYSE_CONSULTATION_ROUTE = "/patient/consultation/analyse";
+export const HYPOTHSE_CONSULTATION_ROUTE = "/patient/consultation/hypothese";
+export const ENQUETE_CONSULTATION_ROUTE = "/patient/consultation/enquete";
+export const EXAMEN_PHYSIQUE_CONSULTATION_ROUTE = "/patient/consultation/examenPhysique";
+
+export const ADD_INDEX_CONSULTATION_ROUTE = "/patient/consultation/dashIndex";
+
 
 
 
