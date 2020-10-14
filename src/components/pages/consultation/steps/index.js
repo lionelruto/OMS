@@ -77,7 +77,7 @@ export class index extends Component {
             <div>
 
            <Row className="row-eq-height">
-            <Col sm="12" md="6" xl="3" style={{cursor:'pointer'}} onClick={this.handleAnalyseClick}>
+            <Col sm="12" md="6" xl="6" style={{cursor:'pointer'}} onClick={this.handleAnalyseClick}>
               <Statistics
                 chartData={'good'}
                 cardBgColor="gradient-green-teal"
@@ -92,7 +92,7 @@ export class index extends Component {
                 {/* <Icon.Users size={36} strokeWidth="1.3" color="#fff" /> */}
               </Statistics>
             </Col>
-            <Col sm="12" md="6" xl="3" style={{cursor:'pointer'}} onClick={this.handleEnqueteClick}>
+            <Col sm="12" md="6" xl="6" style={{cursor:'pointer'}} onClick={this.handleEnqueteClick}>
               <Statistics
                 chartData={'good'}
                 cardBgColor="gradient-green-teal"
@@ -104,7 +104,7 @@ export class index extends Component {
                 <FaXRay size={36} strokeWidth="1.3" color="#fff" />
               </Statistics>
             </Col>
-            <Col sm="12" md="6" xl="3" style={{cursor:'pointer'}} onClick={this.handleHypothseClick}>
+            <Col sm="12" md="6" xl="6" style={{cursor:'pointer'}} onClick={this.handleHypothseClick}>
               <Statistics
                 chartData={'good'}
                 cardBgColor="gradient-green-teal"
@@ -118,7 +118,7 @@ export class index extends Component {
               </Statistics>
             </Col>
 
-            <Col sm="12" md="6" xl="3" style={{cursor:'pointer'}} name ='Physique' onClick={this.handlePhysiqExamsClick}>
+            <Col sm="12" md="6" xl="6" style={{cursor:'pointer'}} name ='Physique' onClick={this.handlePhysiqExamsClick}>
               <Statistics
                 chartData={'good'}
                 cardBgColor="gradient-green-teal"
