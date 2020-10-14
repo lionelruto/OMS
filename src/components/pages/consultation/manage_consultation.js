@@ -39,6 +39,7 @@ import { toastr } from 'react-redux-toastr';
 // import { displayMessage } from './patient_helpers';
 import QrReader from '../qr/qrReader';
 import Modal from '../modal/modal';
+import Firstape from './steps/analyse'
 
 export default class PatientManagementView extends React.Component {
   constructor(props) {
@@ -200,6 +201,7 @@ export default class PatientManagementView extends React.Component {
           }}
         />
         <Card>
+     
           <CardHeader
             // className="d-flex justify-content-center"
             style={{
@@ -230,6 +232,7 @@ export default class PatientManagementView extends React.Component {
               </Row>
             </div>
           </CardHeader>
+          
           <CardBody>
             <div
               style={{
@@ -253,24 +256,24 @@ export default class PatientManagementView extends React.Component {
                   datas={this.state.datas}
                 />
     <Row>
-                  <Col md="6">
+                  <Col md="12">
 <p>   tension:{''}{this.state.tension}</p>
                   </Col>
-                  <Col md="6">
+                  <Col md="12">
                       <p>    Frequence Cardiaque : {''}{this.state.frequence}</p>
                   </Col>
-                  <Col md="6">
+                  <Col md="12">
                       <p>  Poids: {this.state.poids}</p>
                   </Col>
-                  <Col md="6">
+                  <Col md="12">
                       
                       <p>  temperature: {''}{this.state.temperature}</p>
                   </Col>
-                  <Col md="6">
+                  <Col md="12">
                       <p>   Groupe Sanguin : {''}{this.state.gsanguin}</p>
                   </Col>
                 </Row>
-
+                <Firstape/>
                 {/* </Col>
                   </Row> */}
                 {/* </div> */}
