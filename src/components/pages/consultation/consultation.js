@@ -66,21 +66,7 @@ class FilesListe extends Component {
           >
             <div className="d-flex justify-content-between">
               <ContentHeader>Consultations List</ContentHeader>
-              {this.props.location.pathname !== ADD_CONSULTATION_ROUTE && (
-                <Button
-                  className={APP_COLOR}
-                  style={{
-                    borderRadius: '50%',
-                    backgroundColor: 'green',
-                    float: 'right',
-                    display: 'block',
-                    // border :'3px solid #fff'
-                  }}
-                  onClick={this.handleCreateNewPatientTofile}
-                >
-                  <Plus size={24} color="#fff"></Plus>
-                </Button>
-              )}
+         
             </div>
             <hr
               className={APP_COLOR}

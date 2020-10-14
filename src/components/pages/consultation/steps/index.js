@@ -53,18 +53,20 @@ export class index extends Component {
       };
 
       handleAnalyseClick = ()=>{
-        this.props.history.push(ANALYSE_CONSULTATION_ROUTE);
+      this.props.setEtape(1)
+
       }
       handlePhysiqExamsClick = ()=>{
-        this.props.history.push(EXAMEN_PHYSIQUE_CONSULTATION_ROUTE);
+        this.props.setEtape(4)
+    
     }
     
     handleHypothseClick = ()=>{
-        this.props.history.push(HYPOTHSE_CONSULTATION_ROUTE);
+      this.props.setEtape(3)
     }
     
     handleEnqueteClick = ()=>{
-        this.props.history.push(ENQUETE_CONSULTATION_ROUTE);
+      this.props.setEtape(2)
     }
     
   
@@ -116,7 +118,7 @@ export class index extends Component {
               </Statistics>
             </Col>
 
-            <Col sm="12" md="6" xl="3" style={{cursor:'pointer'}} onClick={this.handlePhysiqExamsClick}>
+            <Col sm="12" md="6" xl="3" style={{cursor:'pointer'}} name ='Physique' onClick={this.handlePhysiqExamsClick}>
               <Statistics
                 chartData={'good'}
                 cardBgColor="gradient-green-teal"

@@ -64,7 +64,7 @@ export class ManageFiles extends Component {
         consultaionDataAdd: consultationDatas,
         consultationIdEdit: consultationId
     }, ()=>{
-        this.props.history.push(ADD_INDEX_CONSULTATION_ROUTE)
+        this.props.history.push(ADD_CONSULTATION_ROUTE)
         setTimeout(() => {
             window.scrollTo(0,0);
         }, 25);
