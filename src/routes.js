@@ -41,7 +41,12 @@ import {
   LIST_CONSULTATION_ROUTE,
   ADD_CONSULTATION_ROUTE,
   DELETE_CONSULTATION_ROUTE,
-  EDIT_CONSULTATION_ROUTE
+  EDIT_CONSULTATION_ROUTE,
+  HYPOTHSE_CONSULTATION_ROUTE,
+  ENQUETE_CONSULTATION_ROUTE,
+  ANALYSE_CONSULTATION_ROUTE,
+  EXAMEN_PHYSIQUE_CONSULTATION_ROUTE,
+  ADD_INDEX_CONSULTATION_ROUTE
 } from './constants/app_utils';
 
 
@@ -209,6 +214,56 @@ class ApplicationRouter extends Component {
            <SimpleRoute
             exact
             path={EDIT_CONSULTATION_ROUTE}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <ConsultationView {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
+           <SimpleRoute
+            exact
+            path={HYPOTHSE_CONSULTATION_ROUTE}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <ConsultationView {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
+           <SimpleRoute
+            exact
+            path={ENQUETE_CONSULTATION_ROUTE}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <ConsultationView {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
+           <SimpleRoute
+            exact
+            path={ANALYSE_CONSULTATION_ROUTE}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <ConsultationView {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
+           <SimpleRoute
+            exact
+            path={EXAMEN_PHYSIQUE_CONSULTATION_ROUTE}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <ConsultationView {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
+              <SimpleRoute
+            exact
+            path={ADD_INDEX_CONSULTATION_ROUTE}
             render={(matchprops) => (
               <MainLayout>
                 {' '}

@@ -39,7 +39,11 @@ import { toastr } from 'react-redux-toastr';
 // import { displayMessage } from './patient_helpers';
 import QrReader from '../qr/qrReader';
 import Modal from '../modal/modal';
-import Firstape from './steps/analyse'
+import Analyse from './steps/analyse';
+import Enquete from './steps/Enquete_systeme';
+import Physique from './steps/examens_physique';
+import Hypothese from './steps/Hypothese_diagnostique';
+import IndexConst from './steps/index';
 
 export default class PatientManagementView extends React.Component {
   constructor(props) {
@@ -70,6 +74,7 @@ export default class PatientManagementView extends React.Component {
       showQr: 'none',
       onShow: false,
       frequence: data.frequence ? data.frequence : '',
+      step: data.step ? data.step : 0,
     };
   };
   inputChanged = (e) => {
@@ -168,7 +173,11 @@ export default class PatientManagementView extends React.Component {
 
     // this.props.history.push(ADD_CONSULTATION_ROUTE)
   };
-
+  setEtape = (e) => {
+    this.setState({
+      step: e,
+    });
+  };
   clearInput = () => {
     this.setData({});
   };
@@ -201,7 +210,6 @@ export default class PatientManagementView extends React.Component {
           }}
         />
         <Card>
-     
           <CardHeader
             // className="d-flex justify-content-center"
             style={{
@@ -232,7 +240,7 @@ export default class PatientManagementView extends React.Component {
               </Row>
             </div>
           </CardHeader>
-          
+
           <CardBody>
             <div
               style={{
@@ -255,168 +263,58 @@ export default class PatientManagementView extends React.Component {
                   submit={this.findPatientByQr}
                   datas={this.state.datas}
                 />
-    <Row>
+                <Row>
                   <Col md="12">
-<p>   tension:{''}{this.state.tension}</p>
+                    <p>
+                      {' '}
+                      tension:{''}
+                      {this.state.tension}
+                    </p>
                   </Col>
                   <Col md="12">
-                      <p>    Frequence Cardiaque : {''}{this.state.frequence}</p>
+                    <p>
+                      {' '}
+                      Frequence Cardiaque : {''}
+                      {this.state.frequence}
+                    </p>
                   </Col>
                   <Col md="12">
-                      <p>  Poids: {this.state.poids}</p>
+                    <p> Poids: {this.state.poids}</p>
                   </Col>
                   <Col md="12">
-                      
-                      <p>  temperature: {''}{this.state.temperature}</p>
+                    <p>
+                      {' '}
+                      temperature: {''}
+                      {this.state.temperature}
+                    </p>
                   </Col>
                   <Col md="12">
-                      <p>   Groupe Sanguin : {''}{this.state.gsanguin}</p>
+                    <p>
+                      {' '}
+                      Groupe Sanguin : {''}
+                      {this.state.gsanguin}
+                    </p>
                   </Col>
                 </Row>
-                <Firstape/>
-                {/* </Col>
-                  </Row> */}
-                {/* </div> */}
+                {this.state.step === 0 && (
+                  <IndexConst setEtape={this.setEtape} />
+                )}
+                   {this.state.step === 1 && (
+                  <Analyse setEtape={this.setEtape} />
+                )}
+                   {this.state.step === 2 && (
+                  <Enquete setEtape={this.setEtape} />
+                )}
+                   {this.state.step === 3 && (
+                  <Hypothese setEtape={this.setEtape} />
+                )}   {this.state.step === 4 && (
+                  <Physique setEtape={this.setEtape} />
+                )}
 
-                {/* {this.props.location.pathname !== ADD_CONSULTATION_ROUTE &&( 
-                <Row>
-                  <Col md="6">
-                    <FormGroup row>
-                      <Label for="Patientinput1" sm={4}>
-                        First Name:
-                      </Label>
-                      <Col sm={8}>
-                        <Input
-                          type="text"
-                          id="Patientinput1"
-                          className="border-primary"
-                          name="firstname"
-                          value={this.state.firstname}
-                          onChange={this.inputChanged}
-                        />
-                      </Col>
-                    </FormGroup>
-                  </Col>
-                  <Col md="6">
-                    <FormGroup row>
-                      <Label for="Patientinput2" sm={4}>
-                        Last Name:
-                      </Label>
-                      <Col sm={8}>
-                        <Input
-                          type="text"
-                          id="Patientinput2"
-                          className="border-primary"
-                          name="lastname"
-                          value={this.state.lastname}
-                          onChange={this.inputChanged}
-                        />
-                      </Col>
-                    </FormGroup>
-                  </Col>
-                </Row>
-               )} */}
-                {/* {this.props.location.pathname !== ADD_CONSULTATION_ROUTE &&( 
-                <Row>
-                  <Col md="6">
-                    <FormGroup row>
-                      <Label for="Patientinput3" sm={4}>
-                        other contact:
-                      </Label>
-                      <Col sm={8}>
-                        <Input
-                          type="text"
-                          id="Patientinput3"
-                          className="border-primary"
-                          name="Patientname"
-                          value={this.state.Patientname}
-                          onChange={this.inputChanged}
-                        />
-                      </Col>
-                    </FormGroup>
-                  </Col>
-                  <Col md="6">
-                    <FormGroup row>
-                      <Label for="Patientinput4" sm={4}>
-                        Quartier:
-                      </Label>
-                      <Col sm={8}>
-                        <Input
-                          type="text"
-                          id="Patientiquat4"
-                          className="border-primary"
-                          name="quartier"
-                          value={this.state.quartier}
-                          onChange={this.inputChanged}
-                        />
-                      </Col>
-                    </FormGroup>
-                  </Col>
-                </Row>
-            
-  )} */}
+
+
 
             
-                <Row md="12">
-                  {/* {this.props.location.pathname !== ADD_CONSULTATION_ROUTE &&( 
-                  <Col md="6">
-                    <FormGroup row>
-                      <Label for="userinput3" sm={4}>
-                        Rhesus:
-                      </Label>
-                      <Col sm={8}>
-                        <CreateableSelect
-                          options={this.props.rhesus}
-                          name="rhesus"
-                          getOptionLabel={(elt) => elt.label}
-                          getOptionValue={(elt) => elt}
-                          value={this.state.rhesus}
-                          onChange={(elt) => this.NotificationInputChanged(elt)}
-                        />
-                      </Col>
-                    </FormGroup>
-                  </Col>
-   )} */}
-                
-                </Row>
-                <Row>
-                  {/* {this.props.location.pathname !== ADD_CONSULTATION_ROUTE &&( 
-                  <Col md="6">
-                    <FormGroup row>
-                      <Label for="userinput3" sm={4}>
-                        Sexe :
-                      </Label>
-                      <Col sm={8}>
-                        <CreateableSelect
-                          options={this.props.sexe}
-                          name="sexe"
-                          getOptionLabel={(elt) => elt.label}
-                          getOptionValue={(elt) => elt}
-                          value={this.state.sexe}
-                          onChange={(elt) => this.NotificationInputChanged(elt)}
-                        />
-                      </Col>
-                    </FormGroup>
-                  </Col>
-                  ) } */}
-                </Row>
-                {/* <div
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}
-                >
-                  <Button
-                    style={{ width: '25vw' }}
-                    onClick={this.handleModal}
-                    className={APP_COLOR}
-                  >
-                    {' '}
-                    <Search size={16} color="#FFF" />
-                    Qr Search
-                  </Button>
-                </div> */}
               </div>
 
               <div
@@ -432,7 +330,20 @@ export default class PatientManagementView extends React.Component {
                     >
                       <RefreshCw size={16} color="#FFF" /> Clear
                     </Button>
+
                   )}
+                       <Button
+                    color="warning"
+                    className={APP_COLOR2}
+                    PATIENT
+                    onClick={() =>
+                    this.setState({
+                      step:0
+                    })
+                    }
+                  >
+                    other Step
+                  </Button>
                 </div>
                 <div>
                   <Button
@@ -445,6 +356,7 @@ export default class PatientManagementView extends React.Component {
                   >
                     <X size={16} color="#FFF" /> Cancel
                   </Button>
+             
 
                   <Button
                     className={APP_COLOR}

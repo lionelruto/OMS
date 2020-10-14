@@ -13,7 +13,8 @@ import {
     MAIN_VIEW_ROUTE,
     LIST_CARTE_ROUTE,
     EDIT_CONSULTATION_ROUTE,
-    ADD_CONSULTATION_ROUTE
+    ADD_CONSULTATION_ROUTE,
+    ADD_INDEX_CONSULTATION_ROUTE
   } from '../../constants/app_utils';
   
 
