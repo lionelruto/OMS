@@ -60,6 +60,7 @@ class PatientsListe extends Component {
      console.log('Not Found')
    }
   }
+  
   render() {
     console.log('props:', this.state.datas);
     return (
@@ -108,7 +109,7 @@ class PatientsListe extends Component {
 
           <Col md={12}>
             <Card>
-              <div className="ml-1">
+              /*<div className="ml-1">
                 <a
                 // onClick={() => this.handleRefreshTable()}
                 // disabled={this.props.isFetchingUsers}
@@ -122,42 +123,13 @@ class PatientsListe extends Component {
                   />
                 </a>
               </div>
+              */
 
               <div    style={{ display:'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Button className={APP_COLOR} onClick={this.handleModal}>
-                  Qr Search
+                <Button className={APP_COLOR} onClick={this.handleModal} size="lg" block>
+                  Rechercher un patient 
                 </Button>
                 </div>
-
-                  <div>
-                <Col
-                  md={4}
-                  style={{
-                    marginTop: '1rem',
-                    float: 'right',
-                  }}
-                >
-                  {/* <Form className="navbar-form mt-1 float-left" role="search"> */}
-                  <div
-                    className="position-relative has-icon-right"
-                    style={{ marginTop: '1rem', marginBottom: '1rem' }}
-                  >
-                    <Input
-                      id="search-term"
-                      type="text"
-                      className="form-control round"
-                      placeholder="Try quick search"
-                      //    onChange={this.handleChange}
-                      //    value={searchTerm}
-                    />
-                    {/* <div className="form-control-position">
-               <Search size={16} className="mb-0" />
-            </div> */}
-                  </div>
-
-                  {/* </Form> */}
-                </Col>
-              </div>
 
               {/* <CardBody>
                 <ReactTable

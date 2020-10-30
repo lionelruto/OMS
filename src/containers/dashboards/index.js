@@ -58,10 +58,10 @@ export default class index extends Component {
           style={{ marginTop: '0' }}
           className="match-parent centered-content"
         >
-          Welcome!
+          Liste de mes Activitées
         </h1>
         <Box />
-        <Row>
+        /*<Row>
                 <Col md="4">
                   <FormGroup>
                     <Label for="issueinput3">Start Date</Label>
@@ -85,8 +85,9 @@ export default class index extends Component {
                   </FormGroup>
                 </Col>
           </Row>
+          */
 
-          <Bar/>
+          //<Bar/>
           {/* <Patients 
           start_date={this.state.start_date}
           end_date ={this.state.end_date}
