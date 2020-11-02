@@ -104,34 +104,33 @@ class PatientsListe extends Component {
             <Card>
               <CardBody >
                     <div style={{paddingTop:"4%"}}>
-                        <Row d={12} lg={12}> 
-                            <div md={12} lg={12} style={{display: "flex"}}>
-                                <Col lg={{ size: 'auto', offset: 1 }} >
-                                    <div >
-                                        <InputGroup >
-                                            <Input
-                                                id='search_patient'
-                                                placeholder='Entrer le nom du patient'
-                                                autoComplete='off'
-                                                autoCorrect='off'
-                                                autoCapitalize='off'                               
-                                            />
-                                            <InputGroupAddon addonType="append">
-                                                <Button color="secondary"><Search/></Button>
-                                            </InputGroupAddon>
-                                        </InputGroup>
-                                    </div>
+                        <Row>                          
+                            <Col xm={6} md={6} sm={6} lg={6} style={{display:"flex", justifyContent:"flex-start"}} >
+                                <div >
+                                    <InputGroup >
+                                        <Input
+                                            id='search_patient'
+                                            placeholder='Entrer le nom du patient'
+                                            autoComplete='off'
+                                            autoCorrect='off'
+                                            autoCapitalize='off'                               
+                                        />
+                                        <InputGroupAddon addonType="append">
+                                            <Button color="secondary"><Search/></Button>
+                                        </InputGroupAddon>
+                                    </InputGroup>
+                                </div>
 
-                                </Col>
-                                
-                                <Col lg={{ size: 'auto', offset: 6 }}>
-                                    <div    >
-                                        <Button className={APP_COLOR} onClick={this.handleModal} size="lg" block>
-                                            Recherche par QR
-                                        </Button>
-                                    </div>
-                                </Col>                        
-                            </div>
+                            </Col>
+                            
+                            <Col xm={6} md={6} sm={6} lg={6} style={{display:"flex", justifyContent:"flex-end"}}>
+                                <div    >
+                                    <Button className={APP_COLOR} onClick={this.handleModal} size="lg" block>
+                                        Recherche par QR
+                                    </Button>
+                                </div>
+                            </Col>                        
+                            
                         </Row>                    
                     </div>
 
@@ -221,13 +220,13 @@ class PatientsListe extends Component {
                             </div>
                             {/*Bouttons de parametres viteaux ou fille d'attente */}
                             <Row>
-                                <Col xm={6} md={6} sm={6} lg={6}>
+                                <Col xm={6} md={6} sm={6} lg={6} style={{display:"flex", justifyContent:"flex-start"}}>
                                     <Button  color="primary" size="lg">
                                         Parametres vitaux
                                     </Button>
                                 </Col>
 
-                                <Col xm={6} md={6} sm={6} lg={6}>
+                                <Col xm={6} md={6} sm={6} lg={6} style={{display:"flex", justifyContent:"flex-end"}}>
                                     <Button  color="primary" size="lg">
                                         fille d'attente
                                     </Button>
