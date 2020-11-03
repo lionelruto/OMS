@@ -19,7 +19,7 @@ import CreateableSelect from 'react-select';
 import Step1 from "./Patient_stepper/Step_1.js"
 import Step2 from "./Patient_stepper/Step_2.js"
 import Step3 from "./Patient_stepper/Step_3.js"
-
+import "../../../assets/scss/views/form/wizard.scss"
 import {
   LIST_PATIENT_ROUTE,
   EDIT_PATIENT_ROUTE,
@@ -29,7 +29,7 @@ import {
 } from '../../../constants/app_utils';
 import { cleanObject, validateEmail } from '../../../utility/misc';
 import { toastr } from 'react-redux-toastr';
-import StepZilla from "react-stepzilla";
+import StepZilla from "./Patient_stepper/main.js";
 import { checkData } from './patient_helpers';
 import { displayMessage } from './patient_helpers';
 import  QrReader from '../qr/qrReader'
@@ -212,9 +212,9 @@ export default class PatientManagementView extends React.Component {
   render() {
     //   console.log('prop',this.props)
       const steps= [
-      {name: 'Step 1', component: <Step1 />},
-      {name: 'Step 2', component: <Step2 />},
-      {name: 'Step 3', component: <Step3 />},
+      {name: 'Enregistrer le patient', component: <Step1 />},
+      {name: 'Scanner le Qr', component: <Step2 />},
+      {name: 'Vérifier les informations', component: <Step3 />},
   ]
     return (
       <Fragment>
@@ -232,7 +232,12 @@ export default class PatientManagementView extends React.Component {
         <Card>
           <CardBody>
             <div className='step-progress'>
-                <StepZilla steps={steps}/>
+                <StepZilla steps={steps}
+                    preventEnterSubmission={true}
+                    nextTextOnFinalActionStep={"Save"}
+                    hocValidationAppliedTo={[3]}
+                    startAtStep={window.sessionStorage.getItem("step") ? parseFloat(window.sessionStorage.getItem("step")) : 0}
+                    onStepChange={step => window.sessionStorage.setItem("step", step)}/>
             </div>
           </CardBody>
         </Card>

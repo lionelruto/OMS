@@ -23,7 +23,6 @@ import {
 } from '../../../constants/app_utils';
 
 import Modal from '../modal/modal';
-import QrReader from '../qr/qrReader';
 class PatientsListe extends Component {
   constructor(props) {
     super(props);
