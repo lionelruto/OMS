@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import dynamic from 'next/dynamic'
 import QrReader from 'react-qr-reader';
-import toastr from 'react-redux-toastr';
+import {toastr} from 'react-redux-toastr';
 import {
   Card,
   Col,
@@ -63,7 +63,7 @@ componentWillReceiveProps(nextProps){
             onError={this.handleError}
             onScan={this.handleScan}
           /> 
-          <Button outline color="success" size="lg" style={{marginTop:"3%"}} onClick={() => toastr.success('The title', 'The message', { position: 'top-left'}, { transitionIn: 'bounceIn', transitionOut: 'bounceOut' })}>
+          <Button outline color="success" size="lg" style={{marginTop:"3%"}} onClick={() => toastr.success('Vérification', 'La carte est bien identifiée', { position: 'top-right'}, { transitionIn: 'bounceIn', transitionOut: 'bounceOut' })}>
             Vérifier le QR
           </Button>
         </div>
