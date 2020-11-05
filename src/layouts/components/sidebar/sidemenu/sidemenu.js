@@ -99,7 +99,7 @@ class SideMenuContent extends Component {
                   <i className="menu-icon">
                      <FaStethoscope size={18} color="#fff" />
                   </i>
-                  <span className="menu-item-text">Pre-Consultaion</span>
+                  <span className="menu-item-text">Mon dossier Medical</span>
                </NavLink>
             </SideMenu.MenuSingleItem>
 
@@ -109,7 +109,7 @@ class SideMenuContent extends Component {
                   <i className="menu-icon">
                      <FaStethoscope size={18} color="#fff" />
                   </i>
-                  <span className="menu-item-text">Consultation</span>
+                  <span className="menu-item-text">Fille d'attente</span>
                </NavLink>
             </SideMenu.MenuSingleItem>
          

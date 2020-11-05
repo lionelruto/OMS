@@ -3,9 +3,9 @@ import { Card, CardBody, Media } from "reactstrap";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 // import "../../../assets/scss/components/cards/minimalStatisticsCardWithChart.scss";
-import ChartistGraph from "react-chartist";
-import ChartistLib from "chartist";
-import CountUp from 'react-countup';
+
+
+
 class DriverStatistics extends PureComponent {
   render() {
     let iconLeft;
@@ -32,29 +32,6 @@ class DriverStatistics extends PureComponent {
             {iconRight}
           </Media>
         </CardBody>
-        {/* <ChartistGraph
-               className="WidgetlineChart WidgetlineChartshadow mb-2"
-               
-               type="Line"
-               options={{
-                  height: "75px",
-                  axisX: {
-                     showGrid: true,
-                     showLabel: true,
-                     offset: 0
-                  },
-                  axisY: {
-                     showGrid: true,
-                     low: 40,
-                     showLabel: false,
-                     offset: 0
-                  },
-                  lineSmooth: ChartistLib.Interpolation.cardinal({
-                     tension: 0
-                  }),
-                  fullWidth: true
-               }}
-            /> */}
          </Card>
       
     );

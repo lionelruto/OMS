@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactTable from 'react-table';
+import { PDFReader } from 'reactjs-pdf-reader';
 import { Card, Col, CardBody, Input, Button, Row, Form } from 'reactstrap';
 import ContentHeader from '../../contentHead/contentHeader';
 import { Edit, Trash2, Trash, PlusCircle, Loader, Plus } from 'react-feather';
@@ -151,18 +152,32 @@ class FilesListe extends Component {
               </CardBody> */}
 
               <CardBody>
-                {
-                  this.state.datas &&  (
-                      <ReactTable
-                  data={this.state.datas}
-                  columns={this.props.columns}
-                  defaultPageSize={
-                    this.props.defaultPageSize ? this.props.defaultPageSize : 5
-                  }
-                  className="-striped -highlight"
-                />
-                )
-                }
+                  <Row>
+                      <Col lg={8} md={8}>
+                        {
+                        this.state.datas &&  (
+                            <ReactTable
+                        data={this.state.datas}
+                        columns={this.props.columns}
+                        defaultPageSize={
+                            this.props.defaultPageSize ? this.props.defaultPageSize : 5
+                        }
+                        className="-striped -highlight"
+                        />
+                        )
+                        }                      
+                      </Col>
+
+                      <Col lg={4} md={4} >
+
+                        <p>Visualiser mon document</p>
+                        <PDFReader url={"https://arxiv.org/pdf/quant-ph/0410100.pdf"}
+                        scale={0.45}
+                        />
+                        <Button color="success" style={{width:'100%'}}>Telecharger le PDF</Button>
+                      </Col>
+                  </Row>
+
               
               </CardBody>
             </Card>

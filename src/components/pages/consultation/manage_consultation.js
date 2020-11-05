@@ -242,6 +242,8 @@ export default class PatientManagementView extends React.Component {
           </CardHeader>
 
           <CardBody>
+
+              {/*Le nom et le prenom du patient*/}
             <div
               style={{
                 display: 'flex',
@@ -254,6 +256,7 @@ export default class PatientManagementView extends React.Component {
                 {''} {this.state.lastname}
               </p>
             </div>
+
             <Form className="form-horizontal">
               <div className="form-body">
                 <Modal
@@ -263,6 +266,8 @@ export default class PatientManagementView extends React.Component {
                   submit={this.findPatientByQr}
                   datas={this.state.datas}
                 />
+
+                {/** début de l'affiche des parametres vitaux prise par l'infirmière */}
                 <Row>
                   <Col md="12">
                     <p>
@@ -296,6 +301,8 @@ export default class PatientManagementView extends React.Component {
                     </p>
                   </Col>
                 </Row>
+
+                {/** début des étapes de la consultation */}
                 {this.state.step === 0 && (
                   <IndexConst setEtape={this.setEtape} />
                 )}
@@ -321,72 +328,34 @@ export default class PatientManagementView extends React.Component {
                 className="form-actions"
                 style={{ display: 'flex', justifyContent: 'space-between' }}
               >
-                <div>
-                  {!this.state.id && (
+                  <div style={{display:"flex", justifyContent:"flex-start"}}>
                     <Button
-                      color="warning"
-                      className={APP_COLOR2}
-                      onClick={this.clearInput}
+                        color="primary"
+                        className={APP_COLOR2}
+                        PATIENT
+                        onClick={() =>
+                        this.props.history.push(LIST_CONSULTATION_ROUTE)
+                        }
                     >
-                      <RefreshCw size={16} color="#FFF" /> Clear
+                        <X size={16} color="#FFF" /> Annuler
                     </Button>
 
-                  )}
-                       <Button
-                    color="warning"
-                    className={APP_COLOR2}
-                    PATIENT
-                    onClick={() =>
-                    this.setState({
-                      step:0
-                    })
-                    }
-                  >
-                    other Step
-                  </Button>
-                </div>
-                <div>
-                  <Button
-                    color="warning"
-                    className={APP_COLOR2}
-                    PATIENT
-                    onClick={() =>
-                      this.props.history.push(LIST_CONSULTATION_ROUTE)
-                    }
-                  >
-                    <X size={16} color="#FFF" /> Cancel
-                  </Button>
-             
+                  </div>
 
-                  <Button
-                    className={APP_COLOR}
-                    onClick={this.submitInputData}
-                    color="#FFF"
-                    // disabled={
-                    //   this.props.isCreatingPatient || this.props.isUpdatingPatient
-                    // }
-                  >
-                    <div
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                      }}
+                  <div style={{display:"flex", justifyContent:"flex-end"}}>
+                    <Button
+                        color="primary"
+                        className={APP_COLOR2}
+                        PATIENT
+                        onClick={() =>
+                        this.props.history.push(LIST_CONSULTATION_ROUTE)
+                        }
                     >
-                      <span style={{ marginRight: 5 }}>
-                        <CheckSquare size={16} color="#FFF" />
-                      </span>
-                      <span style={{ marginRight: 5 }}>
-                        {' '}
-                        {this.state.id ? 'Update' : 'Create'}{' '}
-                      </span>
-                      {(this.props.isCreatingPatient ||
-                        this.props.isUpdatingPatient) && (
-                        <ClipLoader size={20} color="white" />
-                      )}
-                    </div>
-                  </Button>
-                </div>
+                        <X size={16} color="#FFF" /> Terminé
+                    </Button>
+
+                  </div>                  
+             
               </div>
             </Form>
           </CardBody>

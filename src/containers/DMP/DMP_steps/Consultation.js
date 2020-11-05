@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import ListsView from '../../components/pages/consultation'
-import ModalAdviseConsulation from '../../components/pages/modal/modalAdviseConsultation.js'
+import ListsView from '../../components/pages/file_attente'
 import { components } from 'react-select'
 import { Edit, Trash2, Trash, PlusCircle, Loader } from "react-feather";
 import {
@@ -14,9 +12,7 @@ import {
     ADD_CARTE_ROUTE,
     MAIN_VIEW_ROUTE,
     LIST_CARTE_ROUTE,
-    EDIT_CONSULTATION_ROUTE,
-    ADD_CONSULTATION_ROUTE,
-    ADD_INDEX_CONSULTATION_ROUTE
+    EDIT_FILE_ROUTE
   } from '../../constants/app_utils';
   
 
@@ -42,52 +38,30 @@ export class ManageFiles extends Component {
         this.state = {
            
                 userIdEdit:null,
-                fileDataEdit:null,
-                consultaionDataAdd:null,
-                consultationIdEdit:null,
-                onShow:false
+                fileDataEdit:null
           
         
         }
     }
-    
   
     setEditFile = (userId, fileData)=>{
         this.setState({
             fileDataEdit: fileData,
             userIdEdit: userId
         }, ()=>{
-            this.props.history.push(EDIT_CONSULTATION_ROUTE)
+            this.props.history.push(EDIT_FILE_ROUTE)
             setTimeout(() => {
                 window.scrollTo(0,0);
             }, 25);
         });
     }
-    setAddConsultation  = (consultationId,consultationDatas) =>{
-      this.setState({
-        consultaionDataAdd: consultationDatas,
-        consultationIdEdit: consultationId
-    }, ()=>{
-        this.props.history.push(ADD_CONSULTATION_ROUTE)
-        setTimeout(() => {
-            window.scrollTo(0,0);
-        }, 25);
-    });
-      
-    }
 
-        handleModal = () => {
-            this.setState({
-            onShow: !this.state.onShow,
-            });
-        };
     render() {
-        console.log('testrr',this.state.consultaionDataAdd)
+        // console.log('testrr',this.props)
         return (
             <div>
               <ListsView 
                 editData ={this.state.fileDataEdit}
-                addData={this.state.consultaionDataAdd}
               datas={this.props.datas}
               // prop1={this.props}
               gsanguin = {[{id:1,name:'gsanguin',label:'A-'},{id:2,name:'gsanguin',label:'B-'},{id:3,name:'gsanguin',label:'o-'},{id:4,name:'gsanguin',label:'AB-'},{id:5,name:'gsanguin',label:'o+'},{id:6,name:'gsanguin',label:'A+'},{id:7,name:'gsanguin',label:'B+'},{id:8,name:'gsanguin',label:'AB+'}]}
@@ -138,13 +112,6 @@ export class ManageFiles extends Component {
                       Header: "Actions",
                       Cell: props => (
                         <span>
-                             <PlusCircle
-                            style={{cursor:'pointer'}}
-                            size={18}
-                            className="mr-2 hand-cursor"
-                            color="green"
-                            onClick={()=>this.handleModal(props.original.id, props.original)}
-                          />
                           <Edit
                             style={{cursor:'pointer'}}
                             size={18}
@@ -152,11 +119,9 @@ export class ManageFiles extends Component {
                             color="#1565C0"
                             onClick={()=>this.setEditFile(props.original.id, props.original)}
                           />
-                       
-                          
-                          {(this.props.isDeletingConsultation ||
-                            this.props.isDeletedConsultation) &&
-                          this.props.deletingConsultationId == props.original.id ? (
+                          {(this.props.isDeletingPickupArea ||
+                            this.props.isDeletedPickupArea) &&
+                          this.props.deletingPickupAreaId == props.original.id ? (
                             <Loader
                               size={18}
                               className="hand-cursor animate-spin"
@@ -169,7 +134,6 @@ export class ManageFiles extends Component {
                               color="#FF586B"
                             //   onClick={() => this.deletePickupArea(props.original.id)}
                             />
-                            
                           )}
                         </span>
                       ),
@@ -179,16 +143,6 @@ export class ManageFiles extends Component {
                     }
                   ]}
               />
-
-        <ModalAdviseConsulation
-          title="Demander une autorisation"
-          onShow={this.handleModal}
-          show={this.state.onShow}
-          submit ={this.handleSubmitModal}
-          datas={this.state.datas}
-          type = 'patient'
-
-        />
             </div>
         )
     }
