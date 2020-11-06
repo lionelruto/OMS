@@ -5,6 +5,7 @@ import CreditCardIcon from '@material-ui/icons/CreditCard';
 import {FaBookMedical} from 'react-icons/fa'
 import {RiTableFill} from 'react-icons/ri'
 import {FaStethoscope} from 'react-icons/fa'
+import {BsFillCalendarFill} from 'react-icons/bs'
 import {
    Home,
    Mail,
@@ -43,6 +44,7 @@ import {
    LIST_USER_ROUTE,
    DASHBOARD,
    USER_DMP,
+   CALENDRIER,
    LIST_FILE_ROUTE,
    LIST_CONSULTATION_ROUTE
  } from '../../../../constants/app_utils';
@@ -116,6 +118,16 @@ class SideMenuContent extends Component {
                      <RiTableFill size={18} color="#fff" />
                   </i>
                   <span className="menu-item-text">Fille d'attente</span>
+               </NavLink>
+            </SideMenu.MenuSingleItem>
+
+            <SideMenu.MenuSingleItem >
+               <NavLink   to={CALENDRIER}>
+               {/* to={LIST_CONSULTATION_ROUTE} */}
+                  <i className="menu-icon">
+                     <BsFillCalendarFill size={18} color="#fff" />
+                  </i>
+                  <span className="menu-item-text">Agenda</span>
                </NavLink>
             </SideMenu.MenuSingleItem>
          

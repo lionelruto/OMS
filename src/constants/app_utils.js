@@ -12,6 +12,8 @@ export const APP_COLOR2 = "gradient-indigo-dark-blue";
 export const MAIN_VIEW_ROUTE = "/";
 export const LOGIN_VIEW_ROUTE = "/login";
 export const MAIN_INFIRMIERE_ROUTE = "/manager/infirmiere";
+export const CALENDRIER = "/agenda";
+
 
 export const ADD_PATIENT_ROUTE = "/patient/add";
 export const DELETE_PATIENT_ROUTE = "/patient/delete";

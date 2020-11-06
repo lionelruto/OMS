@@ -14,6 +14,14 @@ import {
    DropdownItem
 } from "reactstrap";
 import PerfectScrollbar from "react-perfect-scrollbar";
+
+import {
+USER_PROFILE
+} from '../../../constants/app_utils';
+
+
+
+
 import {
    // Moon,
    Mail,
@@ -92,19 +100,9 @@ class ThemeNavbar extends Component {
                               <DropdownItem>
                                  <ReactCountryFlag code="fr" svg /> France
                               </DropdownItem>
-                              <DropdownItem>
-                                 <ReactCountryFlag code="es" svg /> Spanish
-                              </DropdownItem>
-                              <DropdownItem>
-                                 <ReactCountryFlag code="cn" svg /> Chinese
-                              </DropdownItem>
                            </DropdownMenu>
                         </UncontrolledDropdown>
-                        <NavItem className="pr-1">
-                           <Link to="/email/" className="nav-link">
-                              <Mail size={20} color="#333" />
-                           </Link>
-                        </NavItem>
+
                         <UncontrolledDropdown nav inNavbar className="pr-1">
                            <DropdownToggle nav>
                               <span className="notification-bell-blink" />
@@ -240,40 +238,26 @@ class ThemeNavbar extends Component {
                            <DropdownMenu right>
                               <DropdownItem>
                                  <span className="font-small-3">
-                                    John Doe <span className="text-muted">(Guest)</span>
+                                    Mambou Fokou <span className="text-muted">Infirmière</span>
                                  </span>
                               </DropdownItem>
                               <DropdownItem divider />
 
-                              <Link to="/pages/user-profile" className="p-0">
+                              <Link to={USER_PROFILE} className="p-0">
                                  <DropdownItem>
-                                    <User size={16} className="mr-1" /> My Profile
-                                 </DropdownItem>
-                              </Link>
-                              <Link to="/email" className="p-0">
-                                 <DropdownItem>
-                                    <Inbox size={16} className="mr-1" /> Email
-                                 </DropdownItem>
-                              </Link>
-                              <Link to="/contacts" className="p-0">
-                                 <DropdownItem>
-                                    <Phone size={16} className="mr-1" /> Contacts
+                                    <User size={16} className="mr-1" /> Mon Profil
                                  </DropdownItem>
                               </Link>
                               <Link to="/calendar" className="p-0">
                                  <DropdownItem>
-                                    <Calendar size={16} className="mr-1" /> Calendar
+                                    <Calendar size={16} className="mr-1" /> Calendrier
                                  </DropdownItem>
                               </Link>
                               <DropdownItem divider />
-                              <Link to="/pages/lockscreen" className="p-0">
-                                 <DropdownItem>
-                                    <Lock size={16} className="mr-1" /> Lock Screen
-                                 </DropdownItem>
-                              </Link>
+
                               <Link to="/pages/login" className="p-0">
                                  <DropdownItem>
-                                    <LogOut size={16} className="mr-1" /> Logout
+                                    <LogOut size={16} className="mr-1" /> Se deconnecter
                                  </DropdownItem>
                               </Link>
                            </DropdownMenu>

@@ -13,8 +13,6 @@ import FilesListView from './containers/file_attente/manager_file'
 import ConsultationView from './containers/consultation/manage_consultation'
 import Users_DMP from './containers/DMP/Manage_DMP.js'
 
-
-
 import FullPageLayout from "./layouts/fullpageLayout";
 import { FullPageOverlayLayout } from "./layouts/fullpageLayout";
 import NoAuthRoute from './layouts/routes/unProtectedRoute';
@@ -40,6 +38,7 @@ import {
   ADD_USER_ROUTE,
   DASHBOARD,
   USER_DMP,
+  CALENDRIER,
   LIST_CONSULTATION_ROUTE,
   ADD_CONSULTATION_ROUTE,
   DELETE_CONSULTATION_ROUTE,
@@ -50,6 +49,7 @@ import {
   EXAMEN_PHYSIQUE_CONSULTATION_ROUTE,
   ADD_INDEX_CONSULTATION_ROUTE
 } from './constants/app_utils';
+import Calendrier from './containers/calendrier/Calendrier.js';
 
 
 
@@ -99,6 +99,18 @@ class ApplicationRouter extends Component {
               </MainLayout>
             )}
           />
+
+           <SimpleRoute
+            exact
+            path={CALENDRIER}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <Calendrier {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
+
                <SimpleRoute
             exact
             path={ADD_USER_ROUTE}
