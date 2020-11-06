@@ -11,6 +11,7 @@ import DashboardView from './containers/dashboards/index'
 import CartesListView from './containers/cartes/manage_cartes'
 import FilesListView from './containers/file_attente/manager_file'
 import ConsultationView from './containers/consultation/manage_consultation'
+import Users_DMP from './containers/DMP/Manage_DMP.js'
 
 
 
@@ -38,6 +39,7 @@ import {
   LIST_USER_ROUTE,
   ADD_USER_ROUTE,
   DASHBOARD,
+  USER_DMP,
   LIST_CONSULTATION_ROUTE,
   ADD_CONSULTATION_ROUTE,
   DELETE_CONSULTATION_ROUTE,
@@ -107,6 +109,18 @@ class ApplicationRouter extends Component {
               </MainLayout>
             )}
           />
+
+               <SimpleRoute
+            exact
+            path={USER_DMP}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <Users_DMP {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
+
              <SimpleRoute
             exact
             path={LIST_USER_ROUTE}

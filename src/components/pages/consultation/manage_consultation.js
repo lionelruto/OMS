@@ -258,6 +258,7 @@ export default class PatientManagementView extends React.Component {
             </div>
 
             <Form className="form-horizontal">
+                
               <div className="form-body">
                 <Modal
                   title="Scaner Une Carte"

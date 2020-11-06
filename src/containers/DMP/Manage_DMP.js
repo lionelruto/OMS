@@ -1,124 +1,210 @@
-import React, { Component } from 'react';
-import ReactTable from 'react-table';
-import { Card, Col, CardBody, Input, Button, Row, Form } from 'reactstrap';
-import ContentHeader from '../../contentHead/contentHeader';
-import { Edit, Trash2, Trash, PlusCircle, Loader, Plus } from 'react-feather';
-import NavbarSearch from '../../../components/search/Search';
-import { Search } from 'react-feather';
-import { withRouter } from 'react-router-dom';
-import { RefreshCcw } from 'react-feather';
-
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import DMP from '../../components/pages/DMP'
+import ModalAdviseConsulation from '../../components/pages/modal/modalAdviseConsultation.js'
+import { components } from 'react-select'
+import { Edit, Trash2, Trash, PlusCircle, Loader } from "react-feather";
 import {
-  ADD_FILE_ROUTE,
-  LOGIN_VIEW_ROUTE,
-  MAIN_INFIRMIERE_ROUTE,
-  LIST_FILE_ROUTE,
-  ADD_CARTE_ROUTE,
-  MAIN_VIEW_ROUTE,
-  LIST_CARTE_ROUTE,
-  APP_COLOR,
-  APP_COLOR2,
-} from '../../../constants/app_utils';
+    ADD_PATIENT_ROUTE,
+    LOGIN_VIEW_ROUTE,
+    MAIN_INFIRMIERE_ROUTE,
+    LIST_PATIENT_ROUTE,
+    ADD_CARTE_ROUTE,
+    MAIN_VIEW_ROUTE,
+    LIST_CARTE_ROUTE,
+    EDIT_CONSULTATION_ROUTE,
+    ADD_CONSULTATION_ROUTE,
+    ADD_INDEX_CONSULTATION_ROUTE
+  } from '../../constants/app_utils';
+  
 
-import Modal from '../modal/modal';
-import QrReader from '../qr/qrReader';
-class Manage_DMP extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      showQr: 'none',
-      onShow: false,
-      datas: this.props.datas?this.props.datas :[],
-    };
-  }
-
-
-  render() {
-    console.log('props:', this.props);
+function CellItem(props) {
     return (
-      <div>
-        <Row>
-          <Col
-            style={{
-              float: 'right',
-              display: 'block',
-            }}
-            md={12}
-          >
-            <div className="d-flex justify-content-between">
-              <ContentHeader>Mon DMP</ContentHeader>
-            </div>
-          </Col>
-
-          <Col md={12}>
-            <Card>
-              <div>
-
-
-                <Col
-                  md={4}
-                  style={{
-                    marginTop: '1rem',
-                    float: 'right',
-                  }}
-                >
-                  {/* <Form className="navbar-form mt-1 float-left" role="search"> */}
-                  <div
-                    className="position-relative has-icon-right"
-                    style={{ marginTop: '1rem', marginBottom: '1rem' }}
-                  >
-                    <Input
-                      id="search-term"
-                      type="text"
-                      className="form-control round"
-                      placeholder="Try quick search"
-                      //    onChange={this.handleChange}
-                      //    value={searchTerm}
-                    />
-                    {/* <div className="form-control-position">
-               <Search size={16} className="mb-0" />
-            </div> */}
-                  </div>
-
-                  {/* </Form> */}
-                </Col>
-              </div>
-
-              {/* <CardBody>
-                <ReactTable
-                  data={this.props.datas}
-                  columns={this.props.columns}
-                  defaultPageSize={
-                    this.props.defaultPageSize ? this.props.defaultPageSize : 5
-                  }
-                  className="-striped -highlight"
-                />
-              </CardBody> */}
-
-              <CardBody>
-                {
-                  this.state.datas &&  (
-                      <ReactTable
-                  data={this.state.datas}
-                  columns={this.props.columns}
-                  defaultPageSize={
-                    this.props.defaultPageSize ? this.props.defaultPageSize : 5
-                  }
-                  className="-striped -highlight"
-                />
-                )
-                }
-              
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
-
-   
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          backgroundColor: props.deleted ? "#ef9a9a" : ""
+        }}
+      >
+        {props.item || typeof props.item === "number"
+          ? props.item
+          : props.children}
       </div>
     );
   }
+export class ManageFiles extends Component {
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+           
+                userIdEdit:null,
+                fileDataEdit:null,
+                consultaionDataAdd:null,
+                consultationIdEdit:null,
+                onShow:false
+          
+        
+        }
+    }
+    
+  
+    setEditFile = (userId, fileData)=>{
+        this.setState({
+            fileDataEdit: fileData,
+            userIdEdit: userId
+        }, ()=>{
+            this.props.history.push(EDIT_CONSULTATION_ROUTE)
+            setTimeout(() => {
+                window.scrollTo(0,0);
+            }, 25);
+        });
+    }
+    setAddConsultation  = (consultationId,consultationDatas) =>{
+      this.setState({
+        consultaionDataAdd: consultationDatas,
+        consultationIdEdit: consultationId
+    }, ()=>{
+        this.props.history.push(ADD_CONSULTATION_ROUTE)
+        setTimeout(() => {
+            window.scrollTo(0,0);
+        }, 25);
+    });
+      
+    }
+
+        handleModal = () => {
+            this.setState({
+            onShow: !this.state.onShow,
+            });
+        };
+    render() {
+        console.log('testrr',this.state.consultaionDataAdd)
+        return (
+            <div>
+              <DMP 
+                editData ={this.state.fileDataEdit}
+                addData={this.state.consultaionDataAdd}
+              datas={this.props.datas}
+              // prop1={this.props}
+              gsanguin = {[{id:1,name:'gsanguin',label:'A-'},{id:2,name:'gsanguin',label:'B-'},{id:3,name:'gsanguin',label:'o-'},{id:4,name:'gsanguin',label:'AB-'},{id:5,name:'gsanguin',label:'o+'},{id:6,name:'gsanguin',label:'A+'},{id:7,name:'gsanguin',label:'B+'},{id:8,name:'gsanguin',label:'AB+'}]}
+              rhesus ={[{id:1,name:'rhesus',label:"rhesus +"}, {id:2,name:'rhesus',label:'rhesus-'}]}
+              sexe={[{id:1,label:'Homme',name:'sexe'},{id:2,label:'Femme',name:'sexe'}]}
+              cartes={this.props.cartes}
+                columns={[
+                    {
+                      Header: "Photo",
+                      accessor: "img",
+                      Cell: props => (
+                        <CellItem
+                          deleted={
+                            this.props.isDeletedPickupArea &&
+                            this.props.deletingPickupAreaId == props.original.id
+                          }
+                          item={<img style={{borderRadius:'50%' ,width:'40px',height:'40px'}} src={props.value}/>}
+                        />
+                      )
+                    },
+                    {
+                      Header: "Nom Complet",
+                      accessor: "fullName",
+                      Cell: props => (
+                        <CellItem
+                          deleted={
+                            this.props.isDeletedPickupArea &&
+                            this.props.deletingPickupAreaId == props.original.id
+                          }
+                          item={props.value}
+                        />
+                      )
+                    },
+                    {
+                      Header: "Metier",
+                      accessor: "position",
+                      Cell: props => (
+                        <CellItem
+                          deleted={
+                            this.props.isDeletedPickupArea &&
+                            this.props.deletingPickupAreaId == props.original.id
+                          }
+                          item={props.value}
+                        />
+                      )
+                    },                  
+                    {
+                      Header: "Actions",
+                      Cell: props => (
+                        <span>
+                             <PlusCircle
+                            style={{cursor:'pointer'}}
+                            size={18}
+                            className="mr-2 hand-cursor"
+                            color="green"
+                            onClick={()=>this.handleModal(props.original.id, props.original)}
+                          />
+                          <Edit
+                            style={{cursor:'pointer'}}
+                            size={18}
+                            className="mr-2 hand-cursor"
+                            color="#1565C0"
+                            onClick={()=>this.setEditFile(props.original.id, props.original)}
+                          />
+                       
+                          
+                          {(this.props.isDeletingConsultation ||
+                            this.props.isDeletedConsultation) &&
+                          this.props.deletingConsultationId == props.original.id ? (
+                            <Loader
+                              size={18}
+                              className="hand-cursor animate-spin"
+                              color="#FF586B"
+                            />
+                          ) : (
+                            <Trash2
+                              size={18}
+                              className="hand-cursor"
+                              color="#FF586B"
+                            //   onClick={() => this.deletePickupArea(props.original.id)}
+                            />
+                            
+                          )}
+                        </span>
+                      ),
+                      width: 100,
+                      filterable: false,
+                      sortable: false
+                    }
+                  ]}
+              />
+
+        <ModalAdviseConsulation
+          title="Demander une autorisation"
+          onShow={this.handleModal}
+          show={this.state.onShow}
+          submit ={this.handleSubmitModal}
+          datas={this.state.datas}
+          type = 'patient'
+
+        />
+            </div>
+        )
+    }
 }
 
-export default withRouter(FilesListe);
+const mapStateToProps = (state) => {
+    console.log('etat',state)
+    return{
+        datas:state.file.patientsToFile,
+      
+    }
+
+}
+
+const mapDispatchToProps = {
+    
+}
+
+export default connect(mapStateToProps)(ManageFiles)
