@@ -29,7 +29,7 @@ class AnalysesBio extends Component {
     this.state = {
       showQr: 'none',
       onShow: false,
-      datas: this.props.datas?this.props.datas :[],
+      datas: this.props.datasBio ? this.props.datasBio : [],
     };
   }
 
@@ -44,7 +44,7 @@ class AnalysesBio extends Component {
   };
 
   render() {
-    console.log('props:', this.props);
+    console.log('props12:', this.props);
     return (
       <div>
         <Row>
@@ -87,27 +87,36 @@ class AnalysesBio extends Component {
                 </Col>
               </div>
               <CardBody>
-                  <Row>
-                      <Col lg={8} md={8}>                    
-                      </Col>
+                <Row>
+                  <Col lg={8} md={8}>
+                    {this.props.datas && (
+                      <ReactTable
+                        data={this.state.datas}
+                        columns={this.props.columns}
+                        defaultPageSize={
+                          this.props.defaultPageSize
+                            ? this.props.defaultPageSize
+                            : 5
+                        }
+                        className="-striped -highlight"
+                      />
+                    )}
+                  </Col>
 
-                      <Col lg={4} md={4} >
-
-                        <p>Visualiser mon document</p>
-                        <PDFReader url={"https://arxiv.org/pdf/quant-ph/0410100.pdf"}
+                  <Col lg={4} md={4}>
+                    <p>Visualiser mon document</p>
+                    {/* <PDFReader url={"https://arxiv.org/pdf/quant-ph/0410100.pdf"}
                         scale={0.45}
-                        />
-                        <Button color="success" style={{width:'100%'}}>Telecharger le PDF</Button>
-                      </Col>
-                  </Row>
-
-              
+                        /> */}
+                    <Button color="success" style={{ width: '100%' }}>
+                      Telecharger le PDF
+                    </Button>
+                  </Col>
+                </Row>
               </CardBody>
             </Card>
           </Col>
         </Row>
-
-   
       </div>
     );
   }

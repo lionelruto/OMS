@@ -8,6 +8,14 @@ import patients from './patients'
 import user from './user'
 import carte from './cartes'
 import file from './file_attente'
+import DMP_Radio from './DMP_analyse_radio'
+import DMP_Bio from './DMP_analyse_bio'
+import DMP_consultation from './DMP_consultation'
+import DMP_Hospitalisation from './DMP_hospitalisation'
+
+
+
+
 
 
 
@@ -22,7 +30,13 @@ const rootReducer = combineReducers({
     patients,
     user,
     carte,
-    file
+    file,
+     DMP_Radio ,
+     DMP_Bio,
+     DMP_consultation,
+     DMP_Hospitalisation
+
+
   });
   
   export default rootReducer;

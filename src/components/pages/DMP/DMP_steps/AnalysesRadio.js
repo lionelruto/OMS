@@ -29,7 +29,7 @@ class AnalysesRadio extends Component {
     this.state = {
       showQr: 'none',
       onShow: false,
-      datas: this.props.datas?this.props.datas :[],
+      datas: this.props.datasRadio?this.props.datasRadio :[],
     };
   }
 
@@ -88,15 +88,27 @@ class AnalysesRadio extends Component {
               </div>
               <CardBody>
                   <Row>
-                      <Col lg={8} md={8}>                    
+                      <Col lg={8} md={8}>  
+                      {this.props.datas && (
+                      <ReactTable
+                        data={this.state.datas}
+                        columns={this.props.columns}
+                        defaultPageSize={
+                          this.props.defaultPageSize
+                            ? this.props.defaultPageSize
+                            : 5
+                        }
+                        className="-striped -highlight"
+                      />
+                    )}                  
                       </Col>
 
                       <Col lg={4} md={4} >
 
                         <p>Visualiser mon document</p>
-                        <PDFReader url={"https://arxiv.org/pdf/quant-ph/0410100.pdf"}
-                        scale={0.45}
-                        />
+                        {/* <PDFReader url={"https://arxiv.org/pdf/quant-ph/0410100.pdf"} */}
+                        {/* scale={0.45} */}
+                        {/* /> */}
                         <Button color="success" style={{width:'100%'}}>Telecharger le PDF</Button>
                       </Col>
                   </Row>

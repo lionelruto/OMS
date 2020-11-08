@@ -34,7 +34,7 @@ handleSubmitDatas = (Datas, FileId, callback)=>{
   this.props.submitDatas(Datas, FileId, callback);
 }
 render(){
-  console.log(this.props)
+  console.log('tesy',this.props)
   return (
       <Fragment>
           <div>
@@ -79,6 +79,7 @@ render(){
                       <AnalysesBio 
                           {...this.props} 
                           {...matchprops}
+                        //   datas={this.props.datasBio}
                           addData={this.props.addData}
                           submitDatas={this.handleSubmitDatas} />
                   )}
