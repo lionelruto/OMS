@@ -12,6 +12,8 @@ export const APP_COLOR2 = "gradient-indigo-dark-blue";
 export const MAIN_VIEW_ROUTE = "/";
 export const LOGIN_VIEW_ROUTE = "/login";
 export const MAIN_INFIRMIERE_ROUTE = "/manager/infirmiere";
+export const CALENDRIER = "/agenda";
+
 
 export const ADD_PATIENT_ROUTE = "/patient/add";
 export const DELETE_PATIENT_ROUTE = "/patient/delete";
@@ -22,6 +24,18 @@ export const ADD_FILE_ROUTE = "/patient/file/add";
 export const DELETE_FILE_ROUTE = "/patient/file/delete";
 export const EDIT_FILE_ROUTE = "/patient/file/edit";
 export const LIST_FILE_ROUTE = "/patient/file";
+
+// Les chemins de l'utilisateur 
+export const USER_PROFILE = "/user/profile";
+export const USER_HEALTHDATA = "/user/DonneesSante/List";
+export const USER_EMERGENCYPROFILE = "/user/EmergencyProfile";
+export const USER_DMP = "/user/sharedMedicalFolder";
+export const USER_CONSULTATION = "/user/Consultation/List";
+export const USER_HOSPITALISATION = "/user/Hospitalisation/List";
+export const USER_BIOLOGICAL_EXAM = "/user/BiologicalExams/List";
+export const USER_RADIO_EXAMS = "/user/RadiologicalExams/List";
+export const USER_WEIGTHSTATS = "/user/WeigthStats";
+export const PERSO_PROFILE = "/personnel/profile";
 
 export const ADD_CONSULTATION_ROUTE = "/patient/consultation/add";
 export const DELETE_CONSULTATION_ROUTE = "/patient/consultation/delete";

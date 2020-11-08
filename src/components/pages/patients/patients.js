@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import ReactTable from 'react-table';
-import { Card, Col, CardBody, Input, Button, Row, Form } from 'reactstrap';
+import { Card, Col, CardBody, Input, Button, Row, Form, InputGroup, InputGroupAddon, FormGroup, Label, CardTitle } from 'reactstrap';
 import ContentHeader from '../../contentHead/contentHeader';
+import CreateableSelect from 'react-select';
 import { Edit, Trash2, Trash, PlusCircle, Loader, Plus } from 'react-feather';
 import NavbarSearch from '../../../components/search/Search';
 import { Search } from 'react-feather';
 import { withRouter } from 'react-router-dom';
 import { RefreshCcw } from 'react-feather';
+import userImage from '../../../assets/img/portrait/medium/avatar-m-1.png';
 
 import {
   ADD_PATIENT_ROUTE,
@@ -21,7 +23,6 @@ import {
 } from '../../../constants/app_utils';
 
 import Modal from '../modal/modal';
-import QrReader from '../qr/qrReader';
 class PatientsListe extends Component {
   constructor(props) {
     super(props);
@@ -65,14 +66,6 @@ class PatientsListe extends Component {
     console.log('props:', this.state.datas);
     return (
       <div>
-        {/* <div className="d-flex justify-content-between">
-                    <ContentHeader>Users</ContentHeader>
-                    {this.props.location.pathname !== ADD_PATIENT_ROUTE &&
-                        <Button size="sm" outline onClick={this.handleCreateNewPatient}>Add New User</Button>
-                    }
-                </div> */}
-        {/* <h1 style={{ textAlign: 'center' }}>LISTE DES PATIENTSList</h1> */}
-
         <Row>
           <Col
             style={{
@@ -86,12 +79,11 @@ class PatientsListe extends Component {
               {this.props.location.pathname !== ADD_PATIENT_ROUTE && (
                 <Button
                   className={APP_COLOR}
+                  outline color="success"
                   style={{
-                    borderRadius: '50%',
-                    backgroundColor: 'green',
                     float: 'right',
                     display: 'block',
-                    // border :'3px solid #fff'
+                    
                   }}
                   onClick={this.handleCreateNewPatient}
                 >
@@ -109,53 +101,140 @@ class PatientsListe extends Component {
 
           <Col md={12}>
             <Card>
-              /*<div className="ml-1">
-                <a
-                // onClick={() => this.handleRefreshTable()}
-                // disabled={this.props.isFetchingUsers}
-                >
-                  <RefreshCcw
-                    size={16}
-                    color="#E64A19"
-                    className={`${
-                      this.props.isFetchingUsers ? 'animate-spin' : ''
-                    }`}
-                  />
-                </a>
-              </div>
-              */
+              <CardBody >
+                    <div style={{paddingTop:"4%"}}>
+                        <Row>                          
+                            <Col xm={6} md={6} sm={6} lg={6} style={{display:"flex", justifyContent:"flex-start"}} >
+                                <div >
+                                    <InputGroup >
+                                        <Input
+                                            id='search_patient'
+                                            placeholder='Entrer le nom du patient'
+                                            autoComplete='off'
+                                            autoCorrect='off'
+                                            autoCapitalize='off'                               
+                                        />
+                                        <InputGroupAddon addonType="append">
+                                            <Button color="secondary"><Search/></Button>
+                                        </InputGroupAddon>
+                                    </InputGroup>
+                                </div>
 
-              <div    style={{ display:'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Button className={APP_COLOR} onClick={this.handleModal} size="lg" block>
-                  Rechercher un patient 
-                </Button>
-                </div>
+                            </Col>
+                            
+                            <Col xm={6} md={6} sm={6} lg={6} style={{display:"flex", justifyContent:"flex-end"}}>
+                                <div    >
+                                    <Button className={APP_COLOR} onClick={this.handleModal} size="lg" block>
+                                        Recherche par QR
+                                    </Button>
+                                </div>
+                            </Col>                        
+                            
+                        </Row>                    
+                    </div>
 
-              {/* <CardBody>
-                <ReactTable
-                  data={this.props.datas}
-                  columns={this.props.columns}
-                  defaultPageSize={
-                    this.props.defaultPageSize ? this.props.defaultPageSize : 5
-                  }
-                  className="-striped -highlight"
-                />
-              </CardBody> */}
 
-              <CardBody>
-                {
-                  this.state.datas &&  (
-                      <ReactTable
-                  data={this.state.datas}
-                  columns={this.props.columns}
-                  defaultPageSize={
-                    this.props.defaultPageSize ? this.props.defaultPageSize : 5
-                  }
-                  className="-striped -highlight"
-                />
-                )
-                }
-              
+
+               { /* va contenir le resultat de la recherche faite par le personnel*/}
+
+                <Card style={{marginTop:"4%"}}>
+                    <h5>Informations sur le patient</h5> 
+                        <hr
+                        className={APP_COLOR}
+                        style={{
+                        height: '2px',
+                        }}
+                    />
+                    <Row>
+                        <Col xm={12} md={6} sm={12} lg={6}>                      
+                            <img src={userImage} alt="logged-in-user" />
+                        </Col>
+
+                            { /* va contenir les infos basiques du patient*/}
+                        <Col xm={12} md={6} sm={12} lg={6}>
+                            <div>
+                                <FormGroup row>
+                                    <Label for="userinput3" sm={4}>
+                                        Nom et Prenom :
+                                    </Label>
+                                    <Col sm={8}>
+                                        <Input
+                                        type="text"
+                                        id="Nom_Prenom"
+                                        className="border-primary"
+                                        name="Nom_prenom"
+                                        //value={this.state.quartier}
+                                        //onChange={this.inputChanged}
+                                        />
+                                    </Col>
+                                </FormGroup>
+
+                                <FormGroup row>
+                                    <Label for="userinput3" sm={4}>
+                                        Sexe :
+                                    </Label>
+                                    <Col sm={8}>
+                                        <Input
+                                        type="text"
+                                        id="Sexe"
+                                        className="border-primary"
+                                        name="sexe"
+                                        //value={this.state.quartier}
+                                        //onChange={this.inputChanged}
+                                        />
+                                    </Col>
+                                </FormGroup>
+
+                                <FormGroup row>
+                                    <Label for="userinput3" sm={4}>
+                                        Age :
+                                    </Label>
+                                    <Col sm={8}>
+                                        <Input
+                                        type="text"
+                                        id="age"
+                                        className="border-primary"
+                                        name="age"
+                                        //value={this.state.quartier}
+                                        //onChange={this.inputChanged}
+                                        />
+                                    </Col>
+                                </FormGroup>
+
+                                <FormGroup row>
+                                    <Label for="userinput3" sm={4}>
+                                        Nationalité :
+                                    </Label>
+                                    <Col sm={8}>
+                                        <Input
+                                        type="text"
+                                        id="nation"
+                                        className="border-primary"
+                                        name="nation"
+                                        //value={this.state.quartier}
+                                        //onChange={this.inputChanged}
+                                        />
+                                    </Col>
+                                </FormGroup>
+                            </div>
+                            {/*Bouttons de parametres viteaux ou fille d'attente */}
+                            <Row>
+                                <Col xm={6} md={6} sm={6} lg={6} style={{display:"flex", justifyContent:"flex-start"}}>
+                                    <Button  color="primary" size="lg">
+                                        Parametres vitaux
+                                    </Button>
+                                </Col>
+
+                                <Col xm={6} md={6} sm={6} lg={6} style={{display:"flex", justifyContent:"flex-end"}}>
+                                    <Button  color="primary" size="lg">
+                                        fille d'attente
+                                    </Button>
+                                </Col>
+                            </Row>
+                        </Col>
+                    </Row>
+
+                </Card>
               </CardBody>
             </Card>
           </Col>

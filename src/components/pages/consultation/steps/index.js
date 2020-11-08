@@ -74,13 +74,13 @@ export class index extends Component {
     
     render() {
         return (
-            <div>
+            <div style={{margin:'05%'}}>
 
            <Row className="row-eq-height">
             <Col sm="12" md="6" xl="6" style={{cursor:'pointer'}} onClick={this.handleAnalyseClick}>
               <Statistics
                 chartData={'good'}
-                cardBgColor="gradient-green-teal"
+                cardBgColor="gradient-blackberry"
                 statistics={
                     75
                 }
@@ -88,7 +88,7 @@ export class index extends Component {
                 iconSide="right"
               >
  
-                <FaNotesMedical style={{fontSize:36,color:"#fff"  }} />
+                <FaNotesMedical style={{fontSize:106,color:"#fff"  }} />
                 {/* <Icon.Users size={36} strokeWidth="1.3" color="#fff" /> */}
               </Statistics>
             </Col>
@@ -101,20 +101,20 @@ export class index extends Component {
                 text="Enquete System"
                 iconSide="right"
               >
-                <FaXRay size={36} strokeWidth="1.3" color="#fff" />
+                <FaXRay size={106} strokeWidth="1.3" color="#fff" />
               </Statistics>
             </Col>
             <Col sm="12" md="6" xl="6" style={{cursor:'pointer'}} onClick={this.handleHypothseClick}>
               <Statistics
                 chartData={'good'}
-                cardBgColor="gradient-green-teal"
+                cardBgColor="gradient-ibiza-sunset"
                 statistics={
                   40
                 }
                 text="Hypothese Diagnostique"
                 iconSide="right"
               >
-                <FaStethoscope size={36} strokeWidth="1.3" color="#fff" />
+                <FaStethoscope size={106} strokeWidth="1.3" color="#fff" />
               </Statistics>
             </Col>
 
@@ -128,7 +128,7 @@ export class index extends Component {
                 text="  Examens Physique"
                 iconSide="right"
               >
-                <FaHeartbeat style={{fontSize:36,color:"#fff"  }} />
+                <FaHeartbeat style={{fontSize:106,color:"#fff"  }} />
                 {/* LocalTaxiIcon */}
                 {/* <Icon.PieChart size={36} strokeWidth="1.3" color="#fff" />/ */}
                 {/* <FontAwesomeIcon icon='telegram' color="#fff"/> */}

@@ -65,7 +65,7 @@ class FilesListe extends Component {
             md={12}
           >
             <div className="d-flex justify-content-between">
-              <ContentHeader>Consultations List</ContentHeader>
+              <ContentHeader>Fille d'attente</ContentHeader>
          
             </div>
             <hr
@@ -78,64 +78,6 @@ class FilesListe extends Component {
 
           <Col md={12}>
             <Card>
-              <div className="ml-1">
-                <a
-                // onClick={() => this.handleRefreshTable()}
-                // disabled={this.props.isFetchingUsers}
-                >
-                  <RefreshCcw
-                    size={16}
-                    color="#E64A19"
-                    className={`${
-                      this.props.isFetchingUsers ? 'animate-spin' : ''
-                    }`}
-                  />
-                </a>
-              </div>
-
-              <div>
-
-
-                <Col
-                  md={4}
-                  style={{
-                    marginTop: '1rem',
-                    float: 'right',
-                  }}
-                >
-                  {/* <Form className="navbar-form mt-1 float-left" role="search"> */}
-                  <div
-                    className="position-relative has-icon-right"
-                    style={{ marginTop: '1rem', marginBottom: '1rem' }}
-                  >
-                    <Input
-                      id="search-term"
-                      type="text"
-                      className="form-control round"
-                      placeholder="Try quick search"
-                      //    onChange={this.handleChange}
-                      //    value={searchTerm}
-                    />
-                    {/* <div className="form-control-position">
-               <Search size={16} className="mb-0" />
-            </div> */}
-                  </div>
-
-                  {/* </Form> */}
-                </Col>
-              </div>
-
-              {/* <CardBody>
-                <ReactTable
-                  data={this.props.datas}
-                  columns={this.props.columns}
-                  defaultPageSize={
-                    this.props.defaultPageSize ? this.props.defaultPageSize : 5
-                  }
-                  className="-striped -highlight"
-                />
-              </CardBody> */}
-
               <CardBody>
                 {
                   this.state.datas &&  (

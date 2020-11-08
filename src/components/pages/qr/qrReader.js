@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import dynamic from 'next/dynamic'
 import QrReader from 'react-qr-reader';
+import {toastr} from 'react-redux-toastr';
 import {
   Card,
   Col,
@@ -62,15 +63,9 @@ componentWillReceiveProps(nextProps){
             onError={this.handleError}
             onScan={this.handleScan}
           /> 
-          <Label for="Patientinput3" sm={4}>
-            valeur du QR:
-          </Label>
-          <FormGroup row style={{ width: '100%',display:'flex' ,alignItems:'center',justifyContent:'center'}}>
-          <Col sm={8}>
-            <p style={{textAlign:'center'}}>{this.state.result}</p>
-            <hr className={APP_COLOR2} style={{width:'100%',height:'5px'}}/>
-          </Col>
-        </FormGroup>
+          <Button outline color="success" size="lg" style={{marginTop:"3%"}} onClick={() => toastr.success('Vérification', 'La carte est bien identifiée', { position: 'top-right'}, { transitionIn: 'bounceIn', transitionOut: 'bounceOut' })}>
+            Vérifier le QR
+          </Button>
         </div>
        
       </div>

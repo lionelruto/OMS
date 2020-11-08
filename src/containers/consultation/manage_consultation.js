@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import ListsView from '../../components/pages/consultation'
+import ModalAdviseConsulation from '../../components/pages/modal/modalAdviseConsultation.js'
 import { components } from 'react-select'
 import { Edit, Trash2, Trash, PlusCircle, Loader } from "react-feather";
 import {
@@ -42,11 +44,13 @@ export class ManageFiles extends Component {
                 userIdEdit:null,
                 fileDataEdit:null,
                 consultaionDataAdd:null,
-                consultationIdEdit:null
+                consultationIdEdit:null,
+                onShow:false
           
         
         }
     }
+    
   
     setEditFile = (userId, fileData)=>{
         this.setState({
@@ -72,6 +76,11 @@ export class ManageFiles extends Component {
       
     }
 
+        handleModal = () => {
+            this.setState({
+            onShow: !this.state.onShow,
+            });
+        };
     render() {
         console.log('testrr',this.state.consultaionDataAdd)
         return (
@@ -134,7 +143,7 @@ export class ManageFiles extends Component {
                             size={18}
                             className="mr-2 hand-cursor"
                             color="green"
-                            onClick={()=>this.setAddConsultation(props.original.id, props.original)}
+                            onClick={()=>this.handleModal(props.original.id, props.original)}
                           />
                           <Edit
                             style={{cursor:'pointer'}}
@@ -170,6 +179,16 @@ export class ManageFiles extends Component {
                     }
                   ]}
               />
+
+        <ModalAdviseConsulation
+          title="Demander une autorisation"
+          onShow={this.handleModal}
+          show={this.state.onShow}
+          submit ={this.handleSubmitModal}
+          datas={this.state.datas}
+          type = 'patient'
+
+        />
             </div>
         )
     }

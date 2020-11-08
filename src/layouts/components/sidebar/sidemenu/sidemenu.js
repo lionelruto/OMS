@@ -2,7 +2,13 @@
 import React, { Component } from "react";
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import CreditCardIcon from '@material-ui/icons/CreditCard';
+import {FaBookMedical} from 'react-icons/fa'
+import {RiTableFill} from 'react-icons/ri'
 import {FaStethoscope} from 'react-icons/fa'
+import {BsFillCalendarFill} from 'react-icons/bs'
+import {FaMale} from 'react-icons/fa'
+import {AiOutlineAlert} from 'react-icons/ai'
+
 import {
    Home,
    Mail,
@@ -40,8 +46,12 @@ import {
    LIST_CARTE_ROUTE,
    LIST_USER_ROUTE,
    DASHBOARD,
+   USER_DMP,
+   USER_EMERGENCYPROFILE,
+   CALENDRIER,
    LIST_FILE_ROUTE,
-   LIST_CONSULTATION_ROUTE
+   LIST_CONSULTATION_ROUTE,
+   USER_HEALTHDATA
  } from '../../../../constants/app_utils';
  
 class SideMenuContent extends Component {
@@ -76,14 +86,26 @@ class SideMenuContent extends Component {
                   <span className="menu-item-text">Patients</span>
                </NavLink>
             </SideMenu.MenuSingleItem>
-            {/* <SideMenu.MenuSingleItem>
-               <NavLink to="/2" >
+
+            <SideMenu.MenuSingleItem>
+               <NavLink to={USER_HEALTHDATA} >
                   <i className="menu-icon">
-                     <Users size={18} />
+                     <FaMale size={18} />
                   </i>
-                  <span className="menu-item-text">Rechercher un patient</span>
+                  <span className="menu-item-text">Données de santé</span>
                </NavLink>
-            </SideMenu.MenuSingleItem> */}
+            </SideMenu.MenuSingleItem>
+
+            <SideMenu.MenuMultiItems
+               name="Dossier medical"
+               Icon={<FaBookMedical style={{fontSize:18}} />}
+               ArrowRight={<ChevronRight size={16} />}
+               collapsedSidebar={this.props.collapsedSidebar}>
+               <NavLink to={USER_DMP} exact className="item" activeclassname="active">
+                  <span className="menu-item-text">Mon dossier medical</span>
+                  {/* <span className="menu-item-text">Mes-Statistiques</span> */}
+               </NavLink>
+           </SideMenu.MenuMultiItems>
            
             <SideMenu.MenuSingleItem>
                <NavLink to={LIST_CARTE_ROUTE} >
@@ -94,12 +116,21 @@ class SideMenuContent extends Component {
                </NavLink>
             </SideMenu.MenuSingleItem>
 
+            <SideMenu.MenuSingleItem>
+               <NavLink to={USER_EMERGENCYPROFILE} >
+                  <i className="menu-icon">
+                     <AiOutlineAlert style={{fontSize:18}} />
+                  </i>
+                  <span className="menu-item-text">Profil d'urgence</span>
+               </NavLink>
+            </SideMenu.MenuSingleItem>            
+
             <SideMenu.MenuSingleItem >
                <NavLink to={LIST_FILE_ROUTE} >
                   <i className="menu-icon">
                      <FaStethoscope size={18} color="#fff" />
                   </i>
-                  <span className="menu-item-text">Pre-Consultaion</span>
+                  <span className="menu-item-text">Consultations</span>
                </NavLink>
             </SideMenu.MenuSingleItem>
 
@@ -107,9 +138,19 @@ class SideMenuContent extends Component {
                <NavLink   to={LIST_CONSULTATION_ROUTE}>
                {/* to={LIST_CONSULTATION_ROUTE} */}
                   <i className="menu-icon">
-                     <FaStethoscope size={18} color="#fff" />
+                     <RiTableFill size={18} color="#fff" />
                   </i>
-                  <span className="menu-item-text">Consultation</span>
+                  <span className="menu-item-text">Fille d'attente</span>
+               </NavLink>
+            </SideMenu.MenuSingleItem>
+
+            <SideMenu.MenuSingleItem >
+               <NavLink   to={CALENDRIER}>
+               {/* to={LIST_CONSULTATION_ROUTE} */}
+                  <i className="menu-icon">
+                     <BsFillCalendarFill size={18} color="#fff" />
+                  </i>
+                  <span className="menu-item-text">Agenda</span>
                </NavLink>
             </SideMenu.MenuSingleItem>
          

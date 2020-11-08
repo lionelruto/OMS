@@ -16,7 +16,10 @@ import 'react-table/react-table.css';
 import { X, CheckSquare, RefreshCw, Eye, EyeOff } from 'react-feather';
 import { ClipLoader } from 'react-spinners';
 import CreateableSelect from 'react-select';
-
+import Step1 from "./Patient_stepper/Step_1.js"
+import Step2 from "./Patient_stepper/Step_2.js"
+import Step3 from "./Patient_stepper/Step_3.js"
+import "../../../assets/scss/views/form/wizard.scss"
 import {
   LIST_PATIENT_ROUTE,
   EDIT_PATIENT_ROUTE,
@@ -26,6 +29,7 @@ import {
 } from '../../../constants/app_utils';
 import { cleanObject, validateEmail } from '../../../utility/misc';
 import { toastr } from 'react-redux-toastr';
+import StepZilla from "./Patient_stepper/main.js";
 import { checkData } from './patient_helpers';
 import { displayMessage } from './patient_helpers';
 import  QrReader from '../qr/qrReader'
@@ -36,6 +40,7 @@ export default class PatientManagementView extends React.Component {
     let data = props.editData ? props.editData : {};
     this.state = this.getFormData(data);
   }
+  
   getFormData = (data) => {
     return {
       firstname: data.firstname ? data.firstname : '',
@@ -143,6 +148,10 @@ export default class PatientManagementView extends React.Component {
   //       }
   //     );
   //   };
+
+
+
+
   submitInputData = (e) => {
     e.preventDefault();
     const errors = checkData();
@@ -202,6 +211,11 @@ export default class PatientManagementView extends React.Component {
   }
   render() {
     //   console.log('prop',this.props)
+      const steps= [
+      {name: 'Enregistrer le patient', component: <Step1 />},
+      {name: 'Scanner le Qr', component: <Step2 />},
+      {name: 'Vérifier les informations', component: <Step3 />},
+  ]
     return (
       <Fragment>
         <div className="d-flex justify-content-between">
@@ -217,326 +231,14 @@ export default class PatientManagementView extends React.Component {
         />
         <Card>
           <CardBody>
-            <Form className="form-horizontal">
-              {(this.state.error || this.state.message) && (
-                <UncontrolledAlert
-                  color={this.state.error ? 'danger' : 'success'}
-                >
-                  {this.state.error ? this.state.error : this.state.message}
-                </UncontrolledAlert>
-              )}
-              <div className="form-body">
-                <Row>
-                  <Col md="6">
-                    <FormGroup row>
-                      <Label for="Patientinput1" sm={4}>
-                        First Name:
-                      </Label>
-                      <Col sm={8}>
-                        <Input
-                          type="text"
-                          id="Patientinput1"
-                          className="border-primary"
-                          name="firstname"
-                          value={this.state.firstname}
-                          onChange={this.inputChanged}
-                        />
-                      </Col>
-                    </FormGroup>
-                  </Col>
-                  <Col md="6">
-                    <FormGroup row>
-                      <Label for="Patientinput2" sm={4}>
-                        Last Name:
-                      </Label>
-                      <Col sm={8}>
-                        <Input
-                          type="text"
-                          id="Patientinput2"
-                          className="border-primary"
-                          name="lastname"
-                          value={this.state.lastname}
-                          onChange={this.inputChanged}
-                        />
-                      </Col>
-                    </FormGroup>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col md="6">
-                    <FormGroup row>
-                      <Label for="Patientinput3" sm={4}>
-                        other contact:
-                      </Label>
-                      <Col sm={8}>
-                        <Input
-                          type="text"
-                          id="Patientinput3"
-                          className="border-primary"
-                          name="Patientname"
-                          value={this.state.Patientname}
-                          onChange={this.inputChanged}
-                        />
-                      </Col>
-                    </FormGroup>
-                  </Col>
-                  <Col md="6">
-                    <FormGroup row>
-                      <Label for="Patientinput4" sm={4}>
-                        Quartier:
-                      </Label>
-                      <Col sm={8}>
-                        <Input
-                          type="text"
-                          id="Patientiquat4"
-                          className="border-primary"
-                          name="quartier"
-                          value={this.state.quartier}
-                          onChange={this.inputChanged}
-                        />
-                      </Col>
-                    </FormGroup>
-                  </Col>
-                </Row>
-                <Row md='12'>
-                  <Col md="6">
-                    <FormGroup row>
-                      <Label for="userinput3" sm={4}>
-                        status:
-                      </Label>
-                      <Col sm={8}>
-                    
-                           <CreateableSelect
-                       
-                       options={this.props.status}
-                       name="status"
-                       getOptionLabel={elt => elt.label}
-                       getOptionValue={elt => elt}
-                       value={this.state.status}
-                       onChange={elt => this.NotificationInputChanged(elt)}
-                     />
-                      </Col>
-                    </FormGroup>
-                  </Col>
-
-                  <Col md="6">
-                    <FormGroup row>
-                      <Label for="userinput3" sm={4}>
-                      Sexe :
-                      </Label>
-                      <Col sm={8}>
-                        <CreateableSelect
-                       
-                          options={this.props.sexe}
-                          name="sexe"
-                          getOptionLabel={elt => elt.label}
-                          getOptionValue={elt => elt}
-                          value={this.state.sexe}
-                          onChange={elt => this.NotificationInputChanged(elt)}
-                        />
-                      </Col>
-                    </FormGroup>
-                  </Col>
-                  </Row>
-                  <Row md='12'>
-                  <Col md="6">
-                    <FormGroup row>
-                      <Label for="userinput3" sm={4}>
-                        Rhesus:
-                      </Label>
-                      <Col sm={8}>
-                    
-                           <CreateableSelect
-                       
-                       options={this.props.rhesus}
-                       name="rhesus"
-                       getOptionLabel={elt => elt.label}
-                       getOptionValue={elt => elt}
-                       value={this.state.rhesus}
-                       onChange={elt => this.NotificationInputChanged(elt)}
-                     />
-                      </Col>
-                    </FormGroup>
-                  </Col>
-
-                  <Col md="6">
-                    <FormGroup row>
-                      <Label for="userinput3" sm={4}>
-                      Groupe Sanguin :
-                      </Label>
-                      <Col sm={8}>
-                        <CreateableSelect
-                       
-                          options={this.props.gsanguin}
-                          name="gsanguin"
-                          getOptionLabel={elt => elt.label}
-                          getOptionValue={elt => elt}
-                          value={this.state.gsanguin}
-                          onChange={elt => this.NotificationInputChanged(elt)}
-                        />
-                      </Col>
-                    </FormGroup>
-                  </Col>
-                  </Row>
-                {!this.state.id && (
-                  <Row>
-                    <Col md="6">
-                      <FormGroup row>
-                        <Label for="Patientinput5" sm={4}>
-                          Password:
-                        </Label>
-                        <Col sm={8}>
-                          <div className="position-relative has-icon-right">
-                            <Input
-                              type={this.state.type}
-                              // type="password"
-                              id="Patientinput5"
-                              className="border-primary"
-                              name="password"
-                              value={this.state.password}
-                              onChange={this.inputChanged}
-                            />
-
-                            <div
-                              className="form-control-position"
-                              style={{ cursor: 'pointer' }}
-                            >
-                              {this.state.type === 'password' ? (
-                                <Eye size={16} onClick={this.handleTypeClick} />
-                              ) : (
-                                <EyeOff
-                                  size={16}
-                                  onClick={this.handleTypeClick}
-                                />
-                              )}{' '}
-                            </div>
-                          </div>
-                        </Col>
-                      </FormGroup>
-                    </Col>
-                    {/* <Col>
-                      <Eye size={16} color="black" />
-                    </Col> */}
-                    <Col md="6">
-                      <FormGroup row>
-                        <Label for="Patientinput6" sm={4}>
-                          Confirm Password:
-                        </Label>
-                        <Col sm={8}>
-                          <div className="position-relative has-icon-right">
-                            <Input
-                              type={this.state.ctype}
-                              // type="password"
-                              id="Patientinput6"
-                              className="border-primary"
-                              name="cpassword"
-                              value={this.state.cpassword}
-                              onChange={this.inputChanged}
-                            />
-                            <div
-                              className="form-control-position"
-                              style={{ cursor: 'pointer' }}
-                            >
-                              {this.state.ctype === 'password' ? (
-                                <Eye
-                                  size={16}
-                                  onClick={this.handlecTypeClick}
-                                />
-                              ) : (
-                                <EyeOff
-                                  size={16}
-                                  onClick={this.handlecTypeClick}
-                                />
-                              )}{' '}
-                            </div>
-                          </div>
-                        </Col>
-                      </FormGroup>
-
-                      {/* <FormGroup row>
-                        <Label for="Patientinput6" sm={4}>
-                          Assign Role:
-                        </Label>
-                        <Col sm={8}>
-                          <Input
-                            type="select"
-                            id="Patientinput6"
-                            className="border-primary"
-                            name="role_id"
-                            value={this.state.role_id}
-                            onChange={this.inputChanged}
-                          >
-                            <option>All Roles...</option>
-                            {this.props.appRoles &&
-                              this.props.appRoles.map((elt) => (
-                                <option value={elt.id}>{elt.name}</option>
-                              ))}
-                          </Input>
-                        </Col>
-                      </FormGroup> */}
-                    </Col>
-                  </Row>
-                )}
-                
-             
-              </div>
-
-              <div
-                className="form-actions"
-                style={{ display: 'flex', justifyContent: 'space-between' }}
-              >
-                <div>
-                  {!this.state.id && (
-                    <Button
-                      color="warning"
-                      className={APP_COLOR2}
-                      onClick={this.clearInput}
-                    >
-                      <RefreshCw size={16} color='#FFF' /> Clear
-                    </Button>
-                  )}
-                </div>
-                <div>
-                  <Button
-                    color="warning"
-                    className={APP_COLOR2}
-                    PATIENT
-                    onClick={() => this.props.history.push(LIST_PATIENT_ROUTE)}
-                  >
-                    <X size={16} color="#FFF" /> Cancel
-                  </Button>
-
-                  <Button
-                    className={APP_COLOR}
-                    onClick={this.submitInputData}
-                    color="#FFF"
-                    // disabled={
-                    //   this.props.isCreatingPatient || this.props.isUpdatingPatient
-                    // }
-                  >
-                    <div
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                      }}
-                    >
-                      <span style={{ marginRight: 5 }}>
-                        <CheckSquare size={16} color="#FFF" />
-                      </span>
-                      <span style={{ marginRight: 5 }}>
-                        {' '}
-                        {this.state.id ? 'Update' : 'Create'}{' '}
-                      </span>
-                      {(this.props.isCreatingPatient ||
-                        this.props.isUpdatingPatient) && (
-                        <ClipLoader size={20} color="white" />
-                      )}
-                    </div>
-                  </Button>
-                </div>
-              </div>
-            </Form>
+            <div className='step-progress'>
+                <StepZilla steps={steps}
+                    preventEnterSubmission={true}
+                    nextTextOnFinalActionStep={"Save"}
+                    hocValidationAppliedTo={[3]}
+                    startAtStep={window.sessionStorage.getItem("step") ? parseFloat(window.sessionStorage.getItem("step")) : 0}
+                    onStepChange={step => window.sessionStorage.setItem("step", step)}/>
+            </div>
           </CardBody>
         </Card>
       </Fragment>

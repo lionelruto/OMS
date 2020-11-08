@@ -6,6 +6,7 @@ import {
   Card,
   Input,
   FormText,
+  Label,
   Row,
   Col,
   CardHeader,
@@ -47,7 +48,8 @@ const pStyle ={
     color: 'black', 
     margin: '0.5rem', 
     cursor: 'pointer' ,
-    Padding:'0.5rem'
+    Padding:'0.5rem',
+    fontWeight:'bold'
 }
 const chevronStyle = {
     float:'rigth'
@@ -81,46 +83,38 @@ const Example = (props) => {
     <div>
 
         <Card>
-            <CardHeader style={{textAlign:'center'}}>Antecedents Medicaux</CardHeader>
+            <CardHeader style={{textAlign:'center'}}>Liste des antecedents Medicaux</CardHeader>
           <CardBody>
-          <p
-        color="primary"
-        onClick={toggle}
-        style={pStyle}
-      >
-    Appareil Cardiaque  
-       <span style ={{float:'right'}} > {isOpen ? <ChevronDown color='green' size={16} /> :<ChevronRight color='green' size={16} />  }   </span></p>
-      <hr />
-      
+              <div style={{cursor:'pointer'}}>
+                <p
+                color="primary"
+                onClick={toggle}
+                style={pStyle}
+                >
+            Appareil Cardiaque  
+            <span style ={{float:'right'}} > {isOpen ? <ChevronDown color='green' size={16} /> :<ChevronRight color='green' size={16} />  }   </span></p>
+            <hr />
+
+              </div>      
           <Collapse isOpen={isOpen}>
             <Row>
               <Col md="6">
                 {' '}
                 <div style={divStyle}>
-                  <FormText>Malaise ou perte de connaissance :</FormText>{' '}
+                    <Label check>
+                        <Input type="checkbox" id="checkbox2" />{' '}
+                        Malaise ou perte de connaissance
+                    </Label>{' '}
                   <Input placeholder="Observation" />{' '}
                 </div>
               </Col>
               <Col md="6">
                 {' '}
                 <div style={divStyle}>
-                  <FormText>Palpitations</FormText>{' '}
-                  <Input placeholder="Observation" />{' '}
-                </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col md="6">
-                {' '}
-                <div style={divStyle}>
-                  <FormText> Oppression ou douleur thoracique:</FormText>{' '}
-                  <Input placeholder="Observation" />{' '}
-                </div>
-              </Col>
-              <Col md="6">
-                {' '}
-                <div style={divStyle}>
-                  <FormText>Dyspnée, toux: </FormText>{' '}
+                    <Label check>
+                        <Input type="checkbox" id="checkbox2" />{' '}
+                        Palpitations
+                    </Label>{' '}
                   <Input placeholder="Observation" />{' '}
                 </div>
               </Col>
@@ -129,7 +123,32 @@ const Example = (props) => {
               <Col md="6">
                 {' '}
                 <div style={divStyle}>
-                  <FormText>Valvulopathies: </FormText>{' '}
+                    <Label check>
+                        <Input type="checkbox" id="checkbox2" />{' '}
+                        Opression ou douleurs thoraciques 
+                    </Label>{' '}
+                  <Input placeholder="Observation" />{' '}
+                </div>
+              </Col>
+              <Col md="6">
+                {' '}
+                <div style={divStyle}>
+                    <Label check>
+                        <Input type="checkbox" id="checkbox2" />{' '}
+                        Dyspnée,toux
+                    </Label>{' '}
+                  <Input placeholder="Observation" />{' '}
+                </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col md="6">
+                {' '}
+                <div style={divStyle}>
+                    <Label check>
+                        <Input type="checkbox" id="checkbox2" />{' '}
+                        Valvulopathies
+                    </Label>{' '}
                   <Input placeholder="Observation" />{' '}
                 </div>
               </Col>
@@ -158,6 +177,8 @@ const Example = (props) => {
               </Col>
             </Row>
             </Collapse>
+
+
             <p
         color="primary"
         onClick={toggleResp}
