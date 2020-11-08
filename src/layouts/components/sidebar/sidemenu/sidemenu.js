@@ -6,6 +6,9 @@ import {FaBookMedical} from 'react-icons/fa'
 import {RiTableFill} from 'react-icons/ri'
 import {FaStethoscope} from 'react-icons/fa'
 import {BsFillCalendarFill} from 'react-icons/bs'
+import {FaMale} from 'react-icons/fa'
+import {AiOutlineAlert} from 'react-icons/ai'
+
 import {
    Home,
    Mail,
@@ -44,9 +47,11 @@ import {
    LIST_USER_ROUTE,
    DASHBOARD,
    USER_DMP,
+   USER_EMERGENCYPROFILE,
    CALENDRIER,
    LIST_FILE_ROUTE,
-   LIST_CONSULTATION_ROUTE
+   LIST_CONSULTATION_ROUTE,
+   USER_HEALTHDATA
  } from '../../../../constants/app_utils';
  
 class SideMenuContent extends Component {
@@ -82,6 +87,15 @@ class SideMenuContent extends Component {
                </NavLink>
             </SideMenu.MenuSingleItem>
 
+            <SideMenu.MenuSingleItem>
+               <NavLink to={USER_HEALTHDATA} >
+                  <i className="menu-icon">
+                     <FaMale size={18} />
+                  </i>
+                  <span className="menu-item-text">Données de santé</span>
+               </NavLink>
+            </SideMenu.MenuSingleItem>
+
             <SideMenu.MenuMultiItems
                name="Dossier medical"
                Icon={<FaBookMedical style={{fontSize:18}} />}
@@ -101,6 +115,15 @@ class SideMenuContent extends Component {
                   <span className="menu-item-text">Cartes</span>
                </NavLink>
             </SideMenu.MenuSingleItem>
+
+            <SideMenu.MenuSingleItem>
+               <NavLink to={USER_EMERGENCYPROFILE} >
+                  <i className="menu-icon">
+                     <AiOutlineAlert style={{fontSize:18}} />
+                  </i>
+                  <span className="menu-item-text">Profil d'urgence</span>
+               </NavLink>
+            </SideMenu.MenuSingleItem>            
 
             <SideMenu.MenuSingleItem >
                <NavLink to={LIST_FILE_ROUTE} >

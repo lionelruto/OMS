@@ -27,14 +27,15 @@ export const LIST_FILE_ROUTE = "/patient/file";
 
 // Les chemins de l'utilisateur 
 export const USER_PROFILE = "/user/profile";
-export const USER_HEALTHDATA = "/user/Consultation/List";
-export const USER_EMERGENCYPROFILE = "/user/Consultation/List";
+export const USER_HEALTHDATA = "/user/DonneesSante/List";
+export const USER_EMERGENCYPROFILE = "/user/EmergencyProfile";
 export const USER_DMP = "/user/sharedMedicalFolder";
 export const USER_CONSULTATION = "/user/Consultation/List";
 export const USER_HOSPITALISATION = "/user/Hospitalisation/List";
 export const USER_BIOLOGICAL_EXAM = "/user/BiologicalExams/List";
 export const USER_RADIO_EXAMS = "/user/RadiologicalExams/List";
-
+export const USER_WEIGTHSTATS = "/user/WeigthStats";
+export const PERSO_PROFILE = "/personnel/profile";
 
 export const ADD_CONSULTATION_ROUTE = "/patient/consultation/add";
 export const DELETE_CONSULTATION_ROUTE = "/patient/consultation/delete";

@@ -12,6 +12,9 @@ import CartesListView from './containers/cartes/manage_cartes'
 import FilesListView from './containers/file_attente/manager_file'
 import ConsultationView from './containers/consultation/manage_consultation'
 import Users_DMP from './containers/DMP/Manage_DMP.js'
+import UserProfile from './containers/User_Profile/User_Profile.js'
+import UserHeathData from './containers/DonnesSante/Manage_HealthData.js'
+import Emercency from './containers/Emergency/Manage_Emergency.js'
 
 import FullPageLayout from "./layouts/fullpageLayout";
 import { FullPageOverlayLayout } from "./layouts/fullpageLayout";
@@ -39,6 +42,8 @@ import {
   DASHBOARD,
   USER_DMP,
   CALENDRIER,
+  PERSO_PROFILE,
+  USER_EMERGENCYPROFILE,
   LIST_CONSULTATION_ROUTE,
   ADD_CONSULTATION_ROUTE,
   DELETE_CONSULTATION_ROUTE,
@@ -47,9 +52,12 @@ import {
   ENQUETE_CONSULTATION_ROUTE,
   ANALYSE_CONSULTATION_ROUTE,
   EXAMEN_PHYSIQUE_CONSULTATION_ROUTE,
-  ADD_INDEX_CONSULTATION_ROUTE
+  ADD_INDEX_CONSULTATION_ROUTE,
+  USER_PROFILE,
+  USER_HEALTHDATA
 } from './constants/app_utils';
 import Calendrier from './containers/calendrier/Calendrier.js';
+import HealthData from './components/pages/HealthData/Health_Data';
 
 
 
@@ -89,6 +97,51 @@ class ApplicationRouter extends Component {
               </MainLayout>
             )}
           />
+
+           <SimpleRoute
+            exact
+            path={USER_EMERGENCYPROFILE}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <Emercency {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
+
+           <SimpleRoute
+            exact
+            path={USER_HEALTHDATA}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <HealthData {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
+
+           <SimpleRoute
+            exact
+            path={USER_PROFILE}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <UserProfile {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
+
+           <SimpleRoute
+            exact
+            path={PERSO_PROFILE}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <UserProfile {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
+
            <SimpleRoute
             exact
             path={ADD_PATIENT_ROUTE}
