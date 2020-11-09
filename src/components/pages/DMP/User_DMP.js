@@ -195,7 +195,7 @@ export default class User_DMP extends React.Component {
   };
 
   render() {
-    //console.log('prop', this.props.location.pathname);
+    console.log('prosp', this.props);
     return (
       <Fragment>
         <div className="d-flex justify-content-between">
@@ -230,15 +230,15 @@ export default class User_DMP extends React.Component {
                   <IndexDMP setEtape={this.setEtape} />
                 )}
                    {this.state.step === 1 && (
-                  <Consultations setEtape={this.setEtape} />
+                  <Consultations  {...this.props}  setEtape={this.setEtape} />
                 )}
                    {this.state.step === 2 && (
-                  <Hospitalisations setEtape={this.setEtape} />
+                  <Hospitalisations {...this.props}  setEtape={this.setEtape} />
                 )}
                    {this.state.step === 3 && (
-                  <AnalysesBio setEtape={this.setEtape} />
+                  <AnalysesBio {...this.props} setEtape={this.setEtape} />
                 )}   {this.state.step === 4 && (
-                  <AnalysesRadio setEtape={this.setEtape} />
+                  <AnalysesRadio {...this.props}  setEtape={this.setEtape} />
                 )}            
               </div>
             </Form>

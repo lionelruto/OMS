@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import DMP from '../../components/pages/DMP'
+// import DMP from '../../components/pages/DMP'
+import DMP from '../../components/pages/DMP/User_DMP'
+
 import ModalAdviseConsulation from '../../components/pages/modal/modalAdviseConsultation.js'
 import { components } from 'react-select'
 import { Edit, Trash2, Trash, PlusCircle, Loader } from "react-feather";
@@ -88,29 +90,20 @@ export class ManageFiles extends Component {
               <DMP 
                 editData ={this.state.fileDataEdit}
                 addData={this.state.consultaionDataAdd}
-              datas={this.props.datas}
-              // prop1={this.props}
+              datas={this.props.datas} // prop1={this.props}
+              datasBio={this.props.datasBio}       
+              datasRadio={this.props.datasRadio}
+              datasConsultation={this.props.datasConsultation}
+              datasHospitalisation={this.props.datasHospitalisation}
               gsanguin = {[{id:1,name:'gsanguin',label:'A-'},{id:2,name:'gsanguin',label:'B-'},{id:3,name:'gsanguin',label:'o-'},{id:4,name:'gsanguin',label:'AB-'},{id:5,name:'gsanguin',label:'o+'},{id:6,name:'gsanguin',label:'A+'},{id:7,name:'gsanguin',label:'B+'},{id:8,name:'gsanguin',label:'AB+'}]}
               rhesus ={[{id:1,name:'rhesus',label:"rhesus +"}, {id:2,name:'rhesus',label:'rhesus-'}]}
               sexe={[{id:1,label:'Homme',name:'sexe'},{id:2,label:'Femme',name:'sexe'}]}
               cartes={this.props.cartes}
                 columns={[
+                   
                     {
-                      Header: "Photo",
-                      accessor: "img",
-                      Cell: props => (
-                        <CellItem
-                          deleted={
-                            this.props.isDeletedPickupArea &&
-                            this.props.deletingPickupAreaId == props.original.id
-                          }
-                          item={<img style={{borderRadius:'50%' ,width:'40px',height:'40px'}} src={props.value}/>}
-                        />
-                      )
-                    },
-                    {
-                      Header: "Nom Complet",
-                      accessor: "fullName",
+                      Header: "Consultation",
+                      accessor: "Consultation",
                       Cell: props => (
                         <CellItem
                           deleted={
@@ -122,18 +115,31 @@ export class ManageFiles extends Component {
                       )
                     },
                     {
-                      Header: "Metier",
-                      accessor: "position",
+                      Header: "Medecin",
+                      accessor: "Medecin",
                       Cell: props => (
                         <CellItem
-                          deleted={
-                            this.props.isDeletedPickupArea &&
-                            this.props.deletingPickupAreaId == props.original.id
-                          }
+                          // deleted={
+                          //   this.props.isDeletedPickupArea &&
+                          //   this.props.deletingPickupAreaId == props.original.id
+                          // }
                           item={props.value}
                         />
                       )
-                    },                  
+                    },
+                    {
+                      Header: "Date",
+                      accessor: "Date",
+                      Cell: props => (
+                        <CellItem
+                          // deleted={
+                          //   this.props.isDeletedPickupArea &&
+                          //   this.props.deletingPickupAreaId == props.original.id
+                          // }
+                          item={props.value}
+                        />
+                      )
+                    },                       
                     {
                       Header: "Actions",
                       Cell: props => (
@@ -145,13 +151,13 @@ export class ManageFiles extends Component {
                             color="green"
                             onClick={()=>this.handleModal(props.original.id, props.original)}
                           />
-                          <Edit
+                          {/* <Edit
                             style={{cursor:'pointer'}}
                             size={18}
                             className="mr-2 hand-cursor"
                             color="#1565C0"
                             onClick={()=>this.setEditFile(props.original.id, props.original)}
-                          />
+                          /> */}
                        
                           
                           {(this.props.isDeletingConsultation ||
@@ -198,7 +204,11 @@ const mapStateToProps = (state) => {
     console.log('etat',state)
     return{
         datas:state.file.patientsToFile,
-      
+        datasBio:state.DMP_Bio.AnalyseBio,
+        datasRadio:state.DMP_Radio.AnalyseRadio,
+        datasConsultation:state.DMP_consultation.Consultation,
+        datasHospitalisation:state.DMP_Hospitalisation.Hospitalisation
+
     }
 
 }
