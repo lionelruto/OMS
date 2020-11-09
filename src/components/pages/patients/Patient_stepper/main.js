@@ -339,6 +339,7 @@ export default class StepZilla extends Component {
                >
                   {this.props.backButtonText}
                </button>
+
                <button
                   style={this.state.showNextBtn ? {} : this.hidden}
                   className={props.nextButtonCls}

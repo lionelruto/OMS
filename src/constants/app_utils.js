@@ -35,6 +35,7 @@ export const USER_HOSPITALISATION = "/user/Hospitalisation/List";
 export const USER_BIOLOGICAL_EXAM = "/user/BiologicalExams/List";
 export const USER_RADIO_EXAMS = "/user/RadiologicalExams/List";
 export const USER_WEIGTHSTATS = "/user/WeigthStats";
+export const USER_HEALTHPRO = "/user/Professionnels";
 export const PERSO_PROFILE = "/personnel/profile";
 
 export const ADD_CONSULTATION_ROUTE = "/patient/consultation/add";
