@@ -36,7 +36,8 @@ export default class EmercenceProfile extends Component{
                 userIdEdit:null,
                 userDataEdit:null,
                 isOpen:false,
-                setIsOpen:false,
+                isOpen3:false,
+                isOpen2:false,
             }
 
 //const [isOpen, setIsOpen] = useState(false);
@@ -46,7 +47,10 @@ export default class EmercenceProfile extends Component{
 
   
     render(){
-        const toggle = () => this.state.setIsOpen(!this.state.isOpen);   
+        const toggle = () => this.setState({isOpen: !this.state.isOpen});   
+        const toggle2 = () => this.setState({isOpen2: !this.state.isOpen2});   
+        const toggle3 = () => this.setState({isOpen3: !this.state.isOpen3});   
+
         return(
             <div>
                 <ContentHeader>
@@ -55,9 +59,21 @@ export default class EmercenceProfile extends Component{
 
                 <Row>
                     <Col lg={7}>
+                        <Row>
+                            <Col lg={8} style={{display:'flex',justifyContent:'flex-start'}}>
+                                <div>
+                                    <span style={{display: 'inline'}}><PhoneIcon /></span>
+                                    <div style={{display: 'inline-block'}}><p>Profil</p></div>
+                                </div>   
+
+                            </Col >
+                        </Row>
+                    </Col>
+
+                    <Col lg={7}>
                         <Card>
                             <CardBody>
-                                <Row>
+                                <Row style={{marginTop:'10px'}}>
                                     <Col lg={6} >
                                         
                                             <p style={{display:'flex',justifyContent:'flex-start'}}>Groupe sanguin:</p>
@@ -76,15 +92,15 @@ export default class EmercenceProfile extends Component{
                                     </Col>
                                 </Row>
 
-                                <Row>
+                                <Row style={{marginTop:'10px'}}>
                                     <Col lg={6} >
                                         
                                             <p style={{display:'flex',justifyContent:'flex-start'}}>Donneur d'organne:</p>
                                   
                                     </Col>
                                     <Col lg={6} style={{display:'flex', justifyContent:'flex-end'}}>
-                                        <FormGroup>
-                                            <div>
+                                        <FormGroup >
+                                            <div style={{display:'flex'}}>
                                             <CustomInput type="checkbox" id="exampleCustomInline" label="Oui" inline />
                                             <CustomInput type="checkbox" id="exampleCustomInline2" label="Non" inline />
                                             </div>
@@ -92,7 +108,7 @@ export default class EmercenceProfile extends Component{
                                     </Col>
                                 </Row>
 
-                                <Row>
+                                <Row style={{marginTop:'10px'}}>
                                     <Col lg={6} >
                                         
                                             <p style={{display:'flex',justifyContent:'flex-start'}}>Diabetique:</p>
@@ -100,7 +116,7 @@ export default class EmercenceProfile extends Component{
                                     </Col>
                                     <Col lg={6} style={{display:'flex', justifyContent:'flex-end'}}>
                                         <FormGroup>
-                                            <div>
+                                            <div style={{display:'flex'}}>
                                             <CustomInput type="checkbox" id="exampleCustomInline" label="Oui" inline />
                                             <CustomInput type="checkbox" id="exampleCustomInline2" label="Non" inline />
                                             </div>
@@ -108,7 +124,7 @@ export default class EmercenceProfile extends Component{
                                     </Col>
                                 </Row>
 
-                                <Row>
+                                <Row style={{marginTop:'10px'}}>
                                     <Col lg={4} >
                                         
                                             <p style={{display:'flex',justifyContent:'flex-start'}}>Asthme:</p>
@@ -116,7 +132,7 @@ export default class EmercenceProfile extends Component{
                                     </Col>
                                     <Col lg={8} style={{display:'flex', justifyContent:'flex-end'}}>
                                         <FormGroup>
-                                            <div>
+                                            <div style={{display:'flex'}}>
                                             <CustomInput type="checkbox" id="exampleCustomInline" label="Oui" inline />
                                             <CustomInput type="checkbox" id="exampleCustomInline2" label="Non" inline />
                                             </div>
@@ -124,7 +140,7 @@ export default class EmercenceProfile extends Component{
                                     </Col>
                                 </Row>
 
-                                <Row>
+                                <Row style={{marginTop:'10px'}}>
                                     <Col lg={6} >
                                         
                                             <p style={{display:'flex',justifyContent:'flex-start'}}>Hypertension:</p>
@@ -132,7 +148,7 @@ export default class EmercenceProfile extends Component{
                                     </Col>
                                     <Col lg={6} style={{display:'flex', justifyContent:'flex-end'}}>
                                         <FormGroup>
-                                            <div>
+                                            <div style={{display:'flex'}}>
                                             <CustomInput type="checkbox" id="exampleCustomInline" label="Oui" inline />
                                             <CustomInput type="checkbox" id="exampleCustomInline2" label="Non" inline />
                                             </div>
@@ -140,7 +156,7 @@ export default class EmercenceProfile extends Component{
                                     </Col>
                                 </Row>
 
-                                <Row>
+                                <Row style={{marginTop:'10px'}}>
                                     <Col lg={6} >
                                         
                                             <p style={{display:'flex',justifyContent:'flex-start'}}>Grossesse:</p>
@@ -162,14 +178,14 @@ export default class EmercenceProfile extends Component{
                         </Card>                    
                     </Col>
 
-                    <Col lg={5} style={{color:'#0275d8'}}>
+                    <Col lg={{ size: 4, offset: 1 }}  style={{color:'#0275d8'}}>
                         <Row>
                             <Col lg={12}>
                                 <Row>
                                     <Col lg={8} style={{display:'flex',justifyContent:'flex-start'}}>
                                         <div>
                                             <span style={{display: 'inline'}}><PhoneIcon /></span>
-                                            <div style={{display: 'inline-block'}}><p>Contacts en cas d'urgence</p></div>
+                                            <div style={{display: 'inline-block'}}><p>Mes contacts</p></div>
                                         </div>   
 
                                     </Col >
@@ -206,55 +222,105 @@ export default class EmercenceProfile extends Component{
                     </Col>
                 </Row>
 
-                <Card>
-                    <CardBody>
+
+                <Row>
+                    <Col lg={7}>
                         <Row>
-                            <Col lg={12}>
+                            <Col lg={8} style={{display:'flex',justifyContent:'flex-start'}}>
+                                <div>
+                                    <span style={{display: 'inline'}}><PhoneIcon /></span>
+                                    <div style={{display: 'inline-block'}}><p>Mes antécedents</p></div>
+                                </div>   
+
+                            </Col >
+
+                            <Col lg={4} style={{display:'flex',justifyContent:'flex-end'}}>
+                                <Plus size={24} color="#0275d8"></Plus>                                        
+                            </Col>
+                        </Row>                        
+                    </Col>
+
+                    <Col lg={7}>
+                        <Card>
+                            <CardBody>
                                 <Row>
-                                    <Col lg={8} style={{display:'flex',justifyContent:'flex-start'}}>
-                                        <div>
-                                            <span style={{display: 'inline'}}><PhoneIcon /></span>
-                                            <div style={{display: 'inline-block'}}><p>Mes antécedents</p></div>
-                                        </div>   
+                                    <Col lg={12}>
 
-                                    </Col >
+                                    </Col>
 
-                                    <Col lg={4} style={{display:'flex',justifyContent:'flex-end'}}>
-                                        <Plus size={24} color="#0275d8"></Plus>                                        
+                                    <Col lg={12} >
+                                        <Card>
+                                        <CardBody>
+                                            <div style={{cursor:'pointer'}}>
+                                                <p
+                                                color="primary"
+                                                onClick={toggle}
+                                                style={pStyle}
+                                                >
+                                            Antécédents medicaux 
+                                            <span style ={{float:'right'}} > {this.state.isOpen ? <ChevronDown color='green' size={16} /> :<ChevronRight color='green' size={16} />  }   </span></p>
+                                            <hr />
+                                            </div>      
+                                        <Collapse isOpen={this.state.isOpen}>
+                                            <Row>
+                                            <Col lg="12">
+                                                <p>Epatite</p>
+                                            </Col>
+                                            <Col lg="12" style={{display:'flex',justifyContent:'flex-end'}}>
+                                                <Button color="primary">Ajouter</Button>
+                                            </Col>
+                                            </Row>
+                                            </Collapse>
+
+                                            <div style={{cursor:'pointer'}}>
+                                                <p
+                                                color="primary"
+                                                onClick={toggle2}
+                                                style={pStyle}
+                                                >
+                                            Antécédents chirurgicaux 
+                                            <span style ={{float:'right'}} > {this.state.isOpen2 ? <ChevronDown color='green' size={16} /> :<ChevronRight color='green' size={16} />  }   </span></p>
+                                            <hr />
+                                            </div>      
+                                        <Collapse isOpen={this.state.isOpen}>
+                                            <Row>
+                                            <Col lg="12">
+                                                <p>Epatite</p>
+                                            </Col>
+                                            <Col lg="12" style={{display:'flex',justifyContent:'flex-end'}}>
+                                                <Button color="primary">Ajouter</Button>
+                                            </Col>
+                                            </Row>
+                                            </Collapse>
+
+                                            <div style={{cursor:'pointer'}}>
+                                                <p
+                                                color="primary"
+                                                onClick={toggle3}
+                                                style={pStyle}
+                                                >
+                                            Allergies 
+                                            <span style ={{float:'right'}} > {this.state.isOpen3 ? <ChevronDown color='green' size={16} /> :<ChevronRight color='green' size={16} />  }   </span></p>
+                                            <hr />
+                                            </div>      
+                                        <Collapse isOpen={this.state.isOpen3}>
+                                            <Row>
+                                            <Col lg="12">
+                                                <p>Mangue</p>
+                                            </Col>
+                                            <Col lg="12" style={{display:'flex',justifyContent:'flex-end'}}>
+                                                <Button color="primary">Ajouter</Button>
+                                            </Col>
+                                            </Row>
+                                            </Collapse>                                                                                        
+                                        </CardBody>
+                                        </Card>                                   
                                     </Col>
                                 </Row>
-                            </Col>
-
-                            <Col lg={12} >
-                                <Card>
-                                    <CardHeader style={{textAlign:'center'}}>Liste des antecedents Medicaux</CardHeader>
-                                <CardBody>
-                                    <div style={{cursor:'pointer'}}>
-                                        <p
-                                        color="primary"
-                                        onClick={toggle}
-                                        style={pStyle}
-                                        >
-                                    Antécédents medicaux 
-                                    <span style ={{float:'right'}} > {this.state.isOpen ? <ChevronDown color='green' size={16} /> :<ChevronRight color='green' size={16} />  }   </span></p>
-                                    <hr />
-                                    </div>      
-                                <Collapse isOpen={this.state.isOpen}>
-                                    <Row>
-                                    <Col lg="6">
-                                        <p>Epatite</p>
-                                    </Col>
-                                    <Col lg="6" style={{display:'flex',justifyContent:'flex-end'}}>
-                                        <Button color="primary">Ajouter</Button>
-                                    </Col>
-                                    </Row>
-                                    </Collapse>
-                                </CardBody>
-                                </Card>                                   
-                            </Col>
-                        </Row>
-                    </CardBody>
-                </Card>                
+                            </CardBody>
+                        </Card>
+                    </Col>
+                </Row>                
             </div>
 
 

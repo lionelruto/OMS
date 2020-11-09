@@ -15,6 +15,7 @@ import Users_DMP from './containers/DMP/Manage_DMP.js'
 import UserProfile from './containers/User_Profile/User_Profile.js'
 import UserHeathData from './containers/DonnesSante/Manage_HealthData.js'
 import Emercency from './containers/Emergency/Manage_Emergency.js'
+import MyProfessionnals from './containers/MyProfessionnals/Mes_Professionnels.js'
 
 import FullPageLayout from "./layouts/fullpageLayout";
 import { FullPageOverlayLayout } from "./layouts/fullpageLayout";
@@ -37,6 +38,7 @@ import {
   ADD_CARTE_ROUTE,
   MAIN_VIEW_ROUTE,
   LIST_CARTE_ROUTE,
+  USER_HEALTHPRO,
   LIST_USER_ROUTE,
   ADD_USER_ROUTE,
   DASHBOARD,
@@ -116,6 +118,17 @@ class ApplicationRouter extends Component {
               <MainLayout>
                 {' '}
                 <HealthData {...matchprops} />{' '}
+              </MainLayout>
+            )}
+          />
+
+           <SimpleRoute
+            exact
+            path={USER_HEALTHPRO}
+            render={(matchprops) => (
+              <MainLayout>
+                {' '}
+                <MyProfessionnals {...matchprops} />{' '}
               </MainLayout>
             )}
           />

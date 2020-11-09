@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import {
   Card,
+  CardTitle,
   Col,
   CardBody,
   Label,
@@ -229,18 +230,28 @@ export default class PatientManagementView extends React.Component {
             height: '2px',
           }}
         />
-        <Card>
-          <CardBody>
-            <div className='step-progress'>
-                <StepZilla steps={steps}
-                    preventEnterSubmission={true}
-                    nextTextOnFinalActionStep={"Save"}
-                    hocValidationAppliedTo={[3]}
-                    startAtStep={window.sessionStorage.getItem("step") ? parseFloat(window.sessionStorage.getItem("step")) : 0}
-                    onStepChange={step => window.sessionStorage.setItem("step", step)}/>
-            </div>
-          </CardBody>
-        </Card>
+            <Row>
+               <Col sm="12">
+                  <Card>
+                     <CardBody>
+                        <div className="example">
+                           <div className="step-progress">
+                              <StepZilla
+                                 steps={steps}
+                                 preventEnterSubmission={true}
+                                 nextTextOnFinalActionStep={"Save"}
+                                 nextButtonText="Suivant"
+                                 backButtonText="Precedent"
+                                 hocValidationAppliedTo={[3]}
+                                 startAtStep={window.sessionStorage.getItem("step") ? parseFloat(window.sessionStorage.getItem("step")) : 0}
+                                 onStepChange={step => window.sessionStorage.setItem("step", step)}
+                              />
+                           </div>
+                        </div>
+                     </CardBody>
+                  </Card>
+               </Col>
+            </Row>
       </Fragment>
     );
   }

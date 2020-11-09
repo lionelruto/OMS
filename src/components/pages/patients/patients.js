@@ -4,7 +4,6 @@ import { Card, Col, CardBody, Input, Button, Row, Form, InputGroup, InputGroupAd
 import ContentHeader from '../../contentHead/contentHeader';
 import CreateableSelect from 'react-select';
 import { Edit, Trash2, Trash, PlusCircle, Loader, Plus } from 'react-feather';
-import NavbarSearch from '../../../components/search/Search';
 import { Search } from 'react-feather';
 import { withRouter } from 'react-router-dom';
 import { RefreshCcw } from 'react-feather';
@@ -78,8 +77,7 @@ class PatientsListe extends Component {
               <ContentHeader>Patient</ContentHeader>
               {this.props.location.pathname !== ADD_PATIENT_ROUTE && (
                 <Button
-                  className={APP_COLOR}
-                  outline color="success"
+                  color="success"
                   style={{
                     float: 'right',
                     display: 'block',
@@ -103,28 +101,10 @@ class PatientsListe extends Component {
             <Card>
               <CardBody >
                     <div style={{paddingTop:"4%"}}>
-                        <Row>                          
-                            <Col xm={6} md={6} sm={6} lg={6} style={{display:"flex", justifyContent:"flex-start"}} >
-                                <div >
-                                    <InputGroup >
-                                        <Input
-                                            id='search_patient'
-                                            placeholder='Entrer le nom du patient'
-                                            autoComplete='off'
-                                            autoCorrect='off'
-                                            autoCapitalize='off'                               
-                                        />
-                                        <InputGroupAddon addonType="append">
-                                            <Button color="secondary"><Search/></Button>
-                                        </InputGroupAddon>
-                                    </InputGroup>
-                                </div>
-
-                            </Col>
-                            
-                            <Col xm={6} md={6} sm={6} lg={6} style={{display:"flex", justifyContent:"flex-end"}}>
+                        <Row>                                                      
+                            <Col xm={12} md={12} sm={12} lg={12} style={{display:"flex", justifyContent:"flex-end"}}>
                                 <div    >
-                                    <Button className={APP_COLOR} onClick={this.handleModal} size="lg" block>
+                                    <Button color='success' onClick={this.handleModal} >
                                         Recherche par QR
                                     </Button>
                                 </div>
@@ -139,12 +119,6 @@ class PatientsListe extends Component {
 
                 <Card style={{marginTop:"4%"}}>
                     <h5>Informations sur le patient</h5> 
-                        <hr
-                        className={APP_COLOR}
-                        style={{
-                        height: '2px',
-                        }}
-                    />
                     <Row>
                         <Col xm={12} md={6} sm={12} lg={6}>                      
                             <img src={userImage} alt="logged-in-user" />
@@ -220,13 +194,13 @@ class PatientsListe extends Component {
                             {/*Bouttons de parametres viteaux ou fille d'attente */}
                             <Row>
                                 <Col xm={6} md={6} sm={6} lg={6} style={{display:"flex", justifyContent:"flex-start"}}>
-                                    <Button  color="primary" size="lg">
+                                    <Button  color="primary">
                                         Parametres vitaux
                                     </Button>
                                 </Col>
 
                                 <Col xm={6} md={6} sm={6} lg={6} style={{display:"flex", justifyContent:"flex-end"}}>
-                                    <Button  color="primary" size="lg">
+                                    <Button  color="primary" >
                                         fille d'attente
                                     </Button>
                                 </Col>

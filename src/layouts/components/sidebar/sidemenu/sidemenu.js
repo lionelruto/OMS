@@ -8,6 +8,8 @@ import {FaStethoscope} from 'react-icons/fa'
 import {BsFillCalendarFill} from 'react-icons/bs'
 import {FaMale} from 'react-icons/fa'
 import {AiOutlineAlert} from 'react-icons/ai'
+import {BsPeople} from 'react-icons/bs'
+
 
 import {
    Home,
@@ -47,6 +49,7 @@ import {
    LIST_USER_ROUTE,
    DASHBOARD,
    USER_DMP,
+   USER_HEALTHPRO,
    USER_EMERGENCYPROFILE,
    CALENDRIER,
    LIST_FILE_ROUTE,
@@ -106,7 +109,16 @@ class SideMenuContent extends Component {
                   {/* <span className="menu-item-text">Mes-Statistiques</span> */}
                </NavLink>
            </SideMenu.MenuMultiItems>
-           
+
+            <SideMenu.MenuSingleItem>
+               <NavLink to={USER_HEALTHPRO} >
+                  <i className="menu-icon">
+                     <BsPeople style={{fontSize:18}} />
+                  </i>
+                  <span className="menu-item-text">Mes proffessionnels</span>
+               </NavLink>
+            </SideMenu.MenuSingleItem>
+
             <SideMenu.MenuSingleItem>
                <NavLink to={LIST_CARTE_ROUTE} >
                   <i className="menu-icon">
